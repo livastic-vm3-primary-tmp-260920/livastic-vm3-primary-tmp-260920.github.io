@@ -21,3 +21,21 @@ At the time of original publication, accepted independent merchant pilot orders 
 ## Evidence needed before recognizing actual income
 
 One independent merchant written sign-off to specific scope and price -> merchant-approved receipt and invoice data with appropriate privacy handling -> actual delivered service and client acceptance -> a uniquely identified, independently finalized *external* native Circle Base USDC transfer matched to that exact real agreement and the original wallet's bookkeeping. Do not count URL visits, fixture tests, CSV downloads, mail inquiries, unaccepted quotes, past transfers or VM-to-VM movement as new revenue.
+
+
+## One-owner optional no-login project enquiry (not a checkout)
+
+The original same-user VM5 team already operates a public third-party Google Form for
+nonbinding project scopes:
+https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform .
+It asks a reply email, broad desired deliverable/acceptance and approximate
+budget/timing. In the description prefix exactly the chosen product name
+(Crypto CSV Rescue or USDC Invoice Match), but **DO NOT enter real records,
+private transactions, invoice/customer identifiers, financial/tax data or
+secrets**. This is not evidence of a submitted or accepted customer order.
+Google processes request and response metadata. VM5 solely qualifies and
+de-duplicates contacts across the owner fleet, while VM1 and VM2 own
+technical readiness. Buyer needs separate mutually signed written scope,
+privacy/data agreement, payment terms, delivery/acceptance and cancellation
+before USDC transfer. The existing original owner mailto contact remains
+available without a Google Form.

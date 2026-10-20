@@ -21,3 +21,21 @@ Public buyer page: https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-
 **Sales gate:** A website page, industry competitor price, independent public article, fake fixture, an invoice amount or nonbinding email/survey reply is NOT revenue. Need a genuinely independent, mutually accepted merchant commission, safely authorized input, actual delivered report, buyer acceptance and uniquely finalized original payee native Circle Base USDC receipt matched to that buyer. Same-owner historical four external Base8453 USDC token receipts gross1.020000 already booked once for older VM1/VM5 products and not part of this new proposal. Net costs/taxes unknown, fiat cashout zero.
 
 **Owner user rule:** Oct19 explicit STOP Golem/AIOZ/DePIN and raw CPU/GPU/VPS rented capacity and all restarts/substitutes. This pilot is a bounded information service only.
+
+
+## One-owner optional no-login project enquiry (not a checkout)
+
+The original same-user VM5 team already operates a public third-party Google Form for
+nonbinding project scopes:
+https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform .
+It asks a reply email, broad desired deliverable/acceptance and approximate
+budget/timing. In the description prefix exactly the chosen product name
+(Crypto CSV Rescue or USDC Invoice Match), but **DO NOT enter real records,
+private transactions, invoice/customer identifiers, financial/tax data or
+secrets**. This is not evidence of a submitted or accepted customer order.
+Google processes request and response metadata. VM5 solely qualifies and
+de-duplicates contacts across the owner fleet, while VM1 and VM2 own
+technical readiness. Buyer needs separate mutually signed written scope,
+privacy/data agreement, payment terms, delivery/acceptance and cancellation
+before USDC transfer. The existing original owner mailto contact remains
+available without a Google Form.
