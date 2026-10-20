@@ -84,13 +84,24 @@ try{
   throw Error('ACTUAL_CUSTOMER_FILE_OR_NAVIGATION');
  const blocked=await evalJS("(function(){document.getElementById('ack-utc').checked=false;document.getElementById('make').click();return [document.getElementById('download').hidden,document.getElementById('report').textContent]})()");
  if(!blocked[0]||!blocked[1].includes('STOP:'))throw Error('UNKNOWN_UTC_NOT_FAIL_CLOSED');
+ const recipient='0x6b01efA0705E91a7aca54271510bf9e594717f34';
+ const expectedToken='0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913';
+ const tipBefore=await evalJS("(function(){return {section:!!document.getElementById('optional-support'),recipient:document.getElementById('public-tip-recipient')?.textContent,button:!!document.getElementById('copy-public-tip-recipient'),status:document.getElementById('tip-copy-status')?.textContent,details:document.getElementById('optional-support')?.textContent,script:!!document.querySelector('script[src=\\\"./tip.mjs\\\"]'),url:location.href}})()");
+ if(!tipBefore.section||!tipBefore.button||!tipBefore.script||tipBefore.recipient!==recipient||!tipBefore.details.includes(expectedToken)||!tipBefore.details.includes('Pay 0 USDC'))
+  throw Error('VERIFIED_SAME_OWNER_TIP_PAYTO_NOT_LIVE');
+ const tipAfter=await evalJS("(async function(){document.getElementById('copy-public-tip-recipient').click();await new Promise(r=>setTimeout(r,190));return {text:document.getElementById('tip-copy-status').textContent,href:location.href}})()");
+ if(tipAfter.href!==SITE||!tipAfter.text.includes('Public address copied')&&!tipAfter.text.includes('Clipboard permission unavailable'))
+  throw Error('TIP_COPY_LOCAL_USER_ACTION_FAILED');
  if(external.length)throw Error('THIRDPARTY_REQUEST_OCCURRED');
  if(errors.length)throw Error('PAGE_JS_EXCEPTION');
  console.log(JSON.stringify({status:'PASS',website:SITE,syntheticRows:3,
    newBrowserProfile:true,existingChromeTabsTouched:0,realClientFilesRead:0,
    networkToOtherOrigins:0,JavaScriptExceptions:0,
    manualMapping:true,fictionalCandidateDownload:true,
-   acknowledgmentFailClosed:true,paidBuyers:0,newUSDC:0}));
+   acknowledgmentFailClosed:true,
+   tipPublicCanonicalPayToVerified:true,tipOneClickClipboardOnly:true,
+   tipSeparateFromPaidOrder:true,walletPermissionRequests:0,
+   paidBuyers:0,newUSDC:0}));
 }catch(e){console.error('NADO_BROWSER_QA_FAILED',String(e?.message||e));process.exitCode=1}
 finally{
  try{ws?.close()}catch{}
