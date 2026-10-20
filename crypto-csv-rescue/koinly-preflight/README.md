@@ -103,3 +103,20 @@ is no cross-site browser storage/API/POST or sharing of a customer CSV.
 Actual Koinly proprietary import success is never asserted from either
 offline step. For supported exchange exports, consult Koinly's original
 integration/support instead of rewriting source records.
+
+
+## Existing one-owner HashN small Koinly manual seller contact (not a checkout)
+
+Original VM1 has an ACTUALLY published external HashN agent-services listing
+https://hashn.com/store/886ed287-aaca-434b-9f27-560a50bfbbb6/listings/koinly-csv-one-source-mapping-mini-review-5usdc.md ,
+proposing a separate 5.000000 native Circle BaseUSDC manually negotiated
+one-source header review with MAX 10 sanitized buyer-authorized sample
+rows. HashN holds NO money and offers NO escrow; the published listing
+is not a confirmed customer/contract/checkout nor a funded bounty.
+The original owner seller's historical reputation is from a different
+job and is not a sale of this new mini review. Authenticated independent
+agent contact, mutually written exact scope, recipient/chain/token,
+privacy/data processing, delivery, cancellation and refund terms all
+must precede any real buyer-controlled USDC transfer. Our distinct
+broader 49-native-BaseUSDC up-to-50-row/two-export manual pilot is not
+included. If the free original local tools work, customer pays ZERO.

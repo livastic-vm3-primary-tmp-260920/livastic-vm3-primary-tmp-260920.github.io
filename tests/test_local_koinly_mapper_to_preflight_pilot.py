@@ -43,7 +43,7 @@ class TwoStageKoinlyBuyerWorkflows(unittest.TestCase):
         for k in self.docs:self.assertIn(MAPPER,self.docs[k])
 
     def test_firstparty_checker_link_explains_explicit_local_file_hand_off(self):
-        self.assertEqual(self.p["offer"].links.count(PREFLIGHT),4)
+        self.assertEqual(self.p["offer"].links.count(PREFLIGHT),5)
         self.assertIn('id="two-free-koinly-steps"',self.pages["offer"])
         self.assertIn('id="map-first"',self.pages["check"])
         self.assertIn('href="#check-title"',self.pages["check"])
