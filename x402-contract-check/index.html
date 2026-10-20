@@ -70,6 +70,26 @@ code{color:var(--green);background:#071b24;border-radius:4px;padding:1px 4px}
 <p><strong>v2</strong> uses the base64 <code>PAYMENT-REQUIRED</code> header, the <code>accepts[*].amount</code> atomic token amount, CAIP-2 chain identifiers such as <code>eip155:8453</code>, and a top-level <code>resource</code>. Bazaar discovery lives in <code>extensions.bazaar</code>, not the v1 outputSchema field.</p>
 <p>The <strong>Bazaar metadata schema validates its discovery info</strong>. An <code>output: {type,example}</code> declaration alone is not the JSON Schema for all actual paid response fields, required/nullability or error outcomes.</p>
 </section>
+<section class="card" id="paid-micro-qa" aria-labelledby="paid-micro-qa-heading">
+<div class="eyebrow">Optional existing seller · Machine-payable micro review · No instant browser purchase</div>
+<h2 id="paid-micro-qa-heading">Need a short AI-assisted explanation beyond these free diagnostic codes?</h2>
+<p>Our <strong>already-active original Soul.Markets</strong> seller has an independently visible paid service called <strong>x402 v2 HTTP 402 Quote Mismatch Preflight</strong>, listed at <strong>USD $0.75</strong> on that platform. It reviews one buyer-authorized <strong>PUBLIC, UNSIGNED</strong> 402 quote, reports likely structural causes and gives safe read-only next steps. This is a different paid service from the separate indicative 19-USDC custom development quote below. Both use the <strong>same one human beneficial owner</strong>; none is a previous buyer review.</p>
+<p><a class="button" href="https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa" target="_blank" rel="noopener noreferrer">Inspect real original Soul.Markets seller and five active services ↗</a></p>
+<p><strong>Agent buyer route:</strong> Use your own trusted x402-compatible HTTP client to send <code>POST</code> with <code>Content-Type: application/json</code> and a JSON object containing <code>input</code> to the platform's paid execute URL below. A <strong>402 PAYMENT-REQUIRED</strong> response from an unsigned request is only a <em>quote</em>, not an order; read the live network, canonical token, total amount and payTo first. Only your own authorized client can choose to sign and pay the provider's current requirements. A successful authorized <code>202</code> is job acceptance, <strong>not</strong> proof of completed delivery or final wallet settlement. Do not manually send an unsolicited USDC transfer to the platform or any pasted payTo.</p>
+<p><code id="actual-original-075-paid-api" style="word-break:break-all">https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa/services/x402-quote-mismatch-preflight/execute</code></p>
+<details><summary>Show the four exact permitted input fields and a completely fictional PUBLIC JSON example</summary>
+<pre class="example-json" aria-label="Fictional public unsigned payment quote input" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#071e2a;border:1px solid #315461;padding:13px;border-radius:8px">{
+  &quot;input&quot;: {
+    &quot;http_status&quot;: 402,
+    &quot;decoded_public_payment_required&quot;: &quot;{\&quot;x402Version\&quot;:2,\&quot;resource\&quot;:{\&quot;url\&quot;:\&quot;https://example.invalid/fictional\&quot;,\&quot;description\&quot;:\&quot;Fictional public data example\&quot;,\&quot;mimeType\&quot;:\&quot;application/json\&quot;},\&quot;accepts\&quot;:[{\&quot;scheme\&quot;:\&quot;exact\&quot;,\&quot;network\&quot;:\&quot;eip155:8453\&quot;,\&quot;amount\&quot;:\&quot;5000\&quot;,\&quot;asset\&quot;:\&quot;0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\&quot;,\&quot;payTo\&quot;:\&quot;0x1111111111111111111111111111111111111111\&quot;}]}&quot;,
+    &quot;quoted_native_base_usdc&quot;: true,
+    &quot;symptom&quot;: &quot;FICTIONAL public v2 fields only; no real customer or invoice&quot;
+  }
+}</pre>
+<p class="small">Only fictional data; this example belongs to nobody. No buyer's private payment payload, PAYMENT-SIGNATURE, X-PAYMENT, Authorization, cookie, client financial record, real wallet position, password or seed must ever be sent. The public 402 value describes a payment request only, not a valid signed purchase. The displayed <code>0.005000 USDC</code> describes the FICTIONAL SAMPLE's 5,000 atomic units, <strong>not</strong> the platform price for this paid review.</p>
+</details>
+<p class="small"><strong>Price safety:</strong> The platform currently advertises <strong>USD $0.75</strong>. Actual accepted x402 network, asset, exact current atomic amount, merchant recipient and any paid-job/refund rules are determined by the service's <em>fresh firstparty payment quote and terms</em>, not these static words. This site cannot initiate an x402 payment, receive a paid job or guarantee a job outcome. If you do not use x402, prefer the entirely free check above or request a written human scope. At initial publication, the seller's recorded executions and confirmed paid orders were both <strong>0</strong>; no new receipt or buyer is claimed.</p>
+</section>
 <section class="card" id="b2b-qa">
 <div class="eyebrow">Original human-assisted technical QA · Optional</div>
 <h2>Need a bounded real-world data contract review?</h2>

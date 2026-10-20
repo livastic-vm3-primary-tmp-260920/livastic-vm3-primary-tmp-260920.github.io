@@ -40,6 +40,12 @@ Requires Node 22+ for JavaScript tests, Python 3.9+ for static site tests. No np
 
 The client is two tiny modules: check.mjs for strict parser and static metadata checks, app.mjs for browser-local display/download only. Original README, homepage card, sitemap and llms.txt make the free tool discoverable. These are not traffic analytics.
 
+## Existing buyer-payable AI-assisted micro-review (optional)
+
+The very same one-human-owner VM3 seller already has FIVE Soul.Markets services. Its existing x402 quote-mismatch public-header micro-review is platform-listed at **USD $0.75**. Its authentic original public catalogue is at https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa and its original x402-paid execute route is https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa/services/x402-quote-mismatch-preflight/execute (POST only; requires input object). A buyer with its own x402 client must explicitly review the current HTTP402 PaymentRequired token, chain, exact price, payTo and refund terms, then approve a charge on the buyer side. The firstparty unpaid route was verified actually returning HTTP402 and PAYMENT-REQUIRED without any seller/wallet transaction; nobody bought in that test. The paid SKU's two required fields are http_status and decoded_public_payment_required; the optional fields quoted_native_base_usdc and symptom are permitted. This new disclosure does NOT change platform pricing, paid input schema, payout wallet, seller identity, service count, or execute behavior.
+
+The separate indicative 19 native Base Circle USDC manually scoped technical QA is NOT an automatic purchase, while the free checker remains entirely free. The 5,000-atomic-unit sample shown in the page is entirely fictional and NOT a live 0.005USDC SKU quote; never mistake its sample payTo for the platform's verified current merchant recipient.
+
 ## Economic truth at launch
 
 External independent paying clients 0. Signed orders 0. Verifiable distinct new Circle Base USDC receipts attributable to THIS new tool 0. Thirdparty developer studies and free comments are not buyers or paid contracts. Previous historical receipts by the same human across VM1/VM5 belong in the older unique overall ledger only.
