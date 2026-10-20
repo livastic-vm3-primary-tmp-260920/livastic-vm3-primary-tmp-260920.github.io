@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>x402 Browser Readiness Check — Free Unpaid CORS Smoke Test</title>
+<meta name="description" content="A free, walletless Node.js smoke test for x402 HTTP 402 browser CORS blockers. No payments or signatures.">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/">
+<style>body{background:#0b1422;color:#e8eef8;font:16px/1.65 system-ui, sans-serif;max-width:880px;margin:auto;padding:clamp(18px,4vw,45px)}h1,h2{line-height:1.22}h1{font-size:clamp(29px,5vw,45px)}a{color:#83cfff}p{color:#c8d4e5}.kicker{color:#80e3c4;letter-spacing:.1em;text-transform:uppercase;font-weight:700}.card{border:1px solid #3a5670;border-radius:16px;padding:20px;margin:20px 0;background:#122239}.code{overflow-x:auto;padding:18px;background:#07111d;color:#b6f2d5;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere}.button{display:inline-block;border-radius:9px;background:#9dedca;color:#06231c;padding:10px 16px;text-decoration:none;font-weight:750;margin:5px 7px 5px 0}.secondary{background:#e2edf7;color:#0f2947}.note{border-left:4px solid #9ae8c2;padding:12px 18px;background:#132637}footer{margin-top:45px;border-top:1px solid #395067;padding-top:12px;color:#a6b6c8}</style></head>
+<body><a href="/">← One Cursor tools</a><div class="kicker">Free developer utility · x402 v2 · no wallet</div>
+<h1>Does your x402 API actually work in a browser?</h1>
+<p>Your endpoint can return HTTP 402 correctly and still be unusable for browsers. The browser may be unable to read <code>PAYMENT-REQUIRED</code>, or its payment retry may fail an <code>OPTIONS</code> preflight.</p>
+<p><strong>Test that buyer path before you assume zero payments mean zero demand.</strong> This tool sends only an unsigned HTTP 402 request and an OPTIONS probe. It never signs, spends, logs in, or submits a transaction.</p>
+<a class="button" href="cli.mjs" download>Get the CLI (free)</a>
+<a class="button secondary" href="checker.mjs" download>Get offline diagnostic engine</a>
+<a class="button secondary" href="https://github.com/x402-foundation/x402/issues/3808">See the real protocol discussion</a>
+<section class="card"><h2>Run against an endpoint you operate</h2>
+<p>Requires Node.js 22+. Save both <code>cli.mjs</code> and <code>checker.mjs</code> in the same directory, then run:</p>
+<div class="code">node cli.mjs --url https://YOUR-OWN-PAID-API.example/paid --origin https://YOUR-WEB-APP.example --method GET --i-control-endpoint</div>
+<p>For your own POST route, also explicitly add <code>--permit-unpaid-post</code>. An unprotected misconfigured POST handler may still have side effects; assess that first. Use <code>--json</code> to integrate checks into your QA pipeline.</p>
+<a href="README.md">Full safe-usage guide</a> · <a href="tests/checker.test.mjs">Regression tests</a></section>
+<section class="card"><h2>What the report actually checks</h2>
+<p>Preflight: allowed Origin, request method and <code>PAYMENT-SIGNATURE</code>. Challenge: HTTP 402, visible <code>PAYMENT-REQUIRED</code>, suitable CORS exposure, and cache safety. It labels blockers and warnings, but it cannot confirm signed retries, settlement or paid-resource delivery.</p>
+<div class="note"><strong>Privacy / money:</strong> No analytics or wallet connector on this page. CLI probes require your explicit endpoint-owner flag, discard response bodies and never send payment signatures. Do not include confidential URLs, API tokens or wallet recovery information.</div></section>
+<section class="card"><h2>Need someone to fix the browser path?</h2>
+<p>The free checker is self-service. For an authorized public endpoint, the same AI-assisted one-owner developer service can quote a separately agreed, narrowly scoped CORS diagnosis and remediation report. No claim of certification, active clients or guaranteed fix.</p>
+<a class="button" href="/defi-payment-proof-qa/">Review paid QA options & scope</a>
+<p>No contract, deposit, wallet authorization or payment is initiated by this page.</p></section>
+<footer>2026 · One Cursor / VM3 original code · Public evidence first · No testimonials claimed · <a href="https://github.com/x402-foundation/x402/issues/3722">Underlying field measurements</a></footer></body></html>

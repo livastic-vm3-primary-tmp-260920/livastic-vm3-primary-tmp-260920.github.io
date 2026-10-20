@@ -57,6 +57,7 @@ class RootMarketingTests(unittest.TestCase):
             "/defi-payment-proof-qa/guides/x402-quote-safety.html",
             "/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html",
             "/defi-payment-proof-qa/guides/csv-browser-x402-checkout.html",
+            "/x402-smokecheck/",
             "/defi-payment-proof-qa/guides/csv-structural-preflight-005-base-usdc.html",
         ):
             self.assertIn(suffix,links)
