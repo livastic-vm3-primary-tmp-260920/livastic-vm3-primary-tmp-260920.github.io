@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; connect-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Original free no-wallet x402 v1/v2 PaymentRequired and Bazaar output metadata inspector. Check public quotes and schema limitations before paying.">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/x402-contract-check/">
+<title>x402 Contract Reality Check — Free v2 Bazaar Prepay Inspector | One Cursor</title>
+<style>
+:root{color-scheme:dark;--bg:#081720;--panel:#112c38;--panel2:#1a3c48;--border:#315461;--white:#eef8f8;--muted:#bbd1d7;--green:#b3f5cf;--blue:#a4d9ff;--warn:#ffe1a5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:15.5px/1.62 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header,main,footer{max-width:1140px;margin:auto;padding:20px clamp(14px,3vw,38px)}header{border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+a{color:var(--blue);overflow-wrap:anywhere}a:hover{color:var(--green)}h1{font-size:clamp(32px,5vw,55px);line-height:1.12;letter-spacing:-.045em;max-width:900px;margin:11px 0 18px}h2{font-size:clamp(22px,3vw,28px);margin:8px 0 13px;line-height:1.2}h3{font-size:19px;margin:5px 0 12px}
+p,li{color:var(--muted)}.lead{font-size:19px;max-width:840px}.eyebrow{color:var(--green);font-weight:850;text-transform:uppercase;letter-spacing:.13em;font-size:12px}
+.card{border:1px solid var(--border);background:var(--panel);border-radius:14px;padding:clamp(15px,2.5vw,27px);margin:21px 0}
+.warning{background:#33291f;border-left:4px solid var(--warn);border-radius:5px;padding:13px 16px;color:#ffe5af;margin:16px 0}
+h1 strong{color:var(--green)}
+label{display:block;font-weight:750;margin:7px 0 11px}
+textarea{width:100%;min-height:255px;background:#071e2a;color:var(--white);border:1px solid #658691;padding:14px;font:13.5px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;resize:vertical;border-radius:8px}
+button,.button{cursor:pointer;display:inline-block;border:1px solid var(--green);background:var(--green);color:#073421;border-radius:7px;font:inherit;font-weight:760;padding:10px 18px;min-height:45px;margin:8px 8px 4px 0;text-decoration:none}
+button.secondary{background:transparent;color:var(--green)}button:disabled{opacity:.46;cursor:not-allowed}
+button:hover:not(:disabled){filter:brightness(1.07)}
+button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.result{border:1px solid var(--border);border-radius:8px;padding:14px;background:#09212b;color:#eef9f7;font-weight:700;min-height:52px}
+.result.error{border-left:4px solid #ffb8a4;background:#2e2627}.result.good{border-left:4px solid var(--green)}
+.metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:13px 0}.metric{border:1px solid var(--border);background:var(--panel2);padding:13px;border-radius:8px}
+.metric strong{display:block;font-size:clamp(16px,2.1vw,21px);color:var(--green)}.metric span{font-size:12px;color:var(--muted)}
+.tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:8px}table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}th{background:#1b4050;font-size:12px}td:first-child{font-family:ui-monospace,monospace;word-break:break-word;width:30%}td:nth-child(2){white-space:nowrap}
+.error-text{color:#ffc0b6}.warn-text{color:#ffe0a6}.quiet-text{color:#b3f5cf}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}.cols .card{margin-top:0}
+code{color:var(--green);background:#071b24;border-radius:4px;padding:1px 4px}
+.small{font-size:13px}.footer{border-top:1px solid var(--border);font-size:13px}
+#overview:empty{display:none}
+@media(max-width:920px){.cols{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:450px){.metrics{grid-template-columns:1fr}.card{padding:15px}}
+</style></head><body>
+<header><a href="https://livastic-vm3-primary-tmp-260920.github.io/"><strong>ONE CURSOR · FREE DEVELOPER CHECKS</strong></a><span>100% local · No wallet · No logging</span></header>
+<main>
+<section>
+<div class="eyebrow">Before the buyer pays — inspect public merchant data</div>
+<h1>Does an x402 endpoint publish a <strong>usable contract</strong> — or only a price?</h1>
+<p class="lead">Paste an unsigned <strong>public x402 v2 PAYMENT-REQUIRED</strong> header value or public JSON challenge. Inspect payment-field compatibility, v1/v2 mixups and Bazaar discovery metadata. It never probes a merchant, signs a transaction or collects your payload.</p>
+<div class="warning"><strong>Safety boundary:</strong> ONLY an unsigned, already-public 402 challenge. Never paste PAYMENT-SIGNATURE, X-PAYMENT, authorization tokens, cookies, wallet keys, customer data or a full HTTP response. A green result does NOT establish seller identity, liquidity, legitimacy, live availability or the actual output of any PAID request. No payments are initiated on this page.</div>
+</section>
+<section class="card" id="try">
+<div class="eyebrow">Free self-service · No installation / login / wallet</div>
+<h2>Inspect a public PaymentRequired challenge locally</h2>
+<label for="quote">Paste public JSON or only the base64 value of the PAYMENT-REQUIRED header (max <span id="max">24k</span> characters)</label>
+<textarea id="quote" spellcheck="false" maxlength="24000" placeholder='{"x402Version":2,"resource":{"url":"https://...","description":"...","mimeType":"application/json"},"accepts":[{"scheme":"exact","network":"eip155:8453","amount":"5000","asset":"0x...","payTo":"0x..."}],"extensions":{"bazaar":{"info":{"input":{"type":"http","method":"GET"},"output":{"type":"json","example":{"ok":true}}},"schema":{"type":"object"}}}}' aria-describedby="quote-help"></textarea>
+<p id="quote-help" class="small">Use a public synthetic example first if you are unfamiliar with the wire format. PaymentRequired is the public payment requirement, NOT the separate private buyer PaymentPayload. This tool rejects signed/secret field names; source text stays in this browser memory and is never transmitted.</p>
+<div>
+<button type="button" id="check">Inspect public 402 metadata</button>
+<button type="button" class="secondary" id="demo-v2">Load fictional x402 v2 + Bazaar</button>
+<button type="button" class="secondary" id="demo-v1">Load fictional legacy x402 v1</button>
+<button type="button" class="secondary" id="clear">Clear local input</button>
+</div>
+<div id="status" class="result" aria-live="polite">No analysis run. No data stored or sent.</div>
+<div id="overview" class="metrics" aria-label="Public metadata inspection overview"></div>
+<p id="amount" class="small"></p>
+<div class="tablewrap"><table><thead><tr><th scope="col">Check code</th><th scope="col">Severity</th><th scope="col">What it means (no user input shown)</th></tr></thead><tbody id="report"><tr><td colspan="3">Run a fictional example or inspect an unsigned public challenge.</td></tr></tbody></table></div>
+<button type="button" id="download" class="secondary" disabled>Download sanitized findings JSON</button>
+<p class="small">Export includes only authored diagnostic codes, counts, a normalized first-accept USDC amount if this is native Base Circle USDC, and source links. It excludes original JSON, full payTo, signatures, input file and personal data. No cookies, localStorage, analytics, RPC or server processing.</p>
+</section>
+<div class="cols">
+<section class="card">
+<div class="eyebrow">Key 2026 implementation detail</div>
+<h2>x402 v1 vs v2 is not just renaming the header</h2>
+<p><strong>v1</strong> may put <code>maxAmountRequired</code> and <code>outputSchema</code> in <code>accepts[0]</code> with old network identifiers. A buyer that blindly interprets those fields as v2 can quote or pay incorrectly.</p>
+<p><strong>v2</strong> uses the base64 <code>PAYMENT-REQUIRED</code> header, the <code>accepts[*].amount</code> atomic token amount, CAIP-2 chain identifiers such as <code>eip155:8453</code>, and a top-level <code>resource</code>. Bazaar discovery lives in <code>extensions.bazaar</code>, not the v1 outputSchema field.</p>
+<p>The <strong>Bazaar metadata schema validates its discovery info</strong>. An <code>output: {type,example}</code> declaration alone is not the JSON Schema for all actual paid response fields, required/nullability or error outcomes.</p>
+</section>
+<section class="card" id="b2b-qa">
+<div class="eyebrow">Original human-assisted technical QA · Optional</div>
+<h2>Need a bounded real-world data contract review?</h2>
+<p>The free inspection may show an unsupported version or shallow Bazaar response example. For one explicitly authorized <strong>PUBLIC</strong> x402 endpoint, an original AI-assisted developer can separately quote a synthetic-only regression fixture, source-linked field/error compatibility report and deterministic offline tests. <strong>Indicative fixed 19 native Circle Base USDC</strong> for one separately agreed scope, only after a real buyer accepts delivery, cancellation/refund, privacy, AI involvement and correct payee/network terms in writing. No audit, penetration testing, real buyer data or token signing.</p>
+<p><a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform" target="_blank" rel="noopener noreferrer">Request no-payment technical QA scope ↗</a></p>
+<p class="small">If a FREE inspection shows a real public compatibility gap, you may <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/issues/new?template=x402-browser-compatibility.md" target="_blank" rel="noopener noreferrer">open a voluntary public feedback issue</a> (GitHub login required). Post ONLY authored diagnostic codes and a non-sensitive problem description; never the pasted source object, seller payTo, keys, cookies, signatures, wallet or client records. No payment is required to report a bug.</p>
+<p class="small">If the free synthetic test solves your issue, pay <strong>0 USDC</strong>. No buyer, revenue, fee collection or contract is claimed by displaying an offer.</p>
+</section>
+</div>
+<section class="card" id="methods">
+<h2>Source, reproducibility and limits</h2>
+<p>Reference: <a href="https://github.com/x402-foundation/x402/blob/main/specs/x402-specification-v2.md" rel="noopener noreferrer">official x402 v2 specification</a> and <a href="https://github.com/x402-foundation/x402/blob/main/specs/extensions/bazaar.md" rel="noopener noreferrer">official Bazaar discovery extension</a>. The motivation is an <a href="https://dev.to/noboru/x402-market-measured-what-is-being-sold-at-what-price-and-where-the-gaps-are-2p0b" rel="noopener noreferrer">independent public October 2026 analysis</a> of prepay output metadata; the researcher is not a customer or endorser of this tool.</p>
+<p>Inspect the <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/tree/main/x402-contract-check" rel="noopener noreferrer">source code, synthetic cases and offline test suite</a>. The browser runs only same-origin JavaScript and has <code>connect-src 'none'</code>, no analytics, local storage or wallet provider access. Parsing one public user-supplied 402 object cannot prove a merchant actually delivered a paid response, or that any facilitator will accept/settle payment; extensions and third-party schemas can change.</p>
+</section>
+<details lang="ko" class="card">
+<summary><strong>한국어 안내 — 결제 전에 공개 x402 응답 검사하기</strong></summary>
+<p>이 페이지는 공개된 HTTP 402의 PAYMENT-REQUIRED JSON 또는 Base64 헤더 내용만 분석합니다. x402 v1/v2 필드, Base 메인넷 USDC 단위, Bazaar 메타데이터 및 결과 형식의 한계를 검사합니다. 지갑 연결이나 서명, 자금 전송, 외부 API 요청, 브라우저 추적은 하지 않습니다. 검사 통과는 실제 판매자의 신뢰성·보안·상품 전달·환불·투자 수익을 보장하지 않습니다. 결제 서명이나 비밀키·인증 토큰을 입력하지 마세요. 무료 도구만 사용하면 0 USDC입니다.</p>
+</details>
+</main>
+<footer class="footer">ONE CURSOR (one human beneficial owner, openly AI-assisted) · October 2026 · Free read-only public metadata syntax check only, no customer orders or payments claimed. <a href="https://livastic-vm3-primary-tmp-260920.github.io/">Home</a> · <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/tree/main/x402-contract-check">Open source</a></footer>
+<script type="module" src="./app.mjs"></script>
+</body></html>
