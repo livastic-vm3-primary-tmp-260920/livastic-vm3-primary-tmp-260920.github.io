@@ -9,3 +9,19 @@ The free MIT x402 Browser Readiness Check and its separately original platform-m
 The synthetic sample output is produced entirely offline by existing original `x402-smokecheck/checker.mjs` v1.0.1 with fictional header names/values: `synthetic-example-report.json` contains two blockers and two warnings and is NEVER called a client case, sale or endorsement.
 
 Revenue starts at **zero** for this product. Page metrics, emails and wallet quote descriptions are not settlement. Unique external buyer payments are counted only after the VM5-original read-only Base native Circle USDC receipt watcher independently verifies the actual transfer and matches it to written scope/order. Bank fiat conversion and after-expense profit are separately unknown.
+
+## Optional no-login developer inquiry form
+
+The HTML also offers one opt-in standard POST to the independent vendor
+`https://formsubmit.co/onecursor1@gmail.com`. Its first real owner activation
+requires clicking the normal email confirmation; until that is verified, do
+not call the form operational or count its setup test as customer feedback.
+It requires acknowledgement of third-party processing and fictional/sanitized
+data only. Default reCAPTCHA remains enabled, no automated CAPTCHA bypass.
+The form does not take payment or upload files. It is an optional alternative
+to the direct `mailto:` inquiry or public GitHub opt-in feedback.
+
+The `thanks.html` browser redirect means vendor accepted a submission for
+processing, **not** that email delivery, seller acceptance, paid order or cash
+was confirmed. Owner setup tests must be marked owner-only and not entered as
+external customer demand.

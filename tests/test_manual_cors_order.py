@@ -72,18 +72,47 @@ class OriginalManualCORSOrderTests(unittest.TestCase):
         self.assertNotIn('DELIBERATELY-INVENTED-UNSIGNED-PLACEHOLDER',json.dumps(self.sample))
         self.assertTrue(self.sample['observedHeaderValuesRedacted'])
 
-    def test_no_wallet_script_customer_storage_or_network_forms(self):
+    def test_no_wallet_script_customer_storage_or_unapproved_form_endpoint(self):
         for bad in ['<script','window.ethereum','eth_sendTransaction','ethereum.request',
-                    'localStorage','sessionStorage','fetch(','XMLHttpRequest','<form','google-analytics','<iframe',
+                    'localStorage','sessionStorage','fetch(','XMLHttpRequest','google-analytics','<iframe',
                     'password','api_key','recovery phrase is']:
             if bad=='password':
                 # The disclosure warns about credentials without collecting them.
                 continue
             self.assertNotIn(bad,self.html)
         self.assertIn("default-src 'none'",self.html)
-        self.assertIn("form-action 'none'",self.html)
+        self.assertIn("form-action https://formsubmit.co",self.html)
+        self.assertEqual(self.html.count('<form action="https://formsubmit.co/onecursor1@gmail.com" method="POST"'),1)
+        self.assertNotIn('<form action="http://',self.html)
         self.assertEqual(self.html.count('<h1 '),1)
         self.assertGreaterEqual(len(self.tags.links),10)
+
+    def test_no_login_form_requires_consent_and_cannot_collect_files_or_secrets(self):
+        for snippet in [
+            'name="public_sanitized_problem" maxlength="500" required',
+            'name="willingness_to_pay_usdc" required',
+            'name="only_public_sanitized_data_and_third_party_processing_acknowledged" value="yes" required',
+            'independent FormSubmit service',
+            'for up to 30 days',
+            'reCAPTCHA may be required',
+            'not purchases, paid orders',
+            'value="feedback_only_no_order"',
+            'value="please_reply_with_written_15_usdc_scope_only"',
+        ]:self.assertIn(snippet,self.html)
+        self.assertNotIn('type="file"',self.html)
+        self.assertNotIn('name="password"',self.html)
+        self.assertNotIn('name="wallet"',self.html)
+        self.assertNotIn('name="authorization"',self.html)
+        self.assertNotIn('_captcha" value="false"',self.html)
+        self.assertEqual(self.html.count('action="https://formsubmit.co/onecursor1@gmail.com"'),1)
+
+    def test_redirect_explains_it_is_not_contract_or_cash(self):
+        text=(ROOT/"x402-cors-qa-order/thanks.html").read_text('utf8')
+        self.assertIn('noindex,follow',text)
+        self.assertIn('not',text.lower())
+        self.assertIn('not</strong> proof',text)
+        self.assertIn('Do <strong>not</strong> transfer USDC',text)
+        self.assertNotIn('<script',text)
 
     def test_free_buyer_value_and_own_provider_kept_separate(self):
         self.assertIn('/x402-smokecheck/',self.tags.links)

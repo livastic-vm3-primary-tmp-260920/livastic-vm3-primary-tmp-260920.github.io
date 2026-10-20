@@ -5,7 +5,7 @@
 <title>x402 Browser Payment QA — 15 USDC Manual Developer Report | One Cursor</title>
 <meta name="description" content="One public x402 endpoint, one browser origin, one actionable HTTP 402 and CORS remediation report. Request a written 15 Base USDC pilot scope; no automatic wallet payment.">
 <meta name="robots" content="index,follow">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action https://formsubmit.co">
 <link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/x402-cors-qa-order/">
 <meta property="og:title" content="x402 browser payments failing? Get one reproducible CORS diagnosis.">
 <meta property="og:description" content="Free tested x402 CLI first, then optional $15 USDC human-scoped AI-assisted diagnostic. Real original seller, no fake clients.">
@@ -38,6 +38,13 @@ code,pre{background:#091e33;border:1px solid var(--border);border-radius:6px;pad
 pre{padding:15px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
 table{width:100%;border-collapse:collapse}
 th,td{text-align:left;padding:12px 7px;border-bottom:1px solid var(--border);vertical-align:top}
+label{display:block;font-weight:750;margin:14px 0 4px;color:var(--copy)}
+input,select,textarea{width:100%;border:1px solid #80aac2;background:#0b2137;color:var(--copy);font:inherit;border-radius:8px;padding:10px 12px}
+textarea{resize:vertical;min-height:115px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+button{background:var(--mint);color:#082e25;font-weight:850;border:0;border-radius:8px;padding:12px 17px;min-height:44px;font:inherit;cursor:pointer}
+.form-note{font-size:14px;color:#c8d8ea}
+.honeypot{display:none}
 footer{padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 @media(max-width:750px){.columns{grid-template-columns:1fr}header{display:block}main{padding-top:19px}}
 </style>
@@ -95,6 +102,35 @@ footer{padding-top:24px;border-top:1px solid var(--border);color:var(--muted);fo
 <section class="card" id="feedback">
 <h2>Tell us which part is actually worth paying to fix</h2>
 <p>If a real browser x402 issue cost you time, we welcome a <strong>nonbinding</strong> note with the problem, framework, rough engineering time lost and your honest willingness to pay (including $0). This is not a paid contract or a guaranteed response. Please share only fictional or sanitized samples; GitHub issues are public.</p>
+<form action="https://formsubmit.co/onecursor1@gmail.com" method="POST" accept-charset="UTF-8" aria-label="Optional no-login x402 problem and paid scope inquiry">
+<input type="hidden" name="_subject" value="VM3 x402 CORS QA — external request (requires human scope agreement)">
+<input type="hidden" name="_next" value="https://livastic-vm3-primary-tmp-260920.github.io/x402-cors-qa-order/thanks.html">
+<input type="hidden" name="_url" value="https://livastic-vm3-primary-tmp-260920.github.io/x402-cors-qa-order/">
+<input type="hidden" name="_template" value="table">
+<div class="honeypot" aria-hidden="true"><label for="company-url">Leave this website field empty</label><input type="text" id="company-url" name="_honey" tabindex="-1" autocomplete="off"></div>
+<label for="intent">Are you asking for a paid quote or leaving free feedback?</label>
+<select id="intent" name="intent" required>
+<option value="feedback_only_no_order">Free product feedback — $0</option>
+<option value="please_reply_with_written_15_usdc_scope_only">Request a written $15 USDC pilot scope — no payment now</option>
+</select>
+<label for="framework">Your framework or proxy (public name only; optional)</label>
+<input id="framework" name="framework" type="text" maxlength="65" placeholder="Express / Cloudflare Workers / Fastify / unsure" autocomplete="off">
+<label for="issue">Describe one public, sanitized x402 browser issue or improvement</label>
+<textarea id="issue" name="public_sanitized_problem" maxlength="500" required placeholder="E.g. POST returns 400 without a fictional schema-valid JSON body; OPTIONS omits PAYMENT-SIGNATURE."></textarea>
+<label for="willingness">What would you genuinely pay for a fix/check? ($0 is valid)</label>
+<select id="willingness" name="willingness_to_pay_usdc" required>
+<option value="0">0 USDC — I only want to provide feedback</option>
+<option value="1.50">1.50 USDC — automated text guidance</option>
+<option value="15">15 USDC — manual single-endpoint CORS QA scope</option>
+<option value="not_sure">Not sure; I would need a written quote</option>
+</select>
+<label for="reply-address">Reply email (optional for feedback; needed if you want a quote)</label>
+<input type="email" id="reply-address" name="email" maxlength="120" placeholder="your-address@example.com" autocomplete="email">
+<p class="form-note">This uses the independent FormSubmit service, not our own backend. It may hold submissions for up to 30 days while forwarding them to the seller. Your email, IP address and supplied text may be processed by that provider; <strong>never submit secrets, real PAYMENT-REQUIRED contents, signed headers, private domains, wallet addresses, or customer data.</strong> To avoid the form provider, use the direct email link above instead. Form submissions are not purchases, paid orders or acceptance of a job. reCAPTCHA may be required.</p>
+<label><input type="checkbox" name="only_public_sanitized_data_and_third_party_processing_acknowledged" value="yes" required style="width:auto;margin-right:9px">I am submitting only safe public/synthetic text and understand this third-party form forwards my request to the seller.</label>
+<button type="submit">Send nonbinding inquiry or feedback ↗</button>
+</form>
+<p class="form-note">If the form does not complete or you prefer a private direct channel, <a href="mailto:onecursor1@gmail.com?subject=x402%20QA%20written%20scope%20inquiry">email the same original seller directly</a>. Neither route is a checkout or guarantee of an answer.</p>
 <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/issues/new?template=x402-browser-compatibility.md">Optional public feedback template ↗</a>
 <p><strong>Evidence transparency:</strong> the <a href="synthetic-example-report.json">sample report is entirely synthetic</a>, not client work. The tested CLI has shown the expected unpaid HTTP 402 and OPTIONS on a separate service owned by the same person. Neither is evidence of an independent customer payment.</p>
 </section>
