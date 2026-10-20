@@ -34,4 +34,14 @@ A structural `PASS` means the limited check found no blocking issue **not** that
 
 `node --test x402-smokecheck/tests/*.test.mjs`
 
+## Original real headless browser verification (purely invented data)
+
+`node scripts/qa_koinly_headless_browser.mjs` launches one fresh, isolated,
+temporary-profile Chrome headless tab, loads the owner's publicly published
+static app and clicks ONLY its `Run the wholly fictional example` button.
+Expected result is `UNIVERSAL | 3 data rows | 0 structural blockers`, zero
+third-party network requests, zero page script errors and zero real customer
+files or USDC payment activity. It does NOT open, close or access existing
+owner Chrome tabs, Gmail sessions, MetaMask, wallet storage or user secrets.
+
 One owner, VM3 main workroot `/srv/multi-vm-agent/workspace/make_money`. This is an original free extension of the prior limited 49 **native Base Circle USDC** Crypto CSV Rescue *pricing hypothesis*. Existing VM5 is the sole independent buyer contact coordinator. Any buyer-requested manual conversion/CSV review requires separately signed lawful scope, source-data authorization, secure data channel, delivery/acceptance/refund/payee confirmation *before* money or sensitive source data changes hands. No new external customer has paid for this free checker.
