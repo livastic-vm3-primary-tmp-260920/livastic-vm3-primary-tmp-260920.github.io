@@ -11,7 +11,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/"scripts"))
 from build_owner_soul_a2a_discovery import (
-    BASE, CANONICAL, EXPECTED, OUTPUT, SOURCE, TOP_KEYS, build, validate,
+    BASE, CANONICAL, EXPECTED, OUTPUT, SOURCE, TOP_KEYS,
+    GITHUB_USERNAME, REGISTRY_METADATA, build, validate,
 )
 
 class Links(HTMLParser):
@@ -38,8 +39,12 @@ class OriginalSoulA2ABuyerDiscoverability(unittest.TestCase):
         cls.links.feed(cls.site)
 
     def test_public_card_exactly_matches_real_official_existing_five_skills(self):
-        self.assertEqual(self.card,self.source)
-        self.assertEqual(set(self.card),TOP_KEYS)
+        self.assertEqual({k:v for k,v in self.card.items() if k!="metadata"},self.source)
+        self.assertEqual(set(self.source),TOP_KEYS)
+        self.assertEqual(set(self.card),TOP_KEYS | {"metadata"})
+        self.assertEqual(self.card["metadata"],REGISTRY_METADATA)
+        self.assertEqual(REGISTRY_METADATA["registryIdentity"],GITHUB_USERNAME)
+        self.assertEqual(GITHUB_USERNAME,"livastic-vm3-primary-tmp-260920")
         self.assertEqual(self.card["name"],"VM3 Public USDC Receipt Evidence QA")
         self.assertEqual(self.card["url"],CANONICAL)
         self.assertEqual(self.card["provider"]["url"],"https://api.soul.mds.markets")
@@ -70,6 +75,9 @@ class OriginalSoulA2ABuyerDiscoverability(unittest.TestCase):
             {"defaultOutputModes":["text/plain"]},
             {"skills":[]},
             {"private_wallet_seed":"SECRET_IN_PUBLIC"},
+            {"metadata":{"registryIdentityProvider":"domain","registryIdentity":"example.com"}},
+            {"metadata":{"registryIdentityProvider":"github","registryIdentity":"imposter",
+                         "registryPackageName":"github.imposter.vm3-usdc-receipt-qa"}},
         ]:
             bad=copy.deepcopy(self.card)
             bad.update(change)

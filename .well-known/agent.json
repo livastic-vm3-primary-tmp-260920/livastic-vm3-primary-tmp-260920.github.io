@@ -59,5 +59,10 @@
         "soul-service"
       ]
     }
-  ]
+  ],
+  "metadata": {
+    "registryIdentityProvider": "github",
+    "registryIdentity": "livastic-vm3-primary-tmp-260920",
+    "registryPackageName": "github.livastic-vm3-primary-tmp-260920.vm3-usdc-receipt-qa"
+  }
 }

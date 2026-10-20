@@ -27,13 +27,23 @@ EXPECTED={
 TOP_KEYS={"name","description","version","url","provider","capabilities",
           "defaultInputModes","defaultOutputModes","skills"}
 SKILL_KEYS={"id","name","description","tags"}
+# A2A Registry's documented personal *.github.io legacy metadata, NOT
+# a payment credential, DNS assertion or forged provider information.
+GITHUB_USERNAME="livastic-vm3-primary-tmp-260920"
+REGISTRY_METADATA={
+    "registryIdentityProvider":"github",
+    "registryIdentity":GITHUB_USERNAME,
+    "registryPackageName":f"github.{GITHUB_USERNAME}.vm3-usdc-receipt-qa",
+}
 FORBIDDEN_MARKERS=("-----BEGIN", "Bearer ", "sk_live_", "soul_live_", "private_key",
                    "secret=", "seed phrase:", "payment-signature: 0x",
                    "Bearer%20", "api_key=", "token=")
 
 def validate(card:dict) -> dict:
-    if type(card) is not dict or set(card)!=TOP_KEYS:
+    if type(card) is not dict or set(card) not in (TOP_KEYS, TOP_KEYS | {"metadata"}):
         raise ValueError("Unexpected A2A card fields; fail closed")
+    if "metadata" in card and card["metadata"]!=REGISTRY_METADATA:
+        raise ValueError("Registry ownership metadata must match the actual GitHub Pages owner")
     if card["url"]!=CANONICAL or card["version"]!="1.0.0":
         raise ValueError("Unexpected canonical external A2A URL/version")
     if any(not isinstance(card.get(k),str) or len(card[k])<10
@@ -72,7 +82,12 @@ def validate(card:dict) -> dict:
     return card
 
 def build() -> str:
-    card=json.loads(SOURCE.read_text(encoding="utf-8"))
+    canonical=json.loads(SOURCE.read_text(encoding="utf-8"))
+    assert set(canonical)==TOP_KEYS, "Canonical provider card must stay unmodified"
+    validate(canonical)
+    # The original Soul.Markets A2A backend remains the same; the owned
+    # website proves ONLY actual GitHub hostname ownership for discovery.
+    card={**canonical,"metadata":REGISTRY_METADATA}
     validate(card)
     return json.dumps(card,indent=2,ensure_ascii=False)+"\n"
 
@@ -83,7 +98,7 @@ def main() -> None:
     result=build()
     if args.check:
         if OUTPUT.read_text(encoding="utf8")!=result:
-            raise ValueError("Published card differs from official first-party source snapshot")
+            raise ValueError("Public identity-enhanced card does not match official provider + exact owner metadata")
         print("Original owner A2A public card reproducible, one economic owner, five real skills")
     else:
         OUTPUT.parent.mkdir(exist_ok=True)
