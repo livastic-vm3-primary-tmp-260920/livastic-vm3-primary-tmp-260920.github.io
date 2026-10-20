@@ -80,7 +80,7 @@ export function diagnose({origin, method = "GET", preflight, challenge, credenti
   }
   const count = kind => checks.filter(x => x.status === kind).length;
   return {
-    version: "1.0.0",
+    version: "1.0.1",
     scope: "Unpaid browser-header readiness only. NOT payment verification, spend-control, chain finality, or a paid-response test.",
     origin, method: m, credentials, legacy,
     observed: {optionsStatus: pf.status, requestStatus: ch.status,

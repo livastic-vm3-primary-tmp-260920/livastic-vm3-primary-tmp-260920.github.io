@@ -4,6 +4,7 @@ import {request} from "node:https";
 import {lookup} from "node:dns/promises";
 import {isIP} from "node:net";
 import {diagnose} from "./checker.mjs";
+import {readSyntheticJson} from "./fixture.mjs";
 
 const flags = process.argv.slice(2);
 function option(key) {
@@ -15,9 +16,11 @@ function die(message) {
   process.exit(1);
 }
 function help() {
-  console.log("x402 Browser Readiness Check v1.0.0 — owner-authorized, READ ONLY");
+  console.log("x402 Browser Readiness Check v1.0.1 — owner-authorized, READ ONLY");
   console.log("Usage: node cli.mjs --url https://YOUR-PUBLIC-PAID-ENDPOINT --origin https://YOUR-APP --method GET --i-control-endpoint [--json] [--legacy]");
-  console.log("POST probes additionally need --permit-unpaid-post. No wallet, signature, credentials, or money involved.");
+  console.log("POST requires --permit-unpaid-post and can include --fixture-json-file ./synthetic.json for validated 402 routes.");
+  console.log("Synthetic fixture limit 4 KiB. Never send real user data, secrets, signed payments, or production writes.");
+  console.log("This is an UNSIGNED probe, not a browser-paid retry, delivery, or settlement test.");
 }
 function publicIp(address) {
   if (!isIP(address)) return false;
@@ -45,7 +48,7 @@ function pickHeaders(all) {
     "payment-response", "cache-control", "vary", "x-payment-response"];
   return Object.fromEntries(allow.filter(k => all[k] !== undefined).map(k => [k, all[k]]));
 }
-async function probe(url, method, extraHeaders, pinnedIps) {
+async function probe(url, method, extraHeaders, pinnedIps, syntheticBody = null) {
   return await new Promise((resolve, reject) => {
     const req = request(url, {
       method, headers: extraHeaders, timeout: 9000, maxHeaderSize: 24576,
@@ -64,7 +67,7 @@ async function probe(url, method, extraHeaders, pinnedIps) {
     });
     req.on("timeout", () => req.destroy(new Error("Timeout")));
     req.on("error", reject);
-    req.end(); // never sends a payment signature, user content, or wallet authorization
+    req.end(syntheticBody ?? undefined); // optional only explicitly authorized synthetic fixture; no wallet/signature
   });
 }
 async function main() {
@@ -75,6 +78,9 @@ async function main() {
   if (!urlRaw || !originRaw) die("Provide --url and --origin.");
   if (!["GET", "POST"].includes(method)) die("Only GET and POST paid methods are accepted.");
   if (method === "POST" && !flags.includes("--permit-unpaid-post")) die("POST probe requires explicit --permit-unpaid-post (may reach a misconfigured unprotected handler).");
+  const fixturePath = option("--fixture-json-file");
+  if (fixturePath && method !== "POST") die("Synthetic fixture is only allowed for explicitly approved POST endpoints.");
+  if (flags.includes("--fixture-json-file") && !fixturePath) die("--fixture-json-file requires a local JSON file.");
   let u;
   try {u = new URL(urlRaw);} catch {die("Invalid URL.");}
   if (u.protocol !== "https:" || u.username || u.password || u.search || u.hash ||
@@ -84,14 +90,29 @@ async function main() {
   try {origin = new URL(originRaw);} catch {die("Invalid origin.");}
   if (origin.protocol !== "https:" || origin.pathname !== "/" || origin.search || origin.hash ||
       origin.username || origin.password) die("Browser origin must be HTTPS scheme + hostname only.");
+  let syntheticBody = null;
+  if (fixturePath) {
+    try { syntheticBody = await readSyntheticJson(fixturePath); }
+    catch (error) { die(error.message || "Invalid synthetic JSON fixture."); }
+  }
   const answers = await lookup(u.hostname, {all:true,verbatim:true});
   if (!answers.length || answers.some(x => !publicIp(x.address))) die("DNS includes private, reserved, or unsupported addresses; fail closed.");
-  const common = {"Origin": origin.origin, "User-Agent": "x402-browser-readiness/1.0.0 (read-only unpaid diagnostic)"};
+  const common = {"Origin": origin.origin, "User-Agent": "x402-browser-readiness/1.0.1 (unsigned, owner-authorized)"};
+  const accessHeaders = ["payment-signature"];
+  if (method === "POST") accessHeaders.push("content-type");
+  if (flags.includes("--legacy")) accessHeaders.push("x-payment");
   const preflight = await probe(u, "OPTIONS", {...common,
     "Access-Control-Request-Method":method,
-    "Access-Control-Request-Headers": method === "POST" ? "payment-signature,content-type" : "payment-signature"}, answers);
-  const challenge = await probe(u, method, common, answers);
+    "Access-Control-Request-Headers": accessHeaders.join(",")}, answers);
+  const requestHeaders = {...common};
+  if (syntheticBody !== null) {
+    requestHeaders["Content-Type"] = "application/json";
+    requestHeaders["Content-Length"] = String(Buffer.byteLength(syntheticBody, "utf8"));
+  }
+  const challenge = await probe(u, method, requestHeaders, answers, syntheticBody);
   const report = diagnose({origin:origin.origin, method, preflight, challenge, legacy:flags.includes("--legacy")});
+  report.syntheticFixtureUsed = syntheticBody !== null;
+  report.syntheticBodyBytes = syntheticBody !== null ? Buffer.byteLength(syntheticBody,"utf8") : 0;
   if (flags.includes("--json")) console.log(JSON.stringify(report, null, 2));
   else {
     console.log("x402 browser readiness — " + report.overall + " (" + report.blockers + " blockers, " + report.warnings + " warnings)");

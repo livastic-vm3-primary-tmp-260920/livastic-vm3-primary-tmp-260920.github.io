@@ -1,80 +1,45 @@
-# x402 Browser Readiness Check
+# x402 Browser Readiness Check v1.0.1 (MIT)
 
-Open-source, no-cost CLI for x402 resource-server operators to reproduce
-cross-origin HTTP 402 integration failures **without a wallet or any payment**.
+A free, zero-dependency Node.js 22+ developer CLI for **owner-authorized public HTTPS** x402 browser/CORS QA. It tests an unsigned OPTIONS preflight and one unsigned resource request. No wallet, gas, signed retry, x402 settlement, or real purchase is performed. **Not a payment success test or security audit.**
 
-**Intended audience:** developers who operate (or have authorization to test) a public HTTPS x402 endpoint.
+## Download and run
 
-## Run
-
-Requires Node.js 22 or newer. No dependencies or secrets.
+Use the [verified immutable v1.0.1 GitHub release](https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/releases/tag/x402-browser-readiness-v1.0.1) when available. The source components `cli.mjs`, `checker.mjs`, and `fixture.mjs` must be together in the same directory.
 
     node cli.mjs --help
     node cli.mjs --url https://YOUR-OWN-PUBLIC-X402-ENDPOINT/paid \
       --origin https://YOUR-BROWSER-CLIENT.example \
       --method GET --i-control-endpoint
 
-Use \`--json\` for non-secret machine-readable diagnostics. To test an
-intended \`POST\` paid route, additionally pass \`--permit-unpaid-post\`. Only
-do so on your own endpoint when even an unsigned request is safe. In neither
-case does this program create a wallet or pay for a route. The tool rejects
-localhost, private/reserved IPs, non-HTTPS, credentials in URLs, query strings,
-and redirects, and pins DNS lookups for the two requests. It sends a CORS
-preflight \`OPTIONS\` and one *unsigned* intended-method request.
+Use `--json` for machine-readable diagnostics **without raw header/payment values**. The tool only permits public DNS HTTPS port 443 and requires explicit operator authorization; it rejects localhost/private/reserved IPs, URL usernames/passwords, query strings, fragments, and redirect following. It discards response bodies, pins addresses for both probes, and includes no user credentials, wallet, signed payment data, or tx hashes.
 
-\`PREFLIGHT_READY_UNVERIFIED_PAID\` is **not** proof that a wallet, signature,
-facilitator, payment, paid response, delivery or settlement works.
-A service may deliberately refuse browser callers; such a service will
-correctly fail this specific browser-compatibility assessment.
+## POST-only paid routes requiring a JSON request body
 
-## Diagnostic coverage
+Many production x402 endpoints reject unsigned POST without the expected JSON object as HTTP 400, *before* generating their HTTP 402 payment challenge. That is not proof of missing x402 integration. To make the paid route observable **on an endpoint you operate**, provide only a tiny, fictional JSON input, such as `samples/synthetic-csv.json`:
 
-- OPTIONS success *without* requiring a payment
-- Correct origin, intended method, payment-signature and Content-Type
-- HTTP 402 with a PAYMENT-REQUIRED header visible to the browser
-- Advisory paid response exposing PAYMENT-RESPONSE (cannot confirm from unpaid 402)
-- Origin-specific cache hygiene, Vary: Origin and restrictive Cache-Control
-- Optional mixed v1/v2 compatibility mode
+    node cli.mjs --url https://YOUR-OWN-PUBLIC-X402-ENDPOINT/paid \
+      --origin https://YOUR-BROWSER-CLIENT.example --method POST \
+      --i-control-endpoint --permit-unpaid-post \
+      --fixture-json-file samples/synthetic-csv.json --json
 
-This checker sends **no** authorization, payment signature, cookies, CSV
-files or private application data. It redacts header *values* from the report.
-No paid routes are exercised and no funds move.
+POST is separately disabled unless you give `--permit-unpaid-post`. It may cause real side effects if the operator's API is misconfigured to allow unauthenticated processing; only you can decide if an unsigned POST is safe on your OWN system. Do not use POST probing on other people's production endpoints without explicit written operator consent. The fixture is limited to **4,096 bytes**, must be a JSON object in a local regular `.json` file, and is scanned for obvious secret-bearing fields/values. **The filter cannot guarantee safety:** never include real customer records, tokens, cookies, private URLs, wallet addresses, mnemonic phrases, signed payment headers, confidential data, or account details. The original synthetic bytes are transmitted **only to the explicitly selected endpoint**, not written to the CLI's report. The report indicates only that a fixture was sent and its byte count.
 
-## Test locally
+An endpoint that demands a different schema may still respond 400; treat it as **INCONCLUSIVE**, not proof of absent paid APIs. If no fixture is provided, POST sends no JSON body. Mixed v1/v2 mode with `--legacy` includes requested `x-payment` in the OPTIONS preflight header list without ever producing a payment signature.
+
+## Scope and limits
+
+- Detect non-2xx OPTIONS, missing Origin/method/CORS allowed-request-headers, lack of `PAYMENT-SIGNATURE`, and POST Content-Type allow-list gaps.
+- Inspect **unsigned** HTTP 402 and browser-exposed `PAYMENT-REQUIRED` header, Vary: Origin, restrictive cache policy, and advisory exposed response headers.
+- Never send authorization cookies, real payment signatures, secrets, or transaction approvals.
+- The final positive status is `PREFLIGHT_READY_UNVERIFIED_PAID`, explicitly **NOT** proof of paid-response delivery, facilitator acceptance, EIP-3009 signature validity, settlement, blockchain finality, merchant trust, sales, or certification.
+- If the operator intentionally restricts browser origins, browser readiness should fail; that is not automatically a server vulnerability.
+
+## Test / learn / license
 
     node --test tests/*.test.mjs
 
-Public documentation of the underlying browser failure:
-https://github.com/x402-foundation/x402/issues/3808
-and https://github.com/x402-foundation/x402/issues/3722
+Relevant actual community discussion: https://github.com/x402-foundation/x402/issues/3808 and https://github.com/x402-foundation/x402/issues/3722 . If you have no Node runtime, use the separate [no-install browser CORS doctor](https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-browser-cors-doctor.html), whose explicit user click controls any optional browser request. All code in this utility is distributed under `LICENSE` (MIT). Original synthetic tests and test code are also included in the public GitHub repository.
 
-Free tooling complements, but does not certify or bundle, an optional
-separately agreed **paid developer QA/remediation service** offered by the
-same one-owner seller through:
-https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/
+## Optional separate same-owner paid service
 
-No buyers, payment volume, or customer endorsement are claimed.
-
-## Existing optional $1.50 machine-payable seller service
-
-The exact active service and public validation-only input schema are linked from
-`soul-service.json`, generated from the provider's original public seller catalog
-(no secret keys). This is **not** a prepaid order or working human browser checkout.
-The machine route requires a buyer with their own provider-compatible x402 client
-and explicit USDC authorization. The vendor's challenge, not this static file,
-determines amount, destination and authorization requirements. Seller jobs and
-earnings observed at publication: **zero**. The free CLI does NOT send funds
-or diagnose the success of this separately hosted service.
-
-## Distribution, provenance, and license
-
-This original utility is released under the MIT License in `LICENSE`. You can
-inspect and pin the public source before use. Download the reproducible
-versioned distribution from the [original release](https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/releases/tag/x402-browser-readiness-v1.0.0).
-
-If your machine has no Node.js, use the separate free
-[no-install browser x402 CORS doctor](https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-browser-cors-doctor.html).
-It makes a client-side browser request only after explicit user consent, and the
-browser's cross-origin permissions determine what it can read. Never publish
-private keys, signed x402 authorizations, cookies, confidential endpoints or
-user data to GitHub issues or diagnostic services.
+One existing original Soul.Markets “**x402 Browser HTTP 402 CORS Remediation Blueprint**” machine-payable AI-assisted offline analysis is publicly listed at nominal **$1.50** (Base USDC subject to buyer's actual provider quote) via the same economic owner: [public service catalog](https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa) and [public buyer input schema](https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/soul-service.json). It is a separate external x402-capable buyer-approved POST service, **not** part of the free CLI and **not** a browser checkout. No externally paying customer, signed checkout, or VM3 revenue is verified from publishing this page.
