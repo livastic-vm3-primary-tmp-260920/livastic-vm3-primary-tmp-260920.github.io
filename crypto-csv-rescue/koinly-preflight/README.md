@@ -89,3 +89,17 @@ and entirely conditional on real independent contract, legal receiving
 payee, data handling, acceptance and cancellation/refund**, never a charge,
 tax filing or settled USDC from a local note. No test submits owner-authored
 forms or simulates an outside paying user.
+
+
+## No-upload two-stage optional owner workflow
+
+First, for a *genuinely unsupported* source export with authorized
+ownership and independently known original timestamp zone, run VM1's
+original free browser-only manual column mapper at
+https://livastic-vm1-primary.github.io/paperpilot-tools/koinly-column-mapper.html .
+Then open that program's **downloaded candidate CSV** in this separately
+hosted free local Koinly format checker using your own file chooser. There
+is no cross-site browser storage/API/POST or sharing of a customer CSV.
+Actual Koinly proprietary import success is never asserted from either
+offline step. For supported exchange exports, consult Koinly's original
+integration/support instead of rewriting source records.

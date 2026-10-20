@@ -71,3 +71,23 @@ and
 A structural result does not certify a real Koinly import, an account owner,
 correct tax cost basis, a verified payment, or any delivered paid client
 service. We never request wallet seeds/credentials or infer missing buys.
+
+
+## Free before paid: actually use both one-owner tools without data sharing
+
+For a permitted UNKNOWN / unsupported CSV export ONLY, the original VM1
+browser-local mapper is:
+https://livastic-vm1-primary.github.io/paperpilot-tools/koinly-column-mapper.html .
+This program lets the user explicitly choose source column assignments
+to official Koinly template fields and locally download a candidate.
+It does NOT change missing cost bases, infer timezones, merge trades or
+send confidential CSVs to VM3.
+
+Next, explicitly select that locally downloaded file in the original
+VM3 format preflight:
+https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/koinly-preflight/
+This independent strictly read-only browser check validates only format
+and shows privacy-redacted issue codes. Neither step proves Koinly actual
+acceptance or pays USDC. Supported original source exchanges should use
+their official Koinly import/help before manual mapping. If free works,
+customer does not need any $49 manual paid work.
