@@ -93,6 +93,40 @@ class KoinlyPrivateCsvPreflightTests(unittest.TestCase):
         self.assertIn("not a Koinly affiliate",self.html.lower()) if "not a Koinly affiliate" in self.html.lower() else self.assertIn("not Koinly",self.html)
         self.assertIn("No automated signing",self.html) if "No automated signing" in self.html else self.assertIn("No automatic signing",self.html) if "No automatic signing" in self.html else self.assertIn("No automatic",self.html)
 
+    def test_optional_real_human_feedback_uses_existing_one_owner_form_without_prefilled_identity(self):
+        from urllib.parse import urlparse,parse_qs
+        parent=(ROOT/"crypto-csv-rescue/index.html").read_text("utf8")
+        outer=Html();outer.feed(parent)
+        prefix="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform?"
+        main=[x for x in outer.hrefs if x.startswith(prefix)]
+        tool=[x for x in self.tags.hrefs if x.startswith(prefix)]
+        self.assertEqual(len(main),1)
+        self.assertEqual(len(tool),1)
+        self.assertEqual(main,tool)
+        parsed=urlparse(tool[0])
+        self.assertEqual(parsed.hostname,"docs.google.com")
+        fields=parse_qs(parsed.query)
+        self.assertEqual(len(fields["entry.1765055758"]),1)
+        self.assertIn("Crypto CSV Rescue",fields["entry.1765055758"][0])
+        self.assertIn("PLEASE REPLACE THIS TEMPLATE",fields["entry.1765055758"][0])
+        self.assertNotIn("entry.967471981",fields)
+        self.assertNotIn("entry.326068836",fields)
+        self.assertIn("Replace that template with your own genuine broad experience",self.html)
+        self.assertIn("the form requires an email address",self.html)
+        self.assertIn("It is not anonymous",self.html)
+        self.assertIn("not a paid client",self.html)
+        self.assertNotIn("window.ethereum",self.html)
+
+    def test_feedback_only_manual_navigation_never_form_post_or_source_upload(self):
+        self.assertEqual(self.tags.hrefs.count("mailto:onecursor1@gmail.com?subject=Koinly%20CSV%20format%20preflight%20feedback"),1)
+        self.assertNotIn("<form",self.html)
+        self.assertIn('id="feedback"',self.html)
+        self.assertIn("no actual issue",self.html.lower())
+        self.assertIn("Do not paste real CSV lines",self.html)
+        self.assertNotIn("fetch(",self.app)
+        self.assertNotIn("sendBeacon(",self.app)
+        self.assertEqual(len(self.tags.scripts),1)
+
     def test_no_external_owner_seed_auth_claims_or_dynamic_upload_form(self):
         self.assertIn('type="file"',self.html)
         self.assertNotIn("<form",self.html)

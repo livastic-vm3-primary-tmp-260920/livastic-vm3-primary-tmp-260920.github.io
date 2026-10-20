@@ -45,3 +45,20 @@ files or USDC payment activity. It does NOT open, close or access existing
 owner Chrome tabs, Gmail sessions, MetaMask, wallet storage or user secrets.
 
 One owner, VM3 main workroot `/srv/multi-vm-agent/workspace/make_money`. This is an original free extension of the prior limited 49 **native Base Circle USDC** Crypto CSV Rescue *pricing hypothesis*. Existing VM5 is the sole independent buyer contact coordinator. Any buyer-requested manual conversion/CSV review requires separately signed lawful scope, source-data authorization, secure data channel, delivery/acceptance/refund/payee confirmation *before* money or sensitive source data changes hands. No new external customer has paid for this free checker.
+
+
+## Voluntary real-user feedback, no private source data
+
+The static page optionally links to the SAME existing one-owner VM5 Google
+project enquiry form that the main Crypto CSV Rescue buyer page links to.
+Only the original owner's Crypto CSV Rescue category is prefilled; this URL
+does **not** prepopulate a user's email or budget and it clearly asks the
+buyer to replace the category placeholder with their own genuine, broadly
+described issue and acceptance needs. The Google Form requires a reply
+email and is not anonymous; Google processes requests and responses.
+Do not submit real CSV rows, wallet/account identifiers, signed payment
+headers, customer receipts, taxes, keys, seeds, or other private data.
+The owner maintains the alternative manual mailto channel. Sending a form
+is not a payment, accepted job, outside reviewer endorsement or proof of a
+successful Koinly import. This is explicitly optional and never posted
+automatically by the validator.
