@@ -54,3 +54,14 @@ same one-owner seller through:
 https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/
 
 No buyers, payment volume, or customer endorsement are claimed.
+
+## Existing optional $1.50 machine-payable seller service
+
+The exact active service and public validation-only input schema are linked from
+`soul-service.json`, generated from the provider's original public seller catalog
+(no secret keys). This is **not** a prepaid order or working human browser checkout.
+The machine route requires a buyer with their own provider-compatible x402 client
+and explicit USDC authorization. The vendor's challenge, not this static file,
+determines amount, destination and authorization requirements. Seller jobs and
+earnings observed at publication: **zero**. The free CLI does NOT send funds
+or diagnose the success of this separately hosted service.

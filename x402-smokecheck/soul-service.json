@@ -1,0 +1,77 @@
+{
+  "schema": "one-cursor.x402-cors-qa-offer.v1",
+  "description": "Original one-owner AI-assisted public HTTP402 CORS remediation microservice; machine-readable seller metadata, not proof of any completed payment or outside customer.",
+  "seller_api_catalog": "https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa",
+  "seller_platform": "Soul.Markets",
+  "service_slug": "x402-browser-cors-remedy",
+  "service_name": "x402 Browser HTTP 402 CORS Remediation Blueprint (Public Headers)",
+  "listed_price_usd": 1.5,
+  "provider_base_chain_usdc": "Buyer pays platform-managed x402 USD-priced USDC, subject to actual independent challenge and approval. Never infer price/payTo from this file.",
+  "paid_method": "POST",
+  "paid_endpoint": "https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa/services/x402-browser-cors-remedy/execute",
+  "request_body_format": {
+    "input": "Object matching input_schema; redact all keys, cookies, signatures, wallet addresses and customer data."
+  },
+  "input_schema": {
+    "type": "object",
+    "required": [
+      "server_framework",
+      "browser_origin",
+      "intended_method",
+      "public_402_headers"
+    ],
+    "properties": {
+      "browser_origin": {
+        "type": "string",
+        "maxLength": 250,
+        "minLength": 9,
+        "description": "Exact public https:// browser Origin; localhost local development also allowed. No paths, cookies or credentials."
+      },
+      "intended_method": {
+        "enum": [
+          "GET",
+          "POST"
+        ],
+        "type": "string",
+        "description": "The buyer's proposed paid endpoint method; no paid requests are sent."
+      },
+      "server_framework": {
+        "enum": [
+          "express",
+          "fastify",
+          "nextjs",
+          "cloudflare-workers",
+          "nginx-proxy",
+          "other"
+        ],
+        "type": "string",
+        "description": "Framework/proxy you control; recommendations are unexecuted examples, not vendor-specific certification."
+      },
+      "public_402_headers": {
+        "type": "string",
+        "maxLength": 3600,
+        "minLength": 10,
+        "description": "Unsigned public HTTP 402 response status and only safe CORS HEADER NAMES/VALUES. Redact quote blobs, bearer values, signature, private addresses and cookies."
+      },
+      "public_options_headers": {
+        "type": "string",
+        "maxLength": 2400,
+        "description": "Optional public OPTIONS preflight HTTP status and safe CORS allowed-origin/method/header names and values. No auth, cookies or signatures."
+      },
+      "observed_browser_symptom": {
+        "type": "string",
+        "maxLength": 350,
+        "description": "Sanitized browser console error text and visible behavior, no nonpublic tokens or user data."
+      }
+    },
+    "additionalProperties": false
+  },
+  "free_readonly_tool": "https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/",
+  "disclaimers": [
+    "No customers or revenue from this offering independently verified.",
+    "Do not send credentials, transaction signatures, wallet phrases, private customer logs or protected files.",
+    "This microservice returns analysis based on buyer-supplied sanitized headers; no live payment, chain, security audit or signed retry verification.",
+    "Follow the provider real quote and owner-controlled buyer wallet authorization; never auto-pay.",
+    "No claim that HTML browser page provides a checkout: machine endpoint is POST-only and buyer requires supported x402 client."
+  ]
+}
