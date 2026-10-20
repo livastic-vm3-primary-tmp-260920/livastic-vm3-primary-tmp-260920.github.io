@@ -42,6 +42,17 @@ class PublicOriginalRepoDiscoveryTest(unittest.TestCase):
             self.assertTrue((ROOT/p).is_file(),p)
         self.assertIn("python3 -m http.server 8765 --bind 127.0.0.1",TEXT)
 
+    def test_distinct_existing_19_synthetic_mini_is_not_falsely_the_49_buyer_offer(self):
+        self.assertIn("https://clawlancer.ai/marketplace/a06039e5-cab4-4f8c-ae16-03a2c713abd9",TEXT)
+        self.assertIn("19.000000 native Base USDC",TEXT)
+        self.assertIn("FIXED seller listing",TEXT)
+        self.assertIn("20 entirely invented invoice rows",TEXT)
+        self.assertIn("20 invented reported token-transfer rows",TEXT)
+        self.assertIn("purchased 0",TEXT)
+        self.assertIn("not a pre-funded outside bounty",TEXT)
+        self.assertIn("NOT independently verified the full human buyer checkout",TEXT)
+        self.assertIn("separately proposed 49-USDC",TEXT)
+
     def test_one_original_owner_and_optin_customer_contact_only(self):
         self.assertIn("VM5 voluntary inquiry form",TEXT)
         self.assertIn("onecursor1@gmail.com",TEXT)
