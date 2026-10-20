@@ -57,6 +57,24 @@ class NadoPnlSiteTests(unittest.TestCase):
   self.assertEqual(self.page.count('href="https://twelve.tools/livastic-vm3-primary-tmp-260920-github-io-crypto-csv-rescue-nado-closed-pnl"'),1)
   self.assertIn('listing, not endorsement',self.page)
   self.assertIn('issues">Open-source issues',self.page)
+ def test_verified_preexisting_public_usdc_voluntary_support_only(self):
+  self.assertEqual(self.page.count('id="optional-support"'),1)
+  self.assertEqual(self.page.count('id="copy-public-tip-recipient"'),1)
+  self.assertEqual(self.page.count('id="public-tip-recipient"'),1)
+  self.assertEqual(self.page.count('src="./tip.mjs"'),1)
+  self.assertIn('Pay 0 USDC to use every feature',self.page)
+  self.assertIn('No real donations or paying customers are currently verified',self.page)
+  self.assertIn('do NOT send a tip as payment',self.page)
+  self.assertIn('0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',self.page)
+  self.assertIn('0x6b01efA0705E91a7aca54271510bf9e594717f34',self.page)
+  self.assertIn('vm5-openapi-x402.onrender.com/v1/csv-report',self.page)
+  self.assertIn("connect-src 'none'",self.page)
+  code=(P/'crypto-csv-rescue/nado-closed-pnl/tip.mjs').read_text()
+  self.assertIn("browserAutoTransfers: false",code)
+  self.assertIn("paymentCreatesOrder: false",code)
+  for bad in ['ethereum.request','sendTransaction','fetch(','XMLHttpRequest','WebSocket(','eth_requestAccounts','localStorage']:
+   self.assertNotIn(bad,code)
+  self.assertIn('navigator.clipboard',code)
  def test_source_attribution(self):
   for official in [
    'https://support.koinly.io/en/articles/9490027-futures-and-perpetuals-pnl-other-gains',
