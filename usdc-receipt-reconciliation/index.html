@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Have merchant USDC transfers but an invoice spreadsheet that will not close? Request a proposed 49 Base USDC 50-invoice read-only exception report after written scope agreement.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#091725">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/usdc-receipt-reconciliation/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="USDC payments received. Which invoices are still open?">
+<meta property="og:description" content="One bounded 50-invoice exception report. Fictional public proof first. Optional 49 Base USDC written-scope pilot, never wallet auto-pay.">
+<meta property="og:url" content="https://livastic-vm3-primary-tmp-260920.github.io/usdc-receipt-reconciliation/">
+<title>USDC Invoice ↔ Payment Reconciliation | 49 USDC Pilot — One Cursor</title>
+<style>
+:root{color-scheme:dark;--bg:#071722;--panel:#13293d;--ink:#f5f9ff;--muted:#cad9e8;--line:#44637a;--lime:#a5f2c9;--warn:#f3c47c;--blue:#91d9ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.62 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1120px;margin:auto;padding:22px clamp(17px,4vw,44px) 62px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line);align-items:center;padding-bottom:16px}
+header a{color:var(--blue)}
+h1{font-size:clamp(34px,5.1vw,60px);letter-spacing:-.043em;line-height:1.11;margin:12px 0 18px;max-width:890px}
+h2{font-size:clamp(23px,3vw,32px);line-height:1.27;margin:7px 0 13px}
+h3{font-size:19px;margin:12px 0 6px}
+p,li{color:var(--muted)}
+p{margin:10px 0}
+a{color:var(--blue);overflow-wrap:anywhere}
+a:focus-visible{outline:3px solid var(--lime);outline-offset:4px}
+.label{text-transform:uppercase;letter-spacing:.13em;font-size:12px;color:var(--lime);font-weight:830}
+.lead{font-size:clamp(17px,2.2vw,21px);max-width:850px}
+.strong{color:var(--ink);font-weight:780}
+.hero{padding:33px 0 28px}
+.button{display:inline-block;background:var(--lime);color:#06271d;padding:12px 17px;font-weight:800;text-decoration:none;border-radius:8px;min-height:46px;margin:10px 10px 2px 0}
+.button.alt{background:transparent;border:1px solid var(--lime);color:var(--lime)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:23px;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.grid .card{margin:0}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{color:var(--ink)}
+.table-wrap{overflow-x:auto}
+code{background:#0b2033;border:1px solid #456579;padding:2px 5px;border-radius:4px}
+.warning{border-left:4px solid var(--warn);background:#292b31;color:#ffe0af;padding:13px 18px;border-radius:0 9px 9px 0;margin:14px 0}
+.safe{border-left:4px solid var(--lime);background:#163b32;padding:13px 18px;border-radius:0 9px 9px 0;margin:14px 0}
+ul,ol{padding-left:24px}li{margin:8px 0}
+small{font-size:13px}
+footer{border-top:1px solid var(--line);margin-top:35px;padding-top:22px;color:var(--muted);font-size:13px}
+@media(max-width:750px){.grid{grid-template-columns:1fr}.card{padding:17px}th,td{padding:10px 6px;min-width:80px}}
+</style>
+</head>
+<body><main>
+<header><a href="/" aria-label="One Cursor owner homepage"><strong>ONE CURSOR / CRYPTO PAYMENT QA</strong></a>
+<nav><a href="#sample">Fictional example</a> · <a href="#scope">Pilot scope</a> · <a href="#steps">Buying process</a> · <a href="/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html">Free ledger check</a></nav>
+</header>
+<section class="hero" aria-labelledby="main-title">
+<p class="label">Merchant finance operations · Read-only evidence · No wallet connection</p>
+<h1 id="main-title">The USDC arrived. <span style="color:var(--lime)">Did the right invoice get paid?</span></h1>
+<p class="lead">If you sell software, API access or consulting in Base USDC, a transaction list and an invoice list often disagree. For up to <strong>50 seller-authorized invoices and 50 candidate token Transfer events</strong>, request a bounded exception report: matched, underpaid, duplicate import, unobserved, wrong network/asset, overpaid and ambiguous receipts.</p>
+<p><strong>Proposed fixed pilot price:</strong> <span class="strong">49.000000 native Circle USDC on Base (chain ID 8453)</span>, only after both parties agree exact scope, evidence handling, timeframe, acceptance and refund/cancellation terms in writing. This is a pricing experiment, <strong>not</strong> a pre-funded commission, instant checkout, tax service or guarantee that any particular invoice has been paid.</p>
+<a class="button" href="mailto:onecursor1@gmail.com?subject=Merchant%20USDC%20invoice%20matching%20%E2%80%94%20written%2049%20USDC%20pilot%20scope&amp;body=I%20operate%20a%20business%20that%20receives%20USDC.%0AMy%20business%20category%20(no%20customer%20names)%3A%0AExpected%20invoice%20count%20(up%20to%2050)%3A%0AWhich%20public%20network%20or%20USDC%20rail%20I%20use%3A%0AHow%20I%20currently%20match%20payments%20(brief%2C%20no%20private%20records)%3A%0APlease%20confirm%20scope%2C%20deliverables%2C%20price%2C%20data%20requirements%2C%20timeline%20and%20payment%20details%20before%20I%20transfer%20funds.">Request a nonbinding 49 USDC pilot quote ↗</a>
+<a class="button alt" href="fictional-8-case-sample.json">Inspect the entirely fictional report data ↗</a>
+<p><small>Primary contact: <a href="mailto:onecursor1@gmail.com?subject=USDC%20merchant%20reconciliation%20question">onecursor1@gmail.com</a>. Email reveals your address to the seller. Do <strong>not</strong> send private invoices, customer emails, wallet seed phrases, signed payment authorizations or transaction histories in the first message.</small></p>
+</section>
+<div class="grid" aria-label="Why this scope is useful">
+<section class="card"><p class="label">Merchant problem</p><h2>The exception queue</h2><p>Missing invoice reference, two rows copied from the same on-chain event, a 1-USDC shortfall, a Polygon transfer mistaken for Base or a correct amount credited to the wrong order can hide in a clean-looking ledger.</p></section>
+<section class="card"><p class="label">Bounded human-reviewable output</p><h2>Evidence, not guesses</h2><p>A status for each authorized invoice; a separate list of unique on-chain event keys; exact decimal differences; chain and token checks; receipt explorer links <strong>only when independently verified</strong>; and a short unresolved-items list.</p></section>
+</div>
+<section id="sample" class="card">
+<p class="label">Free sample · 100% invented values · not an external customer's ledger</p>
+<h2>What an eight-row exception summary looks like</h2>
+<p>All invoice IDs and event references below were invented. <strong>There are no real chain transaction hashes or live explorer links in this sample.</strong> This table illustrates requested output categories, not results computed from a customer file or proof the production engine is finished.</p>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">Invoice</th><th scope="col">Expected USDC</th><th scope="col">In-scope candidate</th><th scope="col">Classification</th><th scope="col">Follow-up</th></tr></thead>
+<tbody>
+<tr><td>FICTION-001</td><td>12.500000</td><td>12.500000</td><td>MATCHED*</td><td>Confirm independently verified event evidence.</td></tr>
+<tr><td>FICTION-002</td><td>25.000000</td><td>24.000000</td><td>UNDERPAID*</td><td>Difference 1.000000; do not assume settlement terms.</td></tr>
+<tr><td>FICTION-003</td><td>8.000000</td><td>not supplied</td><td>NO_RECEIPT_IN_SCOPE</td><td>Limited export only; not proof payment is absent.</td></tr>
+<tr><td>FICTION-004</td><td>7.000000</td><td>7.000000 repeated twice</td><td>DUPLICATE_SOURCE_ROW</td><td>Same event key must count once, not 14 USDC.</td></tr>
+<tr><td>FICTION-005</td><td>9.000000</td><td>Polygon 9.000000</td><td>WRONG_NETWORK_REVIEW</td><td>Check that source data really belongs to chain 137.</td></tr>
+<tr><td>FICTION-006</td><td>18.000000</td><td>Base USDT 18.000000</td><td>WRONG_ASSET_REVIEW</td><td>Verify actual token contract, no auto-conversion.</td></tr>
+<tr><td>FICTION-007</td><td>30.000000</td><td>30.500000</td><td>OVERPAID*</td><td>Difference 0.500000; do not auto-refund.</td></tr>
+<tr><td>FICTION-008</td><td>10.000000</td><td>two 5.000000 rows</td><td>AMBIGUOUS</td><td>Two equal transfers do not prove invoice attribution.</td></tr>
+</tbody></table></div>
+<p><small>* Even a matched amount is not final paid proof unless contract/network/recipient/event IDs, merchant-approved invoice attribution and agreed confirmations are independently validated. This page deliberately contains <strong>zero actual buyer reviews or completed $49 pilot sales</strong>.</small></p>
+<p><a href="fictional-8-case-report.csv">Download fictional eight-row exception CSV ↗</a> · <a href="fictional-8-case-sample.json">Review exact fictional structured cases and classification limits</a> · <a href="/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html">Run existing free local-only ledger review</a></p>
+</section>
+<section id="scope" class="card">
+<p class="label">Pilot acceptance scope, subject to agreement</p>
+<h2>What the merchant would receive</h2>
+<ol>
+<li><strong>Input contract:</strong> at most 50 invoice rows (sanitized references, expected USDC amounts and merchant-supplied attribution references) plus at most 50 seller-authorized candidate token Transfer events, with explicitly stated covered date range and address/network. Customer decides what to disclose.</li>
+<li><strong>Matched/unmatched CSV:</strong> classifications, fixed-point decimal discrepancies, duplicate source keys (chain ID + transaction hash + log index), and documented ambiguous/partial matches that need human attention.</li>
+<li><strong>Evidence/uncertainty memo:</strong> public explorer references only for genuine independently verifiable receipts, token contract, recipient, chain ID and number of confirmations as observed at agreed snapshot. A network outage or unsupported chain yields an explicit <em>unverified</em> state, not an invented receipt.</li>
+<li><strong>Review handoff:</strong> one plain-English/Markdown exception report and a merchant review checklist. No automatic reconciliation, ERP integration, tax classification, payment forwarding, wallet signing or change to merchant systems.</li>
+</ol>
+<div class="warning"><strong>What this cannot know by itself:</strong> An ERC-20 Transfer log does not carry an invoice ID. Without merchant-approved attribution, several identical amounts are ambiguous. A receipt missing from a partial export is not proof of nonpayment. Multiple token Transfer logs may share one txHash; each genuine logIndex matters. This is not a security audit, accounting opinion, tax advice, chargeback service, legal attestation, or a guaranteed fraud finding.</div>
+</section>
+<section class="card">
+<h2>Data handling and risk limits</h2>
+<div class="grid">
+<div>
+<h3>What not to send</h3>
+<ul><li>No credentials, recovery phrases, private keys, customer legal names/emails, confidential invoices, tax identification, payment signature headers or customer financial records in a public form.</li><li>No wallet access, contract approvals, signing, gas fees, deposit, bridge or production API rights are requested.</li></ul>
+</div>
+<div>
+<h3>Verified chain/asset scope</h3>
+<p>Base mainnet <strong>8453</strong>; native Circle USDC canonical token <code>0x833589fCD6eDb6E08f4C7C32D4f71b54bdA02913</code> (6 decimals). Other chains/tokens are exceptions needing their own explicit evidence. Public-chain details may still reveal transaction metadata.</p>
+</div>
+</div>
+<p><strong>After written agreement only:</strong> Seller and merchant agree a secure, least-privilege exchange of minimal authorized records, handling/deletion terms, and whether a purely public synthetic first pass is sufficient. We do not collect real invoices through this static page, Google Forms or the GitHub issue tracker.</p>
+</section>
+<section id="steps" class="card">
+<p class="label">Transparent quote → scope → service → independently verified payment</p>
+<h2>How a legitimate merchant orders</h2>
+<ol>
+<li><strong>Describe the business problem:</strong> your own merchant USDC invoicing workflow, approximate monthly volume and which exception costs staff time. Share no private customer/payment data at this stage.</li>
+<li><strong>Receive a specific written offer:</strong> both parties agree 50-row bounds, evidence and permitted inputs, responsible seller, price, native BaseUSDC chain and token, distinct payee confirmation, timing, acceptance, corrections, confidentiality, deletion, cancellation and refund terms. <strong>Do not transfer USDC before written agreement.</strong></li>
+<li><strong>Agree data handling and payment timing:</strong> pay using your <em>own</em> wallet, if you voluntarily accept the agreement. The seller's existing original payee is confirmed to you through the agreed direct channel; this webpage never asks you to connect or sign. Blockchain transfers may be irreversible.</li>
+<li><strong>Review delivery and proof:</strong> the seller delivers the bounded report and evidence labels; the merchant checks acceptance. Only independently confirmed, attributable external USDC receipt counts as revenue.</li>
+</ol>
+<p class="safe"><strong>Commercial status:</strong> No independent merchant has yet accepted this 49-USDC proposal, no 49-USDC paid pilot has been delivered, and no revenue from this offer is claimed. 49 USDC is a <em>test price</em>, not evidence of market demand or guaranteed capacity. Delivery timing and any ongoing monthly subscription are not offered without a further explicit agreement.</p>
+<a class="button" href="mailto:onecursor1@gmail.com?subject=Quote%20request%20for%2050-USDC-invoice%20reconciliation%20pilot">Request written terms for your business ↗</a>
+</section>
+<section class="card">
+<h2>Proof of scope, not invented social proof</h2>
+<p>This is one human-owned, AI-assisted engineering practice collaborating across VM1, VM2, VM3 and VM5, not four independent customers. VM1 is responsible for the matching component, VM2 for its correctness checks, VM3 for buyer trust/offer documentation, and VM5 for coordinating distinct merchant contacts. The fictional table illustrates a <em>proposed</em> review workflow; neither it nor our existing free CSV tools proves an end-to-end custom invoice-matching service is operational or independently certified.</p>
+<p><a href="/defi-payment-proof-qa/guides/crypto-transfer-csv-pair-auditor.html">Existing transfer-pair evidence demo</a> · <a href="https://livastic-vm1-primary.github.io/paperpilot-tools/">VM1 original owner free technical samples</a> · <a href="/usdc-receipt-reconciliation/fictional-8-case-sample.json">Fictional demo source</a> · <a href="/">Other distinct services</a></p>
+</section>
+<footer>One Cursor · 21 October 2026 · AI-assisted original developer service, not a licensed accounting firm, regulated custodian or transaction certifier. Merchant-owned data only with written authorization. No platform endorsement, buy guarantee or invented paid testimonials. <a href="/">Original owner homepage</a> · <a href="/llms.txt">Machine-readable catalog</a> · <a href="/sitemap.xml">Owner's public sitemap</a>.</footer>
+</main></body></html>

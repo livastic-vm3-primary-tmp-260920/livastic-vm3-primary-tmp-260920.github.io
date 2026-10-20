@@ -37,7 +37,7 @@ class OriginalManualCORSOrderTests(unittest.TestCase):
         self.assertIn(PREFIX+"x402-cors-qa-order/",self.urls)
         self.assertIn(PREFIX+"x402-cors-qa-order/",self.llms)
         self.assertEqual(self.sitemap,to_xml(self.urls))
-        self.assertEqual(len(self.urls),17)
+        self.assertEqual(len(self.urls),18)
 
     def test_buyer_pays_only_after_individual_written_scope(self):
         for term in ["15 native Base USDC","written acceptance","Do not send any USDC before that confirmation","unique invoice reference","refund","one authorized, public","not an invoice"]:

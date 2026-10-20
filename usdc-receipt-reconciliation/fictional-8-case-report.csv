@@ -1,0 +1,9 @@
+invoice_ref,expected_base_usdc,candidate_amount,candidate_chain,candidate_token,source_event_keys_fictional,exception_status,notes
+FICTION-001,12.500000,12.500000,Base 8453,native Circle USDC,DEMO_TX_A:0,MATCHED,Authorized fictional unique Transfer event matches invoice amount and canonical asset/network.
+FICTION-002,25.000000,24.000000,Base 8453,native Circle USDC,DEMO_TX_B:0,UNDERPAID,One explicitly mapped eligible fictional receipt; amount short by 1.000000 USDC. No price/FX guess.
+FICTION-003,8.000000,,unknown,unknown,,NO_RECEIPT_IN_PROVIDED_SCOPE,No candidate row in this bounded imaginary export; does not prove no payment happened elsewhere.
+FICTION-004,7.000000,7.000000,Base 8453,native Circle USDC,DEMO_TX_C:0;DEMO_TX_C:0,DUPLICATE_SOURCE_ROW,"Same transaction+logIndex appeared twice in import; count exactly one event, not 14 USDC."
+FICTION-005,9.000000,9.000000,Polygon 137 (as supplied),USDC (as supplied),DEMO_TX_D:0,WRONG_NETWORK_REVIEW,"The supplied evidence says Polygon 137, not expected Base 8453; requires independently validated network/contract."
+FICTION-006,18.000000,18.000000,Base 8453,USDT (as supplied),DEMO_TX_E:0,WRONG_ASSET_REVIEW,"Source metadata claims USDT, not native Circle Base USDC; verify token contract before accepting."
+FICTION-007,30.000000,30.500000,Base 8453,native Circle USDC,DEMO_TX_F:1,OVERPAID,Authorized fictional amount exceeds invoice by 0.500000 USDC; do not auto-refund.
+FICTION-008,10.000000,10.000000,Base 8453,native Circle USDC,DEMO_TX_G:0;DEMO_TX_H:1,AMBIGUOUS_MULTIPLE_CANDIDATES,Two 5-USDC events could sum to 10 but do not establish that either belongs to this invoice; review mapping manually.

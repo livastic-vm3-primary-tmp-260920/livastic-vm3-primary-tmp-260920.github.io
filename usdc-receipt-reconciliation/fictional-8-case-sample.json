@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "illustrativeOnly": true,
+  "generatedFromRealUsers": false,
+  "representsFinishedClientWork": false,
+  "disclosure": "Every invoice ID, transaction event ID, amount and status in this file is FICTIONAL. Not chain data, not a real customer, not a payment proof, not a reconciliation engine, and not an audit.",
+  "fictionalExpectedRail": {
+    "chain": "Base mainnet",
+    "chainId": 8453,
+    "token": "native Circle USDC",
+    "tokenContract": "0x833589fCD6eDb6E08f4C7C32D4f71b54bdA02913",
+    "decimals": 6
+  },
+  "classificationBoundaries": {
+    "identity": "chainId + txHash + logIndex after authorized real network verification; a repeated CSV row is not a second onchain transfer.",
+    "attribution": "An actual Transfer log's receipt address, amount, token and network alone do not identify which invoice the payer intended. Merchant-authorized invoice reference mapping is required.",
+    "missing": "Absence from a bounded source list is not proof a payment never occurred.",
+    "finality": "Only independently verified chain confirmations and canonical transfer event evidence may support finality; this simulation verifies none.",
+    "wrongNetwork": "A field supplied in a CSV is not proof of source chain. Flag pending evidence, do not silently convert token or network.",
+    "partial": "Multiple receipts or partial payments are manual-review until their unique event keys and merchant attribution are confirmed.",
+    "precision": "Use fixed 6-decimal native Circle USDC, never floating-point rounding, and no tax/FX/tax filing inference."
+  },
+  "sampleCases": [
+    {
+      "invoiceId": "FICTION-001",
+      "expected": "12.500000",
+      "observed": "12.500000",
+      "network": "Base 8453",
+      "asset": "native Circle USDC",
+      "evidence": [
+        "DEMO_TX_A:0"
+      ],
+      "status": "MATCHED",
+      "reason": "Authorized fictional unique Transfer event matches invoice amount and canonical asset/network."
+    },
+    {
+      "invoiceId": "FICTION-002",
+      "expected": "25.000000",
+      "observed": "24.000000",
+      "network": "Base 8453",
+      "asset": "native Circle USDC",
+      "evidence": [
+        "DEMO_TX_B:0"
+      ],
+      "status": "UNDERPAID",
+      "reason": "One explicitly mapped eligible fictional receipt; amount short by 1.000000 USDC. No price/FX guess."
+    },
+    {
+      "invoiceId": "FICTION-003",
+      "expected": "8.000000",
+      "observed": null,
+      "network": "unknown",
+      "asset": "unknown",
+      "evidence": [],
+      "status": "NO_RECEIPT_IN_PROVIDED_SCOPE",
+      "reason": "No candidate row in this bounded imaginary export; does not prove no payment happened elsewhere."
+    },
+    {
+      "invoiceId": "FICTION-004",
+      "expected": "7.000000",
+      "observed": "7.000000",
+      "network": "Base 8453",
+      "asset": "native Circle USDC",
+      "evidence": [
+        "DEMO_TX_C:0",
+        "DEMO_TX_C:0"
+      ],
+      "status": "DUPLICATE_SOURCE_ROW",
+      "reason": "Same transaction+logIndex appeared twice in import; count exactly one event, not 14 USDC."
+    },
+    {
+      "invoiceId": "FICTION-005",
+      "expected": "9.000000",
+      "observed": "9.000000",
+      "network": "Polygon 137 (as supplied)",
+      "asset": "USDC (as supplied)",
+      "evidence": [
+        "DEMO_TX_D:0"
+      ],
+      "status": "WRONG_NETWORK_REVIEW",
+      "reason": "The supplied evidence says Polygon 137, not expected Base 8453; requires independently validated network/contract."
+    },
+    {
+      "invoiceId": "FICTION-006",
+      "expected": "18.000000",
+      "observed": "18.000000",
+      "network": "Base 8453",
+      "asset": "USDT (as supplied)",
+      "evidence": [
+        "DEMO_TX_E:0"
+      ],
+      "status": "WRONG_ASSET_REVIEW",
+      "reason": "Source metadata claims USDT, not native Circle Base USDC; verify token contract before accepting."
+    },
+    {
+      "invoiceId": "FICTION-007",
+      "expected": "30.000000",
+      "observed": "30.500000",
+      "network": "Base 8453",
+      "asset": "native Circle USDC",
+      "evidence": [
+        "DEMO_TX_F:1"
+      ],
+      "status": "OVERPAID",
+      "reason": "Authorized fictional amount exceeds invoice by 0.500000 USDC; do not auto-refund."
+    },
+    {
+      "invoiceId": "FICTION-008",
+      "expected": "10.000000",
+      "observed": "10.000000",
+      "network": "Base 8453",
+      "asset": "native Circle USDC",
+      "evidence": [
+        "DEMO_TX_G:0",
+        "DEMO_TX_H:1"
+      ],
+      "status": "AMBIGUOUS_MULTIPLE_CANDIDATES",
+      "reason": "Two 5-USDC events could sum to 10 but do not establish that either belongs to this invoice; review mapping manually."
+    }
+  ],
+  "expectedCategoryCount": {
+    "MATCHED": 1,
+    "UNDERPAID": 1,
+    "NO_RECEIPT_IN_PROVIDED_SCOPE": 1,
+    "DUPLICATE_SOURCE_ROW": 1,
+    "WRONG_NETWORK_REVIEW": 1,
+    "WRONG_ASSET_REVIEW": 1,
+    "OVERPAID": 1,
+    "AMBIGUOUS_MULTIPLE_CANDIDATES": 1
+  },
+  "proposedPilot": {
+    "maximumInvoices": 50,
+    "maximumCandidateTransferEvents": 50,
+    "proposedBaseUSDCPrice": "49.000000",
+    "priceIsNonbindingHypothesis": true,
+    "mustAgreeScopeInvoiceRefundAndPayeeBeforeTokenTransfer": true,
+    "contact": "onecursor1@gmail.com"
+  },
+  "verifiedNewPayingUsersForThisOffer": 0,
+  "verifiedSalesForThisOffer": "0.000000 USDC"
+}
