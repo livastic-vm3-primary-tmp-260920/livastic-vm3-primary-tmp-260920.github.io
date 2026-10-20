@@ -25,3 +25,5 @@ The `thanks.html` browser redirect means vendor accepted a submission for
 processing, **not** that email delivery, seller acceptance, paid order or cash
 was confirmed. Owner setup tests must be marked owner-only and not entered as
 external customer demand.
+
+As of 20 October 2026, the first third-party form activation is **not independently confirmed**. Public buyer page prominently directs serious buyers to direct original owner email instead. An owner synthetic test was filled but browser control was busy before consent/submit; no POST dispatched and no outside buyer response counted.

@@ -95,6 +95,7 @@ class OriginalManualCORSOrderTests(unittest.TestCase):
             'independent FormSubmit service',
             'for up to 30 days',
             'reCAPTCHA may be required',
+            'Form activation not yet confirmed',
             'not purchases, paid orders',
             'value="feedback_only_no_order"',
             'value="please_reply_with_written_15_usdc_scope_only"',
