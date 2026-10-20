@@ -1,0 +1,85 @@
+name: "Koinly CSV format checker — sanitized feedback only"
+description: "Report a genuine free browser-local format check problem without uploading transaction data, real CSV files, or wallet information."
+title: "[Koinly format QA] Redacted issue"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Read before posting
+        **Public issue, NOT a confidential support ticket or contract.**
+        Use the free local checker first: https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/koinly-preflight/
+        This is an independent AI-assisted structural checker, NOT Koinly support,
+        not an exchange importer, tax software, accounting, wallet recovery, or a paid checkout.
+        Do NOT post or attach your original CSV, identifiable customer data, original
+        source field contents/filenames, real transaction IDs, addresses, tax forms,
+        screenshots containing financial data, credentials, seeds, API tokens, OTPs,
+        signed payment headers, or account details. No wallet or payment is required.
+        If a *supported exchange* importer rejects its original export, follow
+        official Koinly instructions and contact their support rather than guessing.
+  - type: dropdown
+    id: template
+    attributes:
+      label: Koinly format you intentionally selected in the free checker
+      description: "Select the official custom CSV family, not an exchange name or wallet identity."
+      options:
+        - "Universal"
+        - "Simple"
+        - "Trades"
+        - "Unsure / original supported exchange file, not a Koinly template"
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: General non-sensitive error category
+      description: "Do not include account IDs, transaction data or private timestamps."
+      options:
+        - "Header spelling or duplicate columns"
+        - "UTC timestamp structure or calendar"
+        - "Quoted CSV field or row-width parsing"
+        - "Signs, decimal shape or trade pair fields"
+        - "Issue-code summary display or manual selection"
+        - "Unsupported exchange-source CSV (no mapping requested here)"
+        - "Other structural problem"
+    validations:
+      required: true
+  - type: textarea
+    id: safe_summary
+    attributes:
+      label: Optional allowlisted diagnostic code text ONLY
+      description: "From the local read-only safe-summary box, AFTER you personally checked and removed anything private. Do not paste original financial data."
+      placeholder: |
+        TEMPLATE: UNIVERSAL
+        line 2: ERROR / UTC_DATE_FORMAT_OR_CALENDAR / Date
+      render: text
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should the free checker have done?
+      description: "State a specific general technical goal or failing UI behavior, without sensitive data."
+      placeholder: "It should flag a missing official header or allow me to select the sanitized note."
+    validations:
+      required: true
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Is this an outside user's actual issue or an internal/synthetic test?
+      description: "Prevents same-owner synthetic tests from being mistaken for independent customer demand."
+      options:
+        - "I am an outside user reporting my own real issue"
+        - "Fully fictional/internal demonstration — exclude from external demand"
+        - "Research observation only — no actual use of this tool"
+    validations:
+      required: true
+  - type: checkboxes
+    id: disclosure
+    attributes:
+      label: Mandatory privacy and independence confirmation
+      description: "Public GitHub issues are not an authorized confidential data channel or a purchase agreement."
+      options:
+        - label: "I have removed all real financial rows, names, private customer/account data, wallet addresses, identifying hashes, credentials, seeds, signatures, and tax records."
+          required: true
+        - label: "I understand this public issue is technical feedback only: not a paid contract, support SLA, tax advice or an authorization for wallet transactions."
+          required: true

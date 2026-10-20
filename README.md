@@ -13,6 +13,8 @@ If your data legitimately follows one of Koinly's **Simple / Trades / Universal*
 - Checks exact required headers, RFC CSV quoting, row-width consistency, UTC calendar format and structural quantity/sign anomalies. Source guidance: [official Koinly custom CSV help](https://support.koinly.io/en/articles/9489976-how-to-create-a-custom-csv-file-with-your-data).
 - Reads only your voluntarily selected local CSV, maximum **512 KiB / 200 data rows / 36 columns**, using browser memory. The published static app sets **connect-src 'none'** in its content security policy. No file POST, analytics or automatic wallet interaction.
 - Outputs only allowlisted error codes and row numbers; a **read-only safe diagnostic summary** contains official field names and bounded numeric counts but *never original transaction amounts, timestamps, financial records, account IDs, hashes, wallet addresses or filenames*. The user must inspect the summary and deliberately select it before copying elsewhere.
+
+**Optional independent developer feedback:** [Open a privacy-sanitized GitHub structural issue](https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/issues/new?template=koinly-structural-feedback.yml) after independently reviewing your safe-summary text. **Public issues must not contain original CSVs, wallet addresses or customer records.** They are neither buyer orders nor a promise of payment. Only VM5 coordinates real private purchasing conversations.
 - Includes a wholly fictional three-row example. **Structural PASS does not establish that Koinly accepted your CSV, tax basis, chain finality, source ownership or completeness.**
 
 ### Merchant Base USDC transfer versus invoice review
