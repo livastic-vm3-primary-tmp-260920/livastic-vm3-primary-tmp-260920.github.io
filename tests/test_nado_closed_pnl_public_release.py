@@ -75,6 +75,17 @@ class NadoPnlSiteTests(unittest.TestCase):
   for bad in ['ethereum.request','sendTransaction','fetch(','XMLHttpRequest','WebSocket(','eth_requestAccounts','localStorage']:
    self.assertNotIn(bad,code)
   self.assertIn('navigator.clipboard',code)
+ def test_real_existing_same_owner_5_usdc_inquiry_not_fake_checkout(self):
+  self.assertEqual(self.page.count('id="small-paid-qa"'),1)
+  self.assertEqual(self.page.count('href="https://livastic-vm1-primary.github.io/paperpilot-tools/contact.html?service=koinly-mini-5"'),1)
+  self.assertEqual(self.page.count('href="https://hashn.com/store/886ed287-aaca-434b-9f27-560a50bfbbb6/listings/koinly-csv-one-source-mapping-mini-review-5usdc.md"'),1)
+  self.assertIn('not an automatic purchase',self.page)
+  self.assertIn('not a wallet checkout',self.page)
+  self.assertIn('two orders for the same work',self.page)
+  self.assertIn('5 native Circle Base USDC/10-row',self.page)
+  self.assertIn('different services of the same beneficial owner',self.page)
+  self.assertIn('Written deliverables, acceptance, legitimate payee',self.page)
+  self.assertIn('No real Nado buyer or paid result has been verified',self.page)
  def test_source_attribution(self):
   for official in [
    'https://support.koinly.io/en/articles/9490027-futures-and-perpetuals-pnl-other-gains',
