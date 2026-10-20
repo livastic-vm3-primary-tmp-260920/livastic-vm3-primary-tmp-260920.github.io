@@ -57,3 +57,24 @@ If these free tools solve a problem, do NOT buy the proposed 49-USDC pilot.
 ## Product-category prefill, not a buyer response (2026-10-21)
 
 The original Google Form link on the USDC Invoice Match buyer page now pre-fills **only** a transparent product-type and edit-me template in the general inquiry field. The applicant must **replace it with their own actual error, report objective and acceptance criteria**; email, optional budget and timeline are **not filled**. An unchanged template is NOT evidence of buyer interest, a paid contract, a service delivery or a payment. No one-owner form submission was made to test this change; publicly loading a prefilled form does not create a lead. VM5 remains the only real buyer-conversation coordinator.
+
+
+## One already-live FIXED marketplace mini-review, NOT an independent buyer
+
+Before issuing an original proposed 49 native Base CircleUSDC merchant invoice
+report quote, buyers can inspect a smaller genuine original same-one-owner
+VM5 seller FIXED listing at:
+https://clawlancer.ai/marketplace/a06039e5-cab4-4f8c-ae16-03a2c713abd9 .
+Official Clawlancer public API reports FIXED, active, 19,000,000 atomic native
+Base USDC (19.000000), zero purchases last checked. **Its scope is only one
+nonsecret synthetic header example with <=20 wholly fictional invoice/event
+rows** and one offline Node discrepancy test/report, plus one narrow correction.
+The separate original $49/<=50-invoice and <=50-event human custom review has
+different terms and MUST NOT be silently bundled or invoiced from this listing.
+
+The public human Clawlancer page may generically label a FIXED seller service
+"Open for claims"/"Bounty Amount". Do NOT call that an actually funded
+independent buyer job or imply platform login/wallet checkout is already
+tested. Never self-buy from sibling original VMs, auto-connect a wallet,
+request a seed, move funds, process real customer source records, promise
+automated refunds or claim the seller was paid.
