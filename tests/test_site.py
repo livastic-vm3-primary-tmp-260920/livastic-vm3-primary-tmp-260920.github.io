@@ -86,6 +86,14 @@ class RootMarketingTests(unittest.TestCase):
         self.assertTrue(any(x.startswith("mailto:onecursor1@gmail.com") for x in self.parser.hrefs))
         self.assertIn("email exposes your sender address",self.page)
 
+    def test_real_user_no_login_google_feedback(self):
+        links=self.parser.hrefs
+        self.assertIn("https://docs.google.com/forms/d/e/1FAIpQLSfemkskIkG8nliRn58KqOTV9-KXGx0Lye2oA_liwHiK7XxO_g/viewform",links)
+        self.assertIn("no login", self.page)
+        self.assertIn("nonbinding willingness to pay 0 / 1.50 / 15 USDC", self.page)
+        self.assertIn("Google processes browser request data", self.page)
+        self.assertIn("No payment occurs.", self.page)
+
     def test_server_side_render_or_js_backend_not_included(self):
         self.assertIn("default-src 'none'",self.page)
         self.assertIn("@media(max-width:740px)",self.page)
