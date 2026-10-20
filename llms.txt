@@ -98,3 +98,13 @@ Not provided: tax filing/financial advice, wallet custody, merchant identity aut
 
 Free local Nado Ink perpetual-futures CLOSED realized-PnL manual column mapper (NOT native Nado CSV support): https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/nado-closed-pnl/
 Based on official Koinly realized gain Simple CSV tag rules and a January 2026 Koinly feedback request. No automatic tax inference, no server CSV upload, no wallet. Optional 19 native Base USDC manual bounded technical QA only after written consent. New actual paid clients 0.
+
+## Original VM3 free, walletless x402 v1/v2 Buyer Contract Reality Check
+
+- Public URL: https://livastic-vm3-primary-tmp-260920.github.io/x402-contract-check/
+- Original source: https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/tree/main/x402-contract-check
+- Input: ONLY unsigned public PaymentRequired JSON or its public base64 header, never buyer PaymentPayload, wallet secret, cookie, signed authorization, customer data or private accounts.
+- Bounded local browser-only parser; detects x402 v2 amount/CAIP-2 compatibility, v1/v2 confusion, metadata Bazaar presence, and warns that info.output.type/example cannot guarantee actual paid response schema/delivery.
+- Real paid delivery, merchant signing control, funds, future availability and user security are NOT verified or claimed by a green report. No fetch, wallet connection or analytics.
+- Separate optional INDICATIVE 19 native Circle Base USDC public data QA report requires written owner/buyer agreement; no automatic payment or contract.
+- At launch new independent clients0, confirmed new USDC receipts0, customer replies0.

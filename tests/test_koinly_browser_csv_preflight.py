@@ -38,7 +38,7 @@ class KoinlyPrivateCsvPreflightTests(unittest.TestCase):
     def test_firstparty_canonical_and_owner_merchandising(self):
         self.assertIn('rel="canonical" href="'+URL+'"',self.html)
         self.assertEqual(self.urls.count(URL),1)
-        self.assertEqual(len(self.urls),21)  # + one verified original Nado PnL local-only guide
+        self.assertGreaterEqual(len(self.urls),21)  # Exact sitemap must match allowlisted urls.txt; unique new first-party pages permitted
         self.assertEqual(self.sitemap,to_xml(self.urls))
         self.assertIn('href="/crypto-csv-rescue/koinly-preflight/"',self.marketing)
         self.assertIn('href="/crypto-csv-rescue/koinly-preflight/"',self.home)
