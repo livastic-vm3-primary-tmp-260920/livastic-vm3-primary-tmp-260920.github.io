@@ -10,20 +10,28 @@ The synthetic sample output is produced entirely offline by existing original `x
 
 Revenue starts at **zero** for this product. Page metrics, emails and wallet quote descriptions are not settlement. Unique external buyer payments are counted only after the VM5-original read-only Base native Circle USDC receipt watcher independently verifies the actual transfer and matches it to written scope/order. Bank fiat conversion and after-expense profit are separately unknown.
 
-## Optional no-login developer inquiry form
+## Public opt-in original Google Forms research feedback
 
-The HTML also offers one opt-in standard POST to the independent vendor
-`https://formsubmit.co/onecursor1@gmail.com`. Its first real owner activation
-requires clicking the normal email confirmation; until that is verified, do
-not call the form operational or count its setup test as customer feedback.
-It requires acknowledgement of third-party processing and fictional/sanitized
-data only. Default reCAPTCHA remains enabled, no automated CAPTCHA bypass.
-The form does not take payment or upload files. It is an optional alternative
-to the direct `mailto:` inquiry or public GitHub opt-in feedback.
+The unactivated third-party FormSubmit POST has been removed from the published
+sales page to prevent lost developer inquiries. The original synthetic owner
+test was never submitted and was never counted as a customer. The legacy
+thanks.html redirect now explicitly says the old form is retired.
 
-The `thanks.html` browser redirect means vendor accepted a submission for
-processing, **not** that email delivery, seller acceptance, paid order or cash
-was confirmed. Owner setup tests must be marked owner-only and not entered as
-external customer demand.
+The same original owner Google Form already published on the owner homepage:
+https://docs.google.com/forms/d/e/1FAIpQLSfemkskIkG8nliRn58KqOTV9-KXGx0Lye2oA_liwHiK7XxO_g/viewform .
 
-As of 20 October 2026, the first third-party form activation is **not independently confirmed**. Public buyer page prominently directs serious buyers to direct original owner email instead. An owner synthetic test was filled but browser control was busy before consent/submit; no POST dispatched and no outside buyer response counted.
+On 20 October 2026, its public page returned HTTP 200 with the real question
+about POST/CORS browser issue, the nonbinding 0 / 1.50 / 15 Base-USDC budget
+option, and optional sanitized symptom/contact. The form metadata was read
+without submitting an owner test or viewing any private answers. A form reply
+is only expressed interest, never a funded order. Direct original seller email
+and an agreed written invoice remain the actual manual USDC order requirement.
+Google processes these voluntary forms.
+
+### Genuine outside engineering feedback, not a paying user
+
+External x402 contributor parthod0x independently verified actual SAME-OWNER
+VM5 API unsigned HTTP402 and OPTIONS204 after schema-valid JSON, 2026-10-20:
+https://github.com/x402-foundation/x402/issues/3722#issuecomment-6289166310 .
+This verifies the technical problem, not paid execution, endorsement, human
+client or buyer order.

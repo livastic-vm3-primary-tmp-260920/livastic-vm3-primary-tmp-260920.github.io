@@ -81,37 +81,38 @@ class OriginalManualCORSOrderTests(unittest.TestCase):
                 continue
             self.assertNotIn(bad,self.html)
         self.assertIn("default-src 'none'",self.html)
-        self.assertIn("form-action https://formsubmit.co",self.html)
-        self.assertEqual(self.html.count('<form action="https://formsubmit.co/onecursor1@gmail.com" method="POST"'),1)
-        self.assertNotIn('<form action="http://',self.html)
+        self.assertIn("form-action 'none'",self.html)
+        self.assertNotIn('formsubmit.co',self.html.lower())
+        self.assertNotIn('<form',self.html)
         self.assertEqual(self.html.count('<h1 '),1)
         self.assertGreaterEqual(len(self.tags.links),10)
 
-    def test_no_login_form_requires_consent_and_cannot_collect_files_or_secrets(self):
-        for snippet in [
-            'name="public_sanitized_problem" maxlength="500" required',
-            'name="willingness_to_pay_usdc" required',
-            'name="only_public_sanitized_data_and_third_party_processing_acknowledged" value="yes" required',
-            'independent FormSubmit service',
-            'for up to 30 days',
-            'reCAPTCHA may be required',
-            'Form activation not yet confirmed',
-            'not purchases, paid orders',
-            'value="feedback_only_no_order"',
-            'value="please_reply_with_written_15_usdc_scope_only"',
-        ]:self.assertIn(snippet,self.html)
-        self.assertNotIn('type="file"',self.html)
-        self.assertNotIn('name="password"',self.html)
-        self.assertNotIn('name="wallet"',self.html)
-        self.assertNotIn('name="authorization"',self.html)
-        self.assertNotIn('_captcha" value="false"',self.html)
-        self.assertEqual(self.html.count('action="https://formsubmit.co/onecursor1@gmail.com"'),1)
+    def test_original_google_no_login_feedback_matches_home_offer_and_discovery(self):
+        survey="https://docs.google.com/forms/d/e/1FAIpQLSfemkskIkG8nliRn58KqOTV9-KXGx0Lye2oA_liwHiK7XxO_g/viewform"
+        self.assertEqual(self.tags.links.count(survey),1)
+        self.assertIn(survey,self.home)
+        self.assertIn(survey,self.llms)
+        for x in ["no-login Google Forms","Google processes requests and responses","including $0",
+                  "not a purchase", "email our original seller directly", "schema-valid JSON"]:
+            self.assertIn(x.lower(),self.html.lower())
+        for old in ["formsubmit","_honey","reCAPTCHA", "form-action https://"]:
+            self.assertNotIn(old.lower(),self.html.lower())
+        self.assertNotIn('<form',self.html)
 
-    def test_redirect_explains_it_is_not_contract_or_cash(self):
-        text=(ROOT/"x402-cors-qa-order/thanks.html").read_text('utf8')
+    def test_actual_unrelated_x402_researcher_reproduced_own_server_not_sale(self):
+        self.assertIn('https://github.com/x402-foundation/x402/issues/3722#issuecomment-6289166310',self.html)
+        self.assertIn('unrelated x402 contributor',self.html)
+        self.assertIn('not a sale',self.html.lower())
+        self.assertIn('not a paying user',self.readme)
+        self.assertIn('HTTP402 and OPTIONS204',self.readme)
+        self.assertIn('not a paid booking',self.html.lower())
+        self.assertNotIn('five confirmed paying customers',self.html.lower())
+
+    def test_old_unactivated_callback_does_not_falsely_claim_delivery(self):
+        text=(ROOT/'x402-cors-qa-order/thanks.html').read_text('utf8')
         self.assertIn('noindex,follow',text)
-        self.assertIn('not',text.lower())
-        self.assertIn('not</strong> proof',text)
+        self.assertIn('legacy feedback redirect is retired',text)
+        self.assertIn('does <strong>not</strong> prove',text)
         self.assertIn('Do <strong>not</strong> transfer USDC',text)
         self.assertNotIn('<script',text)
 
