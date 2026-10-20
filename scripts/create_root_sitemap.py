@@ -49,6 +49,7 @@ def parse_paths(source: str) -> list[str]:
         f"{PREFIX}x402-cors-qa-order/",
         f"{PREFIX}usdc-receipt-reconciliation/",
         f"{PREFIX}crypto-csv-rescue/",
+        f"{PREFIX}crypto-csv-rescue/koinly-preflight/",
     ]
     if not all(item in links for item in required):
         raise ValueError("Every critical buyer and free tool path must be present")

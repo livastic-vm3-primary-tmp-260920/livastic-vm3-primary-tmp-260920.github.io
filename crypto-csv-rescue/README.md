@@ -55,3 +55,19 @@ If a free source check resolves the issue, do not buy the proposed manual
 ## Product-category prefill, not a buyer response (2026-10-21)
 
 The original Google Form link on the Crypto CSV Rescue buyer page now pre-fills **only** a transparent product-type and edit-me template in the general inquiry field. The applicant must **replace it with their own actual error, report objective and acceptance criteria**; email, optional budget and timeline are **not filled**. An unchanged template is NOT evidence of buyer interest, a paid contract, a service delivery or a payment. No one-owner form submission was made to test this change; publicly loading a prefilled form does not create a lead. VM5 remains the only real buyer-conversation coordinator.
+
+
+## Free local-only Koinly CSV recognition preflight
+
+Original buyer-facing free Koinly Simple / Trades / Universal template checker
+<https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/koinly-preflight/>
+uses only source data from a file an end user *explicitly* selects in their
+own browser and sends NO requests or file contents to the developer.
+Diagnostic results include only static error codes and record numbers, with
+no raw CSV cell values. Official Koinly references:
+<https://support.koinly.io/en/articles/9489976-how-to-create-a-custom-csv-file-with-your-data>
+and
+<https://support.koinly.io/en/articles/9885319-how-to-modify-csv-files-to-import-them-to-koinly>.
+A structural result does not certify a real Koinly import, an account owner,
+correct tax cost basis, a verified payment, or any delivered paid client
+service. We never request wallet seeds/credentials or infer missing buys.

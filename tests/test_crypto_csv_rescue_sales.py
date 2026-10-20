@@ -45,7 +45,7 @@ class CryptoCsvRescueSales(unittest.TestCase):
 
     def test_firstparty_canonical_and_two_market_root_funnel(self):
         self.assertEqual(cls_count(self.urls,URL),1)
-        self.assertEqual(len(self.urls),19)
+        self.assertEqual(len(self.urls),20)
         self.assertEqual(self.xml,to_xml(self.urls))
         self.assertIn('rel="canonical" href="'+URL+'"',self.page)
         self.assertIn('href="/crypto-csv-rescue/"',self.home)

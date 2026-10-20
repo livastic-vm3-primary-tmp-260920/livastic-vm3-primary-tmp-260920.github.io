@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; connect-src 'none'; img-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Check Koinly Simple, Trades or Universal CSV template headers, UTC date format and amounts in your browser. No file upload, wallet or tax advice.">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/koinly-preflight/">
+<title>Koinly CSV Format Preflight — Free Browser-Local Check | One Cursor</title>
+<style>
+:root{color-scheme:dark;--background:#0a1927;--panel:#142d40;--border:#46637b;--text:#ecf6ff;--muted:#cad8e4;--lime:#a3e9c6;--blue:#99ddff;--amber:#f4ca8b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--background);color:var(--text);font:16px/1.63 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:975px;margin:auto;padding:20px clamp(16px,3.3vw,40px) 65px}
+header{border-bottom:1px solid var(--border);padding:16px 0;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+a{color:var(--blue);overflow-wrap:anywhere}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+h1{font-size:clamp(32px,5vw,51px);line-height:1.13;letter-spacing:-.04em;max-width:750px}
+h2{font-size:clamp(22px,3vw,28px)}
+p,li{color:var(--muted)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:clamp(17px,3vw,24px);margin:20px 0}
+.kicker{color:var(--lime);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+button{cursor:pointer;font:inherit;border-radius:8px;padding:12px 17px;border:0;background:var(--lime);color:#06251c;font-weight:800;min-height:47px;margin:13px 12px 5px 0}
+button.alt{background:transparent;border:1px solid var(--lime);color:var(--lime)}
+label{display:block;font-weight:770;margin:17px 0 8px}
+select,input[type="file"]{display:block;width:100%;background:#102537;color:var(--text);border:1px solid var(--border);font:inherit;padding:13px;border-radius:7px}
+.note{background:#312b27;border-left:4px solid var(--amber);padding:14px 16px;color:#ffe1b4;border-radius:0 7px 7px 0}
+.good{background:#1a3b32;border-left:4px solid var(--lime);padding:14px 16px;color:#e6fff1;border-radius:0 7px 7px 0}
+#summary{margin-top:15px;padding:13px 16px;background:#0a2234;border:1px solid var(--border);border-radius:8px}
+#issues{padding-left:23px}
+#issues li{margin:10px 0}
+code{background:#082235;border:1px solid var(--border);padding:2px 5px;border-radius:4px}
+footer{margin-top:36px;border-top:1px solid var(--border);padding-top:22px;font-size:14px}
+small{font-size:13px}
+</style>
+</head>
+<body><main>
+<header><a href="/"><strong>ONE CURSOR / DATA QA</strong></a><a href="/crypto-csv-rescue/">Crypto CSV Rescue buyer scope ↗</a></header>
+<section>
+<p class="kicker">Free · File stays in your browser · Original same-owner open-source developer tool</p>
+<h1>Will this CSV be <span style="color:var(--lime)">structurally recognizable</span> to Koinly?</h1>
+<p>Choose the <strong>official Koinly template family</strong>, then inspect a CSV from a device you control. This local preflight checks exact required column headers, UTC calendar timestamps, decimal amount formatting, and obvious inconsistent rows. It does not upload source data, auto-map a proprietary exchange export, inspect wallets, determine tax treatment, edit records or guarantee Koinly will accept a file.</p>
+<div class="note"><strong>Read this first:</strong> Use the Koinly <a href="https://support.koinly.io/en/articles/9489976-how-to-create-a-custom-csv-file-with-your-data">official Simple / Trades / Universal template guide</a> and <a href="https://support.koinly.io/en/articles/9885319-how-to-modify-csv-files-to-import-them-to-koinly">official CSV modification guidance</a>. Koinly Universal requires <code>Date</code>, not <code>Koinly Date</code>; Simple and Trades require <code>Koinly Date</code>. Exact headers matter. Dates must already be UTC, and this tool cannot infer an unknown exchange timezone. If Koinly asks you to map an otherwise supported format, its support may be a better first step.</div>
+</section>
+<section class="card" aria-labelledby="check-title">
+<h2 id="check-title">Run a private structural check</h2>
+<p>Nothing is transmitted by the validator. It uses JavaScript to read only the file you explicitly select into browser memory, then reports <strong>row numbers and error codes only</strong>. No original addresses, timestamps, amounts, row contents or file names appear in results. For sensitive records, use a device you trust and avoid uploading the data to public support forms.</p>
+<label for="template">Which Koinly CSV template are you checking?</label>
+<select id="template">
+<option value="universal">Universal — deposits, withdrawals and trades</option>
+<option value="simple">Simple — deposits, withdrawals or rewards</option>
+<option value="trades">Trades — spot trades with a pair and side</option>
+</select>
+<label for="csv-file">Choose one source CSV from your own device (never sent to us)</label>
+<input type="file" id="csv-file" accept=".csv,text/csv,text/plain">
+<p><small>Maximum 512 KiB, 200 data rows, 36 columns. No real customer, merchant invoice or financial information is necessary to try the completely fictional example.</small></p>
+<button id="check-file" type="button">Check selected file locally</button>
+<button id="synthetic-demo" class="alt" type="button">Run the wholly fictional example</button>
+<div id="summary" role="status" aria-live="polite">No file read. No analysis run yet.</div>
+<ol id="issues" aria-label="Redacted diagnostic codes only"></ol>
+<p><strong>Meaning of a passing result:</strong> only that these limited structural checks found no blockers. It does <strong>NOT</strong> mean Koinly accepted the CSV, calculated tax cost basis, verified an exchange trade, matched transfers, or proved a blockchain payment. Never make a tax filing or delete source rows solely based on this diagnostic.</p>
+</section>
+<section class="card">
+<h2>Why a 49 USDC human-review pilot could still help</h2>
+<p>If an original exchange file does not already use one of Koinly's exact templates, column renaming alone may be unsafe. Trades need correct pair/side/total semantics, withdrawals use negative amounts in the Simple template, and an actual wallet-to-wallet transfer may require an export from each wallet before any counterpart can be determined. Do not manufacture missing purchases, dates or amounts.</p>
+<p>First use this free structural check, the original <a href="https://livastic-vm1-primary.github.io/paperpilot-tools/crypto-csv-rescue.html">50-record fictional exception demo</a>, and the free <a href="/defi-payment-proof-qa/guides/crypto-transfer-csv-pair-auditor.html">local two-CSV candidate matcher</a>. If these resolve the problem, spend nothing. For one still-unresolved limited discrepancy, <a href="/crypto-csv-rescue/">read our proposed 49-native-Base-USDC manual diagnostic scope</a> and request a written quote through the owner's single VM5 customer contact. No automatic signing, wallet connection or payment on this page.</p>
+<p class="good"><strong>Commercial disclosure:</strong> This is a free original same-owner tool. At initial publication, no real independent customer has purchased the 49-USDC CSV Rescue manual report, and no new actual finalized native Base USDC income is claimed. We are not Koinly, a Koinly affiliate, a licensed accountant or an issuer of tax advice.</p>
+</section>
+<footer>One Cursor · 21 October 2026 · Read-only local technical QA. No analytics, network fetches, data uploads, payment requests, cookies or storage from this tool. Third-party documentation links open only when you choose them. <a href="/">Original owner home</a> · <a href="/llms.txt">Agent-readable source</a> · <a href="/sitemap.xml">Sitemap</a>.</footer>
+<script type="module" src="./app.mjs"></script>
+</main></body></html>
