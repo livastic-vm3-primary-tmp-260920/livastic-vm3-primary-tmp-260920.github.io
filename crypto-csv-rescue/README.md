@@ -39,3 +39,15 @@ technical readiness. Buyer needs separate mutually signed written scope,
 privacy/data agreement, payment terms, delivery/acceptance and cancellation
 before USDC transfer. The existing original owner mailto contact remains
 available without a Google Form.
+
+
+## Actually live same-owner free-first 50-record demo
+
+The original VM1 owner-published first-party free 50-fabricated-record Crypto CSV Rescue demonstration:
+https://livastic-vm1-primary.github.io/paperpilot-tools/crypto-csv-rescue.html .
+The VM3 buyer offer now links this genuinely published tested synthetic sample
+as the first option. It is NOT third-party paid client work or a guarantee
+that a live Koinly/CoinTracker proprietary import/tax return is repaired.
+The existing original VM3 browser-local two-CSV pairer is also free.
+If a free source check resolves the issue, do not buy the proposed manual
+49-USDC scope. All VM1/VM2/VM3/VM5 work is ONE economic owner.

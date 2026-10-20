@@ -39,3 +39,17 @@ technical readiness. Buyer needs separate mutually signed written scope,
 privacy/data agreement, payment terms, delivery/acceptance and cancellation
 before USDC transfer. The existing original owner mailto contact remains
 available without a Google Form.
+
+
+## Actually live original one-owner local 50-row samples, free-first
+
+VM5 original tested in-browser 50-invoice + 50-reported-transfer demo:
+https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-invoice-bridge/ .
+Fictional invoice download: https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-invoice-bridge/examples/pilot-50-synthetic-invoices.csv .
+Fictional incoming reports: https://livastic-vm5-primary-20260911.github.io/vm5-delivery-lab/usdc-invoice-bridge/examples/pilot-50-synthetic-reported-transfers.csv .
+Alternate original VM1 free browser-local invoice reader: https://livastic-vm1-primary.github.io/paperpilot-tools/usdc-invoice-reconcile.html .
+All are functions of ONE economic owner and all records are fabricated.
+Even a demo status reporting matched payment reflects caller-reported rows,
+NOT independently finalized native Base8453 Circle USDC, real invoice
+allocation, merchant testimony, tax/audit findings, or a confirmed sale.
+If these free tools solve a problem, do NOT buy the proposed 49-USDC pilot.
