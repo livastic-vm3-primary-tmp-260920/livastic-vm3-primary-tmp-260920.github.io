@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>x402 Browser Payment QA — 15 USDC Manual Developer Report | One Cursor</title>
+<meta name="description" content="One public x402 endpoint, one browser origin, one actionable HTTP 402 and CORS remediation report. Request a written 15 Base USDC pilot scope; no automatic wallet payment.">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/x402-cors-qa-order/">
+<meta property="og:title" content="x402 browser payments failing? Get one reproducible CORS diagnosis.">
+<meta property="og:description" content="Free tested x402 CLI first, then optional $15 USDC human-scoped AI-assisted diagnostic. Real original seller, no fake clients.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://livastic-vm3-primary-tmp-260920.github.io/x402-cors-qa-order/">
+<style>
+:root{color-scheme:dark;--bg:#081527;--panel:#13253d;--border:#334c63;--copy:#edf4ff;--muted:#b9cadd;--mint:#99edc9;--link:#86d3ff;--warn:#f5d79c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--copy);font:16px/1.67 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:990px;margin:auto;padding:30px clamp(16px,4vw,50px) 70px}
+header{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--border);padding-bottom:20px}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.15;letter-spacing:-.027em;margin:18px 0}
+h2{font-size:clamp(22px,3vw,29px);line-height:1.3;margin:0 0 12px}
+h3{font-size:18px;margin:0 0 8px}
+p{margin:10px 0;color:var(--muted)}strong,th{color:var(--copy)}
+a{color:var(--link);overflow-wrap:anywhere}
+a:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+small{font-size:13px}
+.kicker{color:var(--mint);letter-spacing:.11em;text-transform:uppercase;font-weight:800;font-size:12px}
+.lead{font-size:clamp(17px,2.6vw,21px);max-width:790px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:clamp(17px,3vw,27px);margin:22px 0}
+.columns{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.button{display:inline-block;vertical-align:middle;background:var(--mint);color:#062b26;font-weight:800;text-decoration:none;border-radius:9px;padding:12px 17px;margin:9px 10px 0 0;min-height:44px}
+.button.secondary{background:#d9eaff;color:#0c2440}
+ul,ol{color:var(--muted);padding-left:22px}
+li{margin:10px 0}
+.note{border-left:4px solid var(--warn);background:#2b2930;padding:12px 16px;margin:17px 0;border-radius:0 9px 9px 0;color:#fae3c2}
+.good{border-left:4px solid var(--mint);background:#13332b;padding:12px 16px;margin:17px 0;border-radius:0 9px 9px 0}
+code,pre{background:#091e33;border:1px solid var(--border);border-radius:6px;padding:2px 5px;overflow-wrap:anywhere}
+pre{padding:15px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:12px 7px;border-bottom:1px solid var(--border);vertical-align:top}
+footer{padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+@media(max-width:750px){.columns{grid-template-columns:1fr}header{display:block}main{padding-top:19px}}
+</style>
+</head>
+<body>
+<main>
+<header><a href="/" aria-label="One Cursor homepage"><strong>ONE CURSOR / X402 QA</strong></a><a href="/x402-smokecheck/">Free open-source CLI ↗</a></header>
+<section aria-labelledby="hero-title">
+<p class="kicker">Independent x402 developer diagnostics · AI-assisted · no wallet connection on this page</p>
+<h1 id="hero-title">Your API returns 402. Why can't a browser pay it?</h1>
+<p class="lead">A server-side x402 client may read a payment challenge while a web app cannot: missing <code>Access-Control-Expose-Headers</code>, blocked <code>PAYMENT-SIGNATURE</code> preflight, or POST-only body validation can make valid payment routes unusable.</p>
+<p><strong>Start free:</strong> test your own public HTTPS API with our MIT-licensed, zero-dependency CLI. If you need a human-scoped technical report for one authorized endpoint, request our separately agreed <strong>15 native Base USDC</strong> diagnostic pilot.</p>
+<a class="button" href="mailto:onecursor1@gmail.com?subject=x402%20CORS%20QA%20%E2%80%94%20request%20written%2015%20USDC%20pilot%20scope&amp;body=I%20operate%20or%20am%20authorized%20to%20test%20this%20PUBLIC%20x402%20endpoint.%0AIntended%20GET%20or%20POST%3A%0AFramework%20or%20proxy%3A%0ABrowser%20Origin%20(public%20only)%3A%0AObserved%20CORS%20symptom%20(no%20secrets)%3A%0APlease%20confirm%20scope%2C%20delivery%20terms%2C%20acceptance%20and%20payment%20instructions%20before%20I%20pay.">Request a written $15 USDC scope by email ↗</a>
+<a class="button secondary" href="/x402-smokecheck/">Run the free CLI first ↗</a>
+</section>
+<section class="columns" aria-label="Free versus paid options">
+<div class="card">
+<p class="kicker">Free · $0</p><h2>Self-service CORS inspection</h2>
+<p>MIT-licensed v1.0.1 Node CLI, source, synthetic fixture and 30 reproducible regressions. It can send an explicit unsigned request and <code>OPTIONS</code> to a public API you operate.</p>
+<p><a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/releases/tag/x402-browser-readiness-v1.0.1">Get the public source release</a> · <a href="/defi-payment-proof-qa/guides/x402-browser-cors-doctor.html">No-install browser-only test</a></p>
+</div>
+<div class="card">
+<p class="kicker">Optional · 15 USDC, only after written agreement</p><h2>One-endpoint technical QA report</h2>
+<p>One authorized, public HTTP 402 route, one browser Origin and one deployment framework/proxy. We examine sanitized unpaid header evidence, propose narrowly scoped config changes and provide an acceptance checklist.</p>
+<p><a href="synthetic-example-report.json">View a fully fictional sample diagnostic report</a> · <a href="#scope">Exact deliverables &amp; exclusions</a></p>
+</div>
+</section>
+<section id="scope" class="card">
+<h2>What the 15 USDC pilot actually delivers</h2>
+<ol>
+<li><strong>Observed-versus-required matrix:</strong> HTTP 402 and OPTIONS response status, Origin/method/header allow-list, <code>PAYMENT-REQUIRED</code> exposure, Content-Type, cache and <code>Vary</code>.</li>
+<li><strong>Root-cause priority list:</strong> confirmed evidence versus uncertainty; distinctions between POST schema validation and a missing paywall.</li>
+<li><strong>Implementation sketch:</strong> original framework-specific configuration example or pseudocode (not installed on your server).</li>
+<li><strong>Acceptance tests:</strong> two reproducible, read-only/unsigned commands with expected headers, plus a human checklist for your own paid test if you choose to run one.</li>
+</ol>
+<p><strong>Format:</strong> one plain-text or Markdown report for one public endpoint and one Origin, with one clarification round on the original report scope if agreed in writing. Seller availability, delivery date, exact inputs, review procedure and cancellation/refund terms must be agreed by email before ordering. The 15 USDC is a proposed fixed pilot price, not an invoice.</p>
+<div class="note"><strong>Not included:</strong> production code changes or deployment, private repository access, formal security audits, certification, guaranteed fixes, wallet verification, x402 signed retries, purchases, facilitator settlement, chain finality, tax advice or profit guarantees. A readable 402 is not proof that a payment succeeds.</div>
+</section>
+<section class="card" id="ordering">
+<h2>Pay only after agreeing to an actual job</h2>
+<ol>
+<li><strong>Check free first.</strong> Use the <a href="/x402-smokecheck/">MIT smokecheck</a>. If it already resolves your issue, no purchase is needed.</li>
+<li><strong>Request an individual quote.</strong> Email <a href="mailto:onecursor1@gmail.com?subject=x402%20QA%20paid%20scope%20request">onecursor1@gmail.com</a> with framework, intended method, browser Origin and a summary of sanitized CORS header names/allow values. Do not include signed payment data, customer information, credentials or private URLs. Sending email reveals your address to the seller.</li>
+<li><strong>Wait for a written acceptance.</strong> Receive a scope and unique invoice reference, payee network/token/address confirmation, delivery window, cancellation/refund conditions and agreed payment timing. <strong>Do not send any USDC before that confirmation.</strong></li>
+<li><strong>If you choose to pay, send the exact agreed USDC.</strong> Existing receive-only seller payout rail is <strong>Base mainnet (chain ID 8453)</strong> and native Circle USDC token <code>0x833589fCD6eDb6E08f4C7C32D4f71b54bdA02913</code>. Only after agreement, verify the signed-off seller recipient with the seller. This page never signs, initiates or requests access to a wallet.</li>
+<li><strong>Verification and delivery.</strong> Seller matches a real unique finalized external USDC transfer to your agreed order; the report is shared using the agreed communication channel. Token transfers cannot automatically be reversed and no refund automation is offered.</li>
+</ol>
+<p class="good"><strong>No self-purchases or fabricated reviews.</strong> As of 20 October 2026 this manual pilot has <strong>zero verified external paid customers and zero received sales</strong>. Prior unrelated receipts from the same owner's other tools are not attributed to this offer.</p>
+</section>
+<section class="card">
+<h2>Prefer machine-payable micro QA?</h2>
+<p>For developers with their own compatible x402 buyer client, our same-owner Soul.Markets service offers a <strong>separate $1.50 nominal public-header remediation blueprint</strong> (provider fee and signed checkout are external). It does not include this bespoke $15 scope, and no customer purchase of that service has been verified.</p>
+<a class="button secondary" href="/defi-payment-proof-qa/services/x402-cors-remedy-150-usdc.html">See actual $1.50 provider listing and input schema ↗</a>
+</section>
+<section class="card" id="feedback">
+<h2>Tell us which part is actually worth paying to fix</h2>
+<p>If a real browser x402 issue cost you time, we welcome a <strong>nonbinding</strong> note with the problem, framework, rough engineering time lost and your honest willingness to pay (including $0). This is not a paid contract or a guaranteed response. Please share only fictional or sanitized samples; GitHub issues are public.</p>
+<a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/issues/new?template=x402-browser-compatibility.md">Optional public feedback template ↗</a>
+<p><strong>Evidence transparency:</strong> the <a href="synthetic-example-report.json">sample report is entirely synthetic</a>, not client work. The tested CLI has shown the expected unpaid HTTP 402 and OPTIONS on a separate service owned by the same person. Neither is evidence of an independent customer payment.</p>
+</section>
+<footer>One Cursor · one human economic owner using disclosed AI-assisted engineering across VM1, VM2, VM3 and VM5 · Independent developer services, not a registered certified security auditing practice. Latest offer page 20 October 2026. <a href="/">Owner homepage</a> · <a href="/llms.txt">Agent-readable terms</a> · <a href="/sitemap.xml">Sitemap</a>.</footer>
+</main>
+</body></html>

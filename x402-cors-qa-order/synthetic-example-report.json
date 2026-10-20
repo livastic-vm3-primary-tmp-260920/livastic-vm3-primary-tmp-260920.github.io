@@ -1,0 +1,91 @@
+{
+  "source": "Completely fabricated public-header example; generated offline by x402-smokecheck/checker.mjs v1.0.1; NO outside user, permission, endpoint or wallet.",
+  "isRealThirdPartyCase": false,
+  "isCustomerTestimonial": false,
+  "isPaidOrder": false,
+  "simulationOnly": true,
+  "observedHeaderValuesRedacted": true,
+  "report": {
+    "version": "1.0.1",
+    "scope": "Unpaid browser-header readiness only. NOT payment verification, spend-control, chain finality, or a paid-response test.",
+    "origin": "https://buyer.example",
+    "method": "POST",
+    "credentials": false,
+    "legacy": false,
+    "observed": {
+      "optionsStatus": 204,
+      "requestStatus": 402,
+      "optionsHeaderNames": [
+        "access-control-allow-origin",
+        "access-control-allow-methods",
+        "access-control-allow-headers"
+      ],
+      "requestHeaderNames": [
+        "access-control-allow-origin",
+        "access-control-expose-headers",
+        "payment-required",
+        "cache-control"
+      ]
+    },
+    "blockers": 2,
+    "warnings": 2,
+    "overall": "BLOCKED",
+    "checks": [
+      {
+        "code": "PREFLIGHT_2XX",
+        "status": "PASS",
+        "detail": "An OPTIONS preflight must succeed without payment or authorization."
+      },
+      {
+        "code": "PREFLIGHT_ALLOW_ORIGIN",
+        "status": "PASS",
+        "detail": "OPTIONS must allow the intended browser Origin."
+      },
+      {
+        "code": "PREFLIGHT_ALLOW_METHOD",
+        "status": "PASS",
+        "detail": "OPTIONS must allow the intended paid request method."
+      },
+      {
+        "code": "PREFLIGHT_PAYMENT_SIGNATURE",
+        "status": "BLOCKER",
+        "detail": "OPTIONS must allow the x402 v2 PAYMENT-SIGNATURE request header."
+      },
+      {
+        "code": "PREFLIGHT_CONTENT_TYPE",
+        "status": "PASS",
+        "detail": "A JSON POST preflight must allow Content-Type."
+      },
+      {
+        "code": "CHALLENGE_ALLOW_ORIGIN",
+        "status": "PASS",
+        "detail": "HTTP 402 response must allow browser to read its headers."
+      },
+      {
+        "code": "CHALLENGE_PAYMENT_REQUIRED_PRESENT",
+        "status": "PASS",
+        "detail": "x402 v2 priced route should return a PAYMENT-REQUIRED response header."
+      },
+      {
+        "code": "CHALLENGE_EXPOSE_PRICE",
+        "status": "BLOCKER",
+        "detail": "Browser must be allowed to read PAYMENT-REQUIRED. Without it the price is opaque."
+      },
+      {
+        "code": "SUCCESS_EXPOSE_RECEIPT_CLAIM",
+        "status": "PASS",
+        "detail": "Check whether paid responses also expose PAYMENT-RESPONSE; unpaid 402 alone cannot prove it."
+      },
+      {
+        "code": "VARY_ORIGIN",
+        "status": "WARNING",
+        "detail": "Reflecting per-request Origins should include Vary: Origin to prevent shared cache mistakes."
+      },
+      {
+        "code": "NO_SHARED_402_CACHE",
+        "status": "WARNING",
+        "detail": "A priced challenge should not be cached in a shared intermediary."
+      }
+    ]
+  }
+}
