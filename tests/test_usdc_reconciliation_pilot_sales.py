@@ -40,7 +40,7 @@ class MerchantsNew49USDCPilotPage(unittest.TestCase):
     def test_one_canonical_owner_and_firstparty_purchase_path(self):
         self.assertIn('rel="canonical" href="'+LANDING+'"',self.html)
         self.assertEqual(self.urls.count(LANDING),1)
-        self.assertEqual(len(self.urls),18)
+        self.assertEqual(len(self.urls),19)
         self.assertEqual(self.sitemap,to_xml(self.urls))
         self.assertIn('href="/usdc-receipt-reconciliation/"',self.home)
         self.assertIn('href="#recon49"',self.home)

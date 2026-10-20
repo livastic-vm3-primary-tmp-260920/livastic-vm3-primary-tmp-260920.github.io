@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "document": "Crypto CSV Rescue hypothetical sample for one-owner paid pilot",
+  "demoOnly": true,
+  "generatedFromRealCustomer": false,
+  "actualPaymentReceivedForService": false,
+  "safeFictionalReferenceIds": true,
+  "notTaxOrLegalAdvice": true,
+  "priorAcquisitionCostBasisInferred": false,
+  "metadata": {
+    "created": "2026-10-21 Asia/Seoul",
+    "author": "One Cursor AI-assisted, one economic human owner",
+    "proposedPriceNativeBaseCircleUSDC": "49.000000",
+    "priceIsHypothesis": true,
+    "maxRowsAcceptedAfterWrittenAgreement": 50,
+    "maxSourceExports": 2,
+    "maximumIssues": "one bounded transaction CSV discrepancy cluster",
+    "actualFundedOrders": 0,
+    "actualCustomerPayoutUSDC": "0.000000"
+  },
+  "buyerDeliverableOnlyAfterWrittenConsent": [
+    "Limited sanitized rows source-quality / duplicate suspicion table",
+    "Non-unique exchange-to-wallet counterpart candidates with uncertainty",
+    "Acquisition history gap questions, never invented cost basis",
+    "Evidence to collect from merchant-controlled sources",
+    "Summary of unresolved exceptions and explicit human review queue"
+  ],
+  "cases": [
+    {
+      "id": "SYN-001",
+      "finding": "POSSIBLE_DUPLICATE_IMPORT",
+      "asset": "ETH",
+      "size": "0.800000",
+      "fictionalRefs": [
+        "EXCHANGE-A-ROW-12",
+        "EXCHANGE-A-ROW-12-COPIED"
+      ],
+      "indication": "Two source rows share the same invented export reference and event fields; investigate a duplicate import before removing either row.",
+      "requiredEvidence": "Original exchange export, whether an earlier API sync also imported that activity",
+      "resolution": "NEEDS_SOURCE_CONFIRMATION"
+    },
+    {
+      "id": "SYN-002",
+      "finding": "TRANSFER_COUNTERPART_MISSING",
+      "asset": "USDC",
+      "size": "150.000000",
+      "fictionalRefs": [
+        "WALLET-A-WITHDRAW-31"
+      ],
+      "indication": "A fictional withdrawal exists, but no clearly linked incoming row was supplied in the limited sample.",
+      "requiredEvidence": "Destination wallet/account activity, transfer timestamp, chain+token network, fees and merchant-authorized transfer identity",
+      "resolution": "NOT_PROOF_OF_LOST_ASSETS"
+    },
+    {
+      "id": "SYN-003",
+      "finding": "ACQUISITION_HISTORY_MISSING",
+      "asset": "BTC",
+      "size": "0.250000",
+      "fictionalRefs": [
+        "EXCHANGE-A-DISPOSAL-08"
+      ],
+      "indication": "A fictional disposal has insufficient prior acquisition history in the provided bounded rows. Neither cost nor purchase price can be inferred.",
+      "requiredEvidence": "Original acquisition trade, earlier wallet/exchange history, actual trade fee records and independently established values",
+      "resolution": "NO_COST_BASIS_INVENTED"
+    },
+    {
+      "id": "SYN-004",
+      "finding": "DISTINCT_TRANSFER_LOGS_SAME_TX",
+      "asset": "USDC",
+      "size": "20.000000",
+      "fictionalRefs": [
+        "DEMO-TX-Q-LOG-0",
+        "DEMO-TX-Q-LOG-1"
+      ],
+      "indication": "Two different fictional log indexes share a transaction reference. A shared transaction alone is NOT a duplicate economic event.",
+      "requiredEvidence": "The actual chain, token contract and each genuine token Transfer event log index",
+      "resolution": "KEEP_DISTINCT_PENDING_PROOF"
+    },
+    {
+      "id": "SYN-005",
+      "finding": "GROSS_NET_FEE_DISCREPANCY",
+      "asset": "ETH",
+      "size": "1.500000",
+      "fictionalRefs": [
+        "PLATFORM-X-WITHDRAW-21",
+        "WALLET-Y-DEPOSIT-42"
+      ],
+      "indication": "Invented gross withdrawal 1.500000 and net deposit 1.498000 differ by 0.002000 ETH; a fee is one possibility, not a fact.",
+      "requiredEvidence": "Original exchange withdrawal receipt with exact fee, receiving transfer event, contract+network and whether token tax applies",
+      "resolution": "DO_NOT_FORCE_MATCH_ON_AMOUNT"
+    },
+    {
+      "id": "SYN-006",
+      "finding": "TIMEZONE_IMPORT_AMBIGUITY",
+      "asset": "BTC",
+      "size": "0.030000",
+      "fictionalRefs": [
+        "EXCHANGE-B-LOCAL-2026-01-01-0010",
+        "WALLET-C-UTC-2025-12-31-1510"
+      ],
+      "indication": "Two invented timestamps may represent one instant if the first was KST (+09:00); the original CSV lacks an explicit offset.",
+      "requiredEvidence": "Original export documentation specifying timezone, date precision and row/source identity",
+      "resolution": "OFFSET_NOT_ASSUMED"
+    },
+    {
+      "id": "SYN-007",
+      "finding": "TOKEN_SYMBOL_COLLISION",
+      "asset": "USDC",
+      "size": "200.000000",
+      "fictionalRefs": [
+        "NETWORK-X-USDC-01",
+        "NETWORK-Y-USDC-02"
+      ],
+      "indication": "Matching a displayed ticker is insufficient when network ID and issuer token contract are unknown or different.",
+      "requiredEvidence": "Canonical network ID, token contract, recipient and verified actual transfer log for both records",
+      "resolution": "WRONG_NETWORK_OR_ASSET_POSSIBLE"
+    },
+    {
+      "id": "SYN-008",
+      "finding": "MULTIPLE_PLAUSIBLE_COUNTERPARTS",
+      "asset": "USDT",
+      "size": "75.000000",
+      "fictionalRefs": [
+        "EXCHANGE-C-SEND-88",
+        "WALLET-D-RECEIVE-11",
+        "WALLET-E-RECEIVE-12"
+      ],
+      "indication": "Two invented candidate deposits share a nearby time and amount. That is not enough to assert self-transfer ownership.",
+      "requiredEvidence": "Merchant/customer-approved account ownership, withdrawal ID, genuine tx event identity and fee accounting",
+      "resolution": "MUST_MANUALLY_RESOLVE"
+    }
+  ],
+  "disclaimers": [
+    "Every ID, date, quantity and finding is invented; none was observed in a buyer ledger.",
+    "This is a format sample, not evidence of working full importer or a real paid case.",
+    "No public upload or wallet/seed/signature/payment authorizations; actual data requires a separate written authorization and appropriate protected exchange.",
+    "Never manufacture missing cost basis, price, transaction confirmation, exchange custody, tax treatment or customer identity.",
+    "Tax filings, professional accounting/legal advice and tax outcome assurance are explicitly excluded."
+  ]
+}

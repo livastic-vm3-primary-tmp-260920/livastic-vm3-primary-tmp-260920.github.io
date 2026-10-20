@@ -17,3 +17,4 @@ https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/
 https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/services/x402-cors-remedy-150-usdc.html
 https://livastic-vm3-primary-tmp-260920.github.io/x402-cors-qa-order/
 https://livastic-vm3-primary-tmp-260920.github.io/usdc-receipt-reconciliation/
+https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/
