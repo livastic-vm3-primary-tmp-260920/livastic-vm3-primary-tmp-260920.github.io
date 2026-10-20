@@ -10,6 +10,14 @@ Not provided: tax filing/financial advice, wallet custody, merchant identity aut
 - https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html
 - https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/csv-free-local-checker.html
 
+## Current FREE x402 browser compatibility diagnostic + original optional paid CORS microservice
+- NEW original zero-dependency Node22 read-only browser CORS smokecheck: https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/ . For OWNED/authorized PUBLIC HTTPS GET only, use an explicit --i-control-endpoint; for POST you additionally need --permit-unpaid-post because unprotected POST could have side effects. Never send wallet keys, payment signatures, tokens or customer data.
+- Download Node CLI: https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/cli.mjs ; offline engine https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/checker.mjs; coverage is OPTIONS preflight and unsigned HTTP402 browser-header allow/expose matrix, NOT a proof of end-to-end wallet payment or server vulnerability.
+- Existing original external machine-payable CORS remediation service: Soul.Markets public verified seller catalog https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa, service slug x402-browser-cors-remedy listed at USD1.50 per buyer-approved call. No external buyer/order/revenue verified. Machine-readable BUYER input schema and public provider POST execute URL: https://livastic-vm3-primary-tmp-260920.github.io/x402-smokecheck/soul-service.json . Independent provider challenge always supersedes a stale static price. The provider requires an authorized x402-capable buyer; NOT a browser checkout and not a guarantee of paid delivery.
+- Alternatively request separately agreed custom paid work through original public OpenTask seller profile https://opentask.ai/profiles/cmvckd5ok00cx08jyc1yh8bvz ; job accepted or price not yet proven.
+- Optional public SANITIZED feedback/actual willingness-to-pay: https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/issues/new?template=x402-browser-compatibility.md ; never put secrets or private transaction logs in public issues. Free tool does not collect private usage analytics.
+- Independently accepted x402info ecosystem directory submission as an inbound form receipt 2026-10-20; listing not yet approved or public. Buyer inquiries/purchases not independently verified.
+
 ## Existing original paid merchant (one owner; hosted on VM5)
 - Original POST https://vm5-openapi-x402.onrender.com/v1/csv-preflight; x402 unsigned HTTP402 and explicit buyer-authorized payment, 0.005 canonical native Circle Base USDC per operation.
 - Public paid API docs: https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/csv-structural-preflight-005-base-usdc.html
