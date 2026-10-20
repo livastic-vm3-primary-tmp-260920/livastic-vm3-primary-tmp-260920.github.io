@@ -86,6 +86,13 @@ class NadoPnlSiteTests(unittest.TestCase):
   self.assertIn('different services of the same beneficial owner',self.page)
   self.assertIn('Written deliverables, acceptance, legitimate payee',self.page)
   self.assertIn('No real Nado buyer or paid result has been verified',self.page)
+ def test_one_actual_published_educational_walkthrough_crosslink(self):
+  url='https://dev.to/livasticvm3primarytmp260920/nado-perps-csv-and-koinly-a-safe-way-to-map-closed-pnl-without-inventing-trades-4jo1'
+  self.assertEqual(self.page.count('href="'+url+'"'),1)
+  self.assertIn('id="source-backed-walkthrough"',self.page)
+  self.assertIn('same human economic owner',self.page)
+  self.assertIn('not an independent endorsement or customer review',self.page)
+  self.assertIn('no proof of Nado import success',self.page)
  def test_source_attribution(self):
   for official in [
    'https://support.koinly.io/en/articles/9490027-futures-and-perpetuals-pnl-other-gains',
