@@ -65,3 +65,16 @@ and explicit USDC authorization. The vendor's challenge, not this static file,
 determines amount, destination and authorization requirements. Seller jobs and
 earnings observed at publication: **zero**. The free CLI does NOT send funds
 or diagnose the success of this separately hosted service.
+
+## Distribution, provenance, and license
+
+This original utility is released under the MIT License in `LICENSE`. You can
+inspect and pin the public source before use. Download the reproducible
+versioned distribution from the [original release](https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/releases/tag/x402-browser-readiness-v1.0.0).
+
+If your machine has no Node.js, use the separate free
+[no-install browser x402 CORS doctor](https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-browser-cors-doctor.html).
+It makes a client-side browser request only after explicit user consent, and the
+browser's cross-origin permissions determine what it can read. Never publish
+private keys, signed x402 authorizations, cookies, confidential endpoints or
+user data to GitHub issues or diagnostic services.
