@@ -43,6 +43,13 @@ class OriginalSoulA2ABuyerDiscoverability(unittest.TestCase):
         self.assertEqual(set(self.source),TOP_KEYS)
         self.assertEqual(set(self.card),TOP_KEYS | {"metadata"})
         self.assertEqual(self.card["metadata"],REGISTRY_METADATA)
+        self.assertEqual(REGISTRY_METADATA["registryPaymentModel"],"paid")
+        self.assertEqual(REGISTRY_METADATA["registryPaymentDirection"],"inbound")
+        self.assertEqual(REGISTRY_METADATA["registryPaymentProtocols"],"x402")
+        self.assertEqual(REGISTRY_METADATA["registryPaymentRails"],"eip155:8453:usdc")
+        self.assertNotIn("Nano",str(REGISTRY_METADATA))
+        self.assertNotIn("stripe",str(REGISTRY_METADATA))
+        # A metadata string never signs payments or pays out a seller.
         self.assertEqual(REGISTRY_METADATA["registryIdentity"],GITHUB_USERNAME)
         self.assertEqual(GITHUB_USERNAME,"livastic-vm3-primary-tmp-260920")
         self.assertEqual(self.card["name"],"VM3 Public USDC Receipt Evidence QA")

@@ -34,6 +34,13 @@ REGISTRY_METADATA={
     "registryIdentityProvider":"github",
     "registryIdentity":GITHUB_USERNAME,
     "registryPackageName":f"github.{GITHUB_USERNAME}.vm3-usdc-receipt-qa",
+    # Real original Seller payment method documented by Soul.Markets:
+    # https://docs.soul.mds.markets/pricing. This is an advisory DISCOVERY
+    # declaration, never evidence of one buyer, payout or wallet settlement.
+    "registryPaymentModel":"paid",
+    "registryPaymentDirection":"inbound",
+    "registryPaymentProtocols":"x402",
+    "registryPaymentRails":"eip155:8453:usdc",
 }
 FORBIDDEN_MARKERS=("-----BEGIN", "Bearer ", "sk_live_", "soul_live_", "private_key",
                    "secret=", "seed phrase:", "payment-signature: 0x",

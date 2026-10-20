@@ -63,6 +63,10 @@
   "metadata": {
     "registryIdentityProvider": "github",
     "registryIdentity": "livastic-vm3-primary-tmp-260920",
-    "registryPackageName": "github.livastic-vm3-primary-tmp-260920.vm3-usdc-receipt-qa"
+    "registryPackageName": "github.livastic-vm3-primary-tmp-260920.vm3-usdc-receipt-qa",
+    "registryPaymentModel": "paid",
+    "registryPaymentDirection": "inbound",
+    "registryPaymentProtocols": "x402",
+    "registryPaymentRails": "eip155:8453:usdc"
   }
 }
