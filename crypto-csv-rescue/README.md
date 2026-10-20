@@ -51,3 +51,7 @@ that a live Koinly/CoinTracker proprietary import/tax return is repaired.
 The existing original VM3 browser-local two-CSV pairer is also free.
 If a free source check resolves the issue, do not buy the proposed manual
 49-USDC scope. All VM1/VM2/VM3/VM5 work is ONE economic owner.
+
+## Product-category prefill, not a buyer response (2026-10-21)
+
+The original Google Form link on the Crypto CSV Rescue buyer page now pre-fills **only** a transparent product-type and edit-me template in the general inquiry field. The applicant must **replace it with their own actual error, report objective and acceptance criteria**; email, optional budget and timeline are **not filled**. An unchanged template is NOT evidence of buyer interest, a paid contract, a service delivery or a payment. No one-owner form submission was made to test this change; publicly loading a prefilled form does not create a lead. VM5 remains the only real buyer-conversation coordinator.

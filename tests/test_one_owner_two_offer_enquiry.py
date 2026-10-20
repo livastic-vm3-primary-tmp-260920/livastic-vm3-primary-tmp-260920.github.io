@@ -39,9 +39,13 @@ class OneOwnerBuyerEnquiryTest(unittest.TestCase):
         ]
 
     def test_same_existing_external_form_exactly_once_in_three_public_pages(self):
+        from scripts.owner_buyer_intent_prefill import prefilled_url
+        # The home page keeps the generic original form; each product page routes
+        # to that SAME one-beneficial-owner form with only a product label.
         for label in self.pages:
             with self.subTest(label=label):
-                self.assertEqual(self.parsers[label].links.count(GOOGLE),1)
+                dest = GOOGLE if label=="home" else prefilled_url("crypto" if label=="csv" else label)
+                self.assertEqual(self.parsers[label].links.count(dest),1)
                 self.assertNotIn("formsubmit.co",self.pages[label])
                 self.assertEqual(self.parsers[label].forms,0)
                 self.assertEqual(self.parsers[label].scripts,0)
@@ -63,8 +67,9 @@ class OneOwnerBuyerEnquiryTest(unittest.TestCase):
             self.assertNotIn("sendTransaction(",p)
 
     def test_contact_intent_split_unambiguously_for_single_owner_queue(self):
-        self.assertIn("Crypto CSV Rescue / 49-USDC sample pilot",self.pages["csv"])
-        self.assertIn("USDC Invoice Match / 49-USDC pilot",self.pages["merchant"])
+        from scripts.owner_buyer_intent_prefill import DESCRIPTIONS
+        self.assertIn("Crypto CSV Rescue / 49-USDC sample pilot",DESCRIPTIONS["crypto"])
+        self.assertIn("USDC Invoice Match / 49-USDC pilot",DESCRIPTIONS["merchant"])
         self.assertIn("Crypto CSV Rescue",self.pages["home"])
         self.assertIn("USDC Invoice Match",self.pages["home"])
         self.assertIn("same human owner's VM5",self.pages["merchant"])
@@ -85,6 +90,36 @@ class OneOwnerBuyerEnquiryTest(unittest.TestCase):
             self.assertIn(GOOGLE,doc)
             self.assertIn("not evidence of a submitted or accepted customer order",doc.lower())
             self.assertIn("DO NOT enter real records",doc)
+
+    def test_prefilled_product_category_does_not_impersonate_a_customer(self):
+        from scripts.owner_buyer_intent_prefill import (
+            BASE, CONTACT_FIELD, BUDGET_FIELD, DESCRIPTION_FIELD,
+            DESCRIPTIONS, prefilled_url,
+        )
+        from urllib.parse import urlsplit, parse_qs
+        self.assertEqual(BASE, GOOGLE)
+        self.assertEqual(self.parsers["home"].links.count(GOOGLE),1)
+        for label in ("csv","merchant"):
+            with self.subTest(label=label):
+                url=prefilled_url("crypto" if label=="csv" else label)
+                parts=urlsplit(url)
+                self.assertEqual(parts.scheme,"https")
+                self.assertEqual(parts.hostname,"docs.google.com")
+                self.assertEqual(parts.path,urlsplit(GOOGLE).path)
+                fields=parse_qs(parts.query)
+                self.assertEqual(fields["usp"],["pp_url"])
+                self.assertEqual(fields[DESCRIPTION_FIELD],[DESCRIPTIONS["crypto" if label=="csv" else label]])
+                self.assertNotIn(CONTACT_FIELD,fields)
+                self.assertNotIn(BUDGET_FIELD,fields)
+                self.assertEqual(self.parsers[label].links.count(url),1)
+                self.assertIn("PLEASE REPLACE THIS TEMPLATE",DESCRIPTIONS["crypto" if label=="csv" else label])
+                self.assertIn("Do NOT submit this unchanged",DESCRIPTIONS["crypto" if label=="csv" else label])
+                self.assertNotIn("my API key",url)
+                self.assertNotIn("0x833589",url)
+                self.assertIn("not your stated budget",self.pages[label])
+                self.assertIn("before submitting",self.pages[label])
+        self.assertIn("same-owner VM5",self.pages["csv"])
+        self.assertIn("same human owner's VM5",self.pages["merchant"])
 
     def test_not_sneakily_treated_as_two_paid_services_sales(self):
         self.assertIn("no real customer report was delivered",self.pages["csv"].lower())
