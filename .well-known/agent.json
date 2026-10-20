@@ -1,0 +1,63 @@
+{
+  "name": "VM3 Public USDC Receipt Evidence QA",
+  "description": "Single-human-operated, AI-assisted public ERC20 payment-record consistency triage. Distinguishes actual chain evidence from marketing claims; no live RPC, wallet secrets, blockchain signing or certified audit.",
+  "version": "1.0.0",
+  "url": "https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa/agent.json",
+  "provider": {
+    "organization": "OneShot",
+    "url": "https://api.soul.mds.markets"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "solidity-snippet-triage",
+      "name": "Solidity Snippet Risk Triage — Not a Certified Audit",
+      "description": "AI-assisted read-only analysis of max 160 lines PUBLIC Solidity supplied as text, no real exploit/production access/compiled execution claimed. Explain assumptions, probable logic/access-control issues, false positives and suggested OFFLINE test cases. Source snippet only; NOT a validated vulnerability or security audit.",
+      "tags": [
+        "soul-service"
+      ]
+    },
+    {
+      "id": "usdc-evidence-triage",
+      "name": "ERC20 Receipt Record Dedup & Evidence Checklist",
+      "description": "Read-only AI-assisted consistency review of up to 15 BUYER-PROVIDED PUBLIC Base/Polygon/Ethereum token Transfer rows. Flag duplicate chain/txHash/logIndex, missing canonical asset/recipient/finality, ambiguous claims; produce evidence matrix with unverified labels. NOT a live on-chain check, investment advice or formal audit; never give wallet secrets. Free interactive sample: https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html (local, no login, no payment). The sample is structurally checked CSV/JSON on YOUR device, not this paid AI service's output, not on-chain settlement verification and not a previous paid customer review. Buyer must approve Base USDC x402 charge separately.",
+      "tags": [
+        "soul-service"
+      ]
+    },
+    {
+      "id": "x402-browser-cors-remedy",
+      "name": "x402 Browser HTTP 402 CORS Remediation Blueprint (Public Headers)",
+      "description": "One original AI-assisted, read-only PAID micro-deliverable for a developer who operates/is authorized to debug ONE PUBLIC x402 endpoint. Buyer supplies only sanitized unsigned HTTP 402/OPTIONS response HEADER NAMES and safe allow-/expose-header values, browser origin, intended GET or POST and deployment framework. No bearer, EIP-3009, payment signatures, cookies, API keys, wallet seeds, private URLs, unmasked proprietary files, or live customer payment logs. Return (1) observed-vs-required header matrix; (2) likely browser CORS block root causes with uncertainty; (3) concise framework-appropriate example configuration snippet or pseudocode, clearly labeled unexecuted; (4) two read-only browser/preflight acceptance checks and a no-secrets change checklist. NO outbound HTTP, no independent header authentication, no real wallet, signed x402 retry, contract/payment acceptance, chain finality, money earned or certified security audit. Buyers should validate the examples in their own environment. Original FREE browser-only no-upload demo: https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-browser-cors-doctor.html. Original third-party illustrative CORS bug independently reported at https://github.com/OnChainAIIntel/x402-pqs/issues/1 is NOT a paid customer or endorsement. One genuine beneficial human owner based in South Korea using AI-assisted tooling.",
+      "tags": [
+        "soul-service"
+      ]
+    },
+    {
+      "id": "x402-payment-challenge-preflight",
+      "name": "x402 Payment Challenge Preflight — Offline QA",
+      "description": "An AI-assisted, fixed-scope first-pass review of ONE buyer-supplied public x402 v2 HTTP 402 response and PAYMENT-REQUIRED header, optionally compared against buyer-supplied intended Base chain/eip155:8453, canonical Circle USDC contract, expected payTo, price and resource URL. Returns a specific 402 challenge-structure report, mismatches, ambiguous fields, safe next diagnostic actions and source-independent limitations. The buyer must REMOVE secrets/signed payment headers, authentication tokens and personal data before sharing. This service DOES NOT contact the target server, settle a payment, inspect a live wallet, sign, authorize spending, determine whether a vendor is trustworthy, or guarantee x402 interoperability/security. No production audit or certification. One legitimate human account owner, transparent AI assistance; reports are delivered in English.",
+      "tags": [
+        "soul-service"
+      ]
+    },
+    {
+      "id": "x402-quote-mismatch-preflight",
+      "name": "x402 v2 HTTP 402 Quote Mismatch Preflight — Public Headers Only",
+      "description": "AI-assisted static diagnostic checklist for a seller's PUBLIC UNPAID x402 HTTP402 challenge, v2 PAYMENT-REQUIRED decoded JSON / v1 public body; spot network CAIP-2, amount atomic, recipient address, missing accepts, incompatible EVM token and 402 status; relate to x402 Foundation v2 HTTP specification. NO live API/RPC test, NO settlement confirmation, NO payments performed, not a security certification. Do not supply X-PAYMENT, PAYMENT-SIGNATURE, Authorization, cookies, seed, API keys or private client code. Includes likely cause, minimal safe read-only next check, and UNKNOWN for unsupported evidence. Reproducible 23/23 offline unit tests and open public demo on VM3 author-owned GitHub.",
+      "tags": [
+        "soul-service"
+      ]
+    }
+  ]
+}
