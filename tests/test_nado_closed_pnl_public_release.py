@@ -21,6 +21,12 @@ class NadoPnlSiteTests(unittest.TestCase):
   self.assertEqual(names.count(URL),1)
   self.assertIn(URL,(P/'llms.txt').read_text())
   HTMLParser().feed(self.page)
+ def test_single_directory_backlink_is_honest_and_not_implied_approved(self):
+  self.assertEqual(self.page.count('href="https://twelve.tools/"'),1)
+  self.assertIn('Browse independent tools at Twelve Tools',self.page)
+  self.assertNotIn('Listed on Twelve Tools',self.page)
+  self.assertNotIn('Featured on Twelve Tools',self.page)
+
  def test_local_only_technical_limits_and_no_promise(self):
   self.assertIn("connect-src 'none'",self.page)
   self.assertIn("form-action 'none'",self.page)
