@@ -105,13 +105,24 @@ try {
     returnByValue:true
   });
   if(fileCheck.result?.value!==true)throw new Error("CSV_OR_RESULT_STATE_NOT_ISOLATED");
+  // Real browser proof: summary is generated solely from invented local row
+  // codes, contains NO original amounts, and selecting it sends no request.
+  const safeResult=await send("Runtime.evaluate",{
+    expression:"(() => { const area=document.querySelector('#safe-summary'); const btn=document.querySelector('#select-safe-summary'); if(!area || !btn || btn.disabled) return 'MISSING_SAFE_BUTTON'; btn.click(); const x=area.value; return JSON.stringify({length:x.length,hasSafePrefix:x.includes('ONE CURSOR — OPTIONAL LOCAL KOINLY'),hasDisclaimer:x.includes('CUSTOMER MUST REVIEW BEFORE SHARING'),hasPrivateValue:x.includes('10.000000')||x.includes('0.020000')||x.includes('2026-10-01'),selectionMatches:area.selectionStart===0&&area.selectionEnd===x.length}); })()",
+    returnByValue:true
+  });
+  const safe=JSON.parse(String(safeResult.result?.value||"null"));
+  if(!safe || !safe.hasSafePrefix || !safe.hasDisclaimer ||
+     safe.hasPrivateValue || !safe.selectionMatches || safe.length>3500)
+    throw new Error("LIVE_SAFE_DIAGNOSTIC_PRIVACY_OR_SELECTION_FAIL");
   if(externalRequests.length)throw new Error("UNEXPECTED_THIRDPARTY_NETWORK_REQUEST");
   if(exception.length)throw new Error("BROWSER_SCRIPT_EXCEPTION");
   console.log(JSON.stringify({
     externalPublicDemo:true,browser:"fresh isolated headless Chrome",
     openedExistingChromeTabs:0,sourceFileRead:false,
     browserPostAttempted:false,wholeSiteCheckout:false,
-    demoClickSuccessful:true,summary,externalRequests:0,
+    demoClickSuccessful:true,summary,localRedactedTicket:true,
+    manualSelectOnly:true,rawValuesInTicket:false,externalRequests:0,
     scriptExceptions:0,realOrders:0,USDCReceivedFromDemo:"0"
   }));
 }catch(err){

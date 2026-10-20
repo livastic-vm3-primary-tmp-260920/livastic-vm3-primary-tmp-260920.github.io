@@ -24,6 +24,7 @@ button{cursor:pointer;font:inherit;border-radius:8px;padding:12px 17px;border:0;
 button.alt{background:transparent;border:1px solid var(--lime);color:var(--lime)}
 label{display:block;font-weight:770;margin:17px 0 8px}
 select,input[type="file"]{display:block;width:100%;background:#102537;color:var(--text);border:1px solid var(--border);font:inherit;padding:13px;border-radius:7px}
+#safe-summary{display:block;width:100%;min-height:235px;background:#0c2330;color:var(--text);border:1px solid var(--border);border-radius:7px;padding:12px;font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;resize:vertical;overflow-wrap:anywhere}
 .note{background:#312b27;border-left:4px solid var(--amber);padding:14px 16px;color:#ffe1b4;border-radius:0 7px 7px 0}
 .good{background:#1a3b32;border-left:4px solid var(--lime);padding:14px 16px;color:#e6fff1;border-radius:0 7px 7px 0}
 #summary{margin-top:15px;padding:13px 16px;background:#0a2234;border:1px solid var(--border);border-radius:8px}
@@ -58,6 +59,14 @@ small{font-size:13px}
 <button id="synthetic-demo" class="alt" type="button">Run the wholly fictional example</button>
 <div id="summary" role="status" aria-live="polite">No file read. No analysis run yet.</div>
 <ol id="issues" aria-label="Redacted diagnostic codes only"></ol>
+<section id="privacy-safe-ticket" aria-labelledby="ticket-heading">
+<h3 id="ticket-heading">Share only safe diagnostic codes — under your control</h3>
+<p>After a check, this local text box contains <strong>allowlisted error codes, Koinly field names, bounded row numbers and counts ONLY</strong>. It intentionally excludes your input values, original headers, file name, transaction amounts, real addresses, tax IDs and customer data. Inspect it before copying. Generating or selecting text does <strong>not</strong> send any data, message or payment.</p>
+<label for="safe-summary">Optional, editable-by-you-elsewhere diagnostic summary — NOT automatically sent</label>
+<textarea id="safe-summary" rows="12" readonly spellcheck="false" aria-label="Privacy-sanitized local Koinly diagnostics; copied manually only"></textarea>
+<button id="select-safe-summary" class="alt" type="button" disabled>Select safe summary for manual Ctrl+C / Copy</button>
+<p><small>Click the button only after checking this text. Press Ctrl+C (or choose Copy) yourself, then paste ONLY the safe codes into an optional email draft linked below or the existing same-owner voluntary form. Never paste the original CSV itself. You must supply your own actual problem and permission; the seller has no buyer order, upload or USDC payment from a selected summary.</small></p>
+</section>
 <p><strong>Meaning of a passing result:</strong> only that these limited structural checks found no blockers. It does <strong>NOT</strong> mean Koinly accepted the CSV, calculated tax cost basis, verified an exchange trade, matched transfers, or proved a blockchain payment. Never make a tax filing or delete source rows solely based on this diagnostic.</p>
 </section>
 <section class="card" id="feedback" aria-labelledby="feedback-heading">

@@ -1,4 +1,5 @@
 import { inspectCsv, SYNTHETIC_UNIVERSAL, MAX_BYTES } from "./core.mjs";
+import { makeSafeSummary } from "./safe-summary.mjs";
 
 const templateNode = document.querySelector("#template");
 const fileNode = document.querySelector("#csv-file");
@@ -6,6 +7,13 @@ const summaryNode = document.querySelector("#summary");
 const issuesNode = document.querySelector("#issues");
 const runNode = document.querySelector("#check-file");
 const demoNode = document.querySelector("#synthetic-demo");
+const safeNode = document.querySelector("#safe-summary");
+const selectSafeNode = document.querySelector("#select-safe-summary");
+
+function clearSafeSummary() {
+  safeNode.value = "";
+  selectSafeNode.disabled = true;
+}
 
 function showStatus(message) {
   summaryNode.textContent = message;
@@ -40,9 +48,17 @@ function showRedacted(result) {
     li.textContent = "Additional sanitized warnings omitted from the display; no data values retained.";
     issuesNode.append(li);
   }
+  const ticket = makeSafeSummary(result);
+  if (ticket.startsWith("NO_SAFE_LOCAL_DIAGNOSTIC.")) {
+    clearSafeSummary();
+  } else {
+    safeNode.value = ticket;
+    selectSafeNode.disabled = false;
+  }
 }
 function onError(err) {
   issuesNode.replaceChildren();
+  clearSafeSummary();
   // Errors contain only authored static parser codes; never an input value or filename.
   const codes = new Set([
     "TYPE_MUST_BE_TEXT", "FILE_TOO_LARGE", "BINARY_NUL_REJECTED",
@@ -57,6 +73,14 @@ function onError(err) {
   );
 }
 
+selectSafeNode.addEventListener("click", () => {
+  if (!safeNode.value || selectSafeNode.disabled) return;
+  safeNode.focus();
+  safeNode.select();
+  // Browser clipboard permissions are NOT requested. Buyer manually decides
+  // if/where to copy/paste the already-redacted message.
+});
+
 demoNode.addEventListener("click", () => {
   try {
     templateNode.value = "universal";
@@ -69,6 +93,7 @@ demoNode.addEventListener("click", () => {
 runNode.addEventListener("click", async () => {
   const f = fileNode.files && fileNode.files[0];
   issuesNode.replaceChildren();
+  clearSafeSummary();
   if (!f) {
     showStatus("No file selected. Choose your own CSV or use the entirely synthetic example.");
     return;

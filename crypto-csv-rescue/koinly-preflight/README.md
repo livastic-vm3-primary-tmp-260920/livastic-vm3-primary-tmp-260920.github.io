@@ -62,3 +62,30 @@ The owner maintains the alternative manual mailto channel. Sending a form
 is not a payment, accepted job, outside reviewer endorsement or proof of a
 successful Koinly import. This is explicitly optional and never posted
 automatically by the validator.
+
+## Optional redacted offline diagnostic summary for lawful independent feedback (2026-10-21)
+
+The existing free checker now uses original pure stdlib-compatible JS
+`safe-summary.mjs` to build a **locally visible, manually selectable**
+allowlisted technical note. Data comes ONLY from the existing parser's
+sanitized issue codes, bounded source row numbers, official expected Koinly
+field names and integer counts. It CANNOT include a source filename,
+user-defined header or field, trade amount, original UTC timestamp,
+transaction hash, address, customer identity or real CSV value; unrecognized
+issue types and fields are discarded. The issue list is bounded to 25. Any
+evidence of a purported upload, external request, chain settlement or tax
+calculation makes note generation refuse the result.
+
+Use the separate `Select safe summary for manual Ctrl+C / Copy` control
+only after reviewing the generated text in the read-only box. Selection does
+NOT transmit to us, invoke clipboard API, require browser permissions,
+POST to Google or send email. A user must deliberately copy it manually
+and, if desired, separately write an honest voluntary original problem
+to the existing VM5 one-owner secure inquiry route; the initial inbox
+does NOT ingest raw customer financial exports.
+
+One-owner `49 native Circle Base8453 USDC` price remains **unvalidated
+and entirely conditional on real independent contract, legal receiving
+payee, data handling, acceptance and cancellation/refund**, never a charge,
+tax filing or settled USDC from a local note. No test submits owner-authored
+forms or simulates an outside paying user.
