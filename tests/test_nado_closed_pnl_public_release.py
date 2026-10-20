@@ -47,6 +47,16 @@ class NadoPnlSiteTests(unittest.TestCase):
   self.assertIn("f.text()",self.app)
   self.assertIn("if(f&&f.size>MAX_SOURCE_BYTES)",self.app)
   self.assertIn("URL.createObjectURL",self.app)
+ def test_free_feedback_is_voluntary_and_safe(self):
+  self.assertIn('id="free-feedback"',self.page)
+  self.assertEqual(self.page.count('subject=Nado%20%2F%20Koinly%20FREE%20mapper%20feedback'),1)
+  self.assertIn('column names only',self.page.lower())
+  self.assertIn('not</strong> a purchase',self.page)
+  self.assertIn('No independent respondents have been verified',self.page)
+  self.assertIn('opening this draft may reveal your email address',self.page)
+  self.assertEqual(self.page.count('href="https://twelve.tools/livastic-vm3-primary-tmp-260920-github-io-crypto-csv-rescue-nado-closed-pnl"'),1)
+  self.assertIn('listing, not endorsement',self.page)
+  self.assertIn('issues">Open-source issues',self.page)
  def test_source_attribution(self):
   for official in [
    'https://support.koinly.io/en/articles/9490027-futures-and-perpetuals-pnl-other-gains',
