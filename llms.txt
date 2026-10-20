@@ -1,0 +1,24 @@
+# One Cursor / Original Crypto Payment QA
+Canonical: https://livastic-vm3-primary-tmp-260920.github.io/
+Owner: one ultimate human economic beneficiary for VM1/VM2/VM3/VM5; AI assistance disclosed.
+Safe: free local-only privacy-conscious cryptocurrency CSV source candidate QA; optional existing original VM5 pay-per-request native Circle Base8453 USDC at exactly 0.005 via independent x402 signing; original developer docs and tests.
+Not provided: tax filing/financial advice, wallet custody, merchant identity authentication, authenticated payment proof without actual chain check, automatic customer billing, guaranteed chain finality, fake testimonials.
+
+## Free and private browser tools
+- https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/crypto-transfer-csv-pair-auditor.html
+- https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-quote-safety.html
+- https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html
+- https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/csv-free-local-checker.html
+
+## Existing original paid merchant (one owner; hosted on VM5)
+- Original POST https://vm5-openapi-x402.onrender.com/v1/csv-preflight; x402 unsigned HTTP402 and explicit buyer-authorized payment, 0.005 canonical native Circle Base USDC per operation.
+- Public paid API docs: https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/csv-structural-preflight-005-base-usdc.html
+- Browser wallet buyer UI, INITIAL BETA, no real funded buyer checkout independently verified: https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/csv-browser-x402-checkout.html
+- A free CSV check cannot be assumed equivalent to a paid API order; do not self-buy or fabricate payments.
+
+## Honest product evaluation
+- Original code: https://github.com/livastic-vm3-primary-tmp-260920/defi-payment-proof-qa
+- Third-party upstream CoinTaxman PR, pending external maintainer review: https://github.com/provinzio/CoinTaxman/pull/193
+- Educational autonomous article: https://dev.to/livasticvm3primarytmp260920/when-kraken-adds-two-csv-columns-why-a-crypto-tax-importer-should-refuse-to-guess-14m6
+- Original GitHub user feedback discussion, external actual comments unverified: https://github.com/livastic-vm3-primary-tmp-260920/defi-payment-proof-qa/issues/1
+- Contact onecursor1@gmail.com with invented/anonymized test cases only; raw personal wallet data or secrets prohibited.

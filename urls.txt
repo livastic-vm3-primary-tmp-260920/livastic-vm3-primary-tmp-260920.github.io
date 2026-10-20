@@ -1,0 +1,15 @@
+# Public firstparty pages checked 2026-10-20. No third-party merchant URLs.
+https://livastic-vm3-primary-tmp-260920.github.io/
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-402-preflight.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-seller-settlement-floor.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/qa-public-sample-20261020.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/csv-structural-preflight-005-base-usdc.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/csv-free-local-checker.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/services/public-web-qa-19-usdc.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/html-free-local-checker.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-quote-safety.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/csv-browser-x402-checkout.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/crypto-transfer-csv-pair-auditor.html
+https://livastic-vm3-primary-tmp-260920.github.io/defi-payment-proof-qa/guides/x402-browser-cors-doctor.html

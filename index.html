@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Open-source, private CSV and Base USDC QA tools: spot duplicate transfers, inspect unsigned x402 payments, and access a buyer-approved 0.005 USDC CSV preflight. One owner, transparent limitations.">
+<meta name="theme-color" content="#081722">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none';">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/">
+<title>One Cursor · Crypto CSV QA and Base USDC Payment Tools</title>
+<style>
+:root{color-scheme:dark;--bg:#091726;--panel:#122940;--ink:#eef5fa;--muted:#b7cbd9;--edge:#365871;--a:#91edc5;--gold:#efd59a}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1130px;margin:auto;padding:19px 23px 80px}
+header{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--edge);padding:13px 0 26px;font-size:14px}
+a{color:var(--a);text-underline-offset:3px}a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.brand{font-weight:800;color:var(--ink);text-decoration:none}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--a)}
+h1{font-size:clamp(2.45rem,5.7vw,5rem);line-height:1.08;letter-spacing:-.06em;margin:22px 0 24px}
+h1 em{font-style:normal;color:var(--a)}h2{font-size:clamp(1.48rem,2.8vw,2.1rem);line-height:1.2;letter-spacing:-.025em;margin:33px 0 16px}
+h3{font-size:1.2rem;line-height:1.3;margin:2px 0 10px}
+p{margin:9px 0;color:var(--muted)}.lead{max-width:830px;font-size:1.2rem}
+nav{display:flex;flex-wrap:wrap;gap:16px}
+nav a{font-weight:700;text-decoration:none}
+.cardgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0}
+.card{padding:23px;background:var(--panel);border:1px solid var(--edge);border-radius:16px}
+.card p{max-width:630px}.label{font-size:.77rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--a);margin:0 0 9px}
+.card .button{margin-top:12px}.button{display:inline-block;background:var(--a);color:#08261a;text-decoration:none;border-radius:9px;padding:12px 18px;font-weight:800}
+.button:hover{filter:brightness(1.1)}
+.alt{background:none;color:var(--a);border:1px solid var(--a)}
+.details{font-size:.85rem;color:var(--muted);margin-top:12px}
+.feature{background:#122d36;border:1px solid #47676d;padding:23px;border-radius:15px;margin-top:22px}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+ul{padding-left:24px}li{padding:4px 0;color:var(--muted)}
+.warning{padding:15px 18px;border-left:3px solid var(--gold);color:var(--muted);background:#1f2939;border-radius:0 8px 8px 0}
+footer{padding-top:25px;border-top:1px solid var(--edge);margin-top:50px;color:var(--muted);font-size:.86rem}
+@media(max-width:740px){main{padding:16px 16px 58px}.cardgrid,.rows{grid-template-columns:1fr}header{display:block}nav{margin-top:14px}h1{font-size:clamp(2rem,10vw,3.3rem)}}
+</style>
+</head>
+<body><main>
+<header><a class="brand" href="/">ONE CURSOR / DEV PAYMENT QA</a><nav><a href="#free">Free tools</a><a href="#paid">Paid API</a><a href="#feedback">Tell us your problem</a><a href="#evidence">Source and limitations</a></nav></header>
+<section aria-label="What this site does">
+<p class="eyebrow">Open-source tests · One real economic owner · Explicit USDC terms</p>
+<h1>Reconcile the rows.<br><em>Question the payment.</em></h1>
+<p class="lead">Free, privacy-conscious CSV checks for wallet transfers and USDC workflows. Explore reproducible demos first. If you need automated hosted CSV structure QA, our existing vendor offers a separately authorized <strong>0.005 native Base USDC</strong> x402 request.</p>
+<p class="details">No wallet connection for free tools. No spreadsheet upload to this landing page. No tax filing or promise of final blockchain settlement. Real paid merchant functionality is distinct from free local previews.</p>
+</section>
+<section id="free" aria-labelledby="free-title">
+<h2 id="free-title">Try the free tools before spending anything</h2>
+<div class="cardgrid">
+<article class="card">
+<p class="label">No upload · Wallet & exchange</p><h3>Find missing crypto transfer CSV pairs</h3>
+<p>Compare withdrawal and receipt CSVs. Flags duplicate source rows, candidate matches, wrong token, unmatched counterparts and ambiguous same-amount transfers. Includes a Kraken Ledger 12-column invented sample. A candidate match is never proof of a non-taxable self-transfer.</p>
+<a class="button" href="/defi-payment-proof-qa/guides/crypto-transfer-csv-pair-auditor.html">Compare two CSVs locally ↗</a>
+</article>
+<article class="card">
+<p class="label">Unsigned HTTP 402 · Walletless preview</p><h3>Read the x402 price before a signature</h3>
+<p>Inspect canonical Base network and Circle native USDC, 6-decimal price, pay-to recipient and resource URL. Compare your own maximum spend, then decide independently. This cannot authenticate a merchant or guarantee execution.</p>
+<a class="button" href="/defi-payment-proof-qa/guides/x402-quote-safety.html">Inspect a payment quote ↗</a>
+</article>
+<article class="card">
+<p class="label">Local only · Base USDC CSV</p><h3>Check reported merchant ledger inconsistencies</h3>
+<p>Review your own transaction-record CSV for repeated rows, mismatched token contracts, and unconfirmed record claims. It does not itself fetch or finalize a blockchain receipt.</p>
+<a class="button" href="/defi-payment-proof-qa/guides/base-usdc-merchant-ledger.html">Review CSV ledger ↗</a>
+</article>
+<article class="card">
+<p class="label">Local only · General CSV</p><h3>Find file structure and spreadsheet hazards</h3>
+<p>Catch malformed headers, missing columns, duplicate identifiers and spreadsheet-formula patterns in a local free CSV preflight. Keep your input in your browser.</p>
+<a class="button" href="/defi-payment-proof-qa/guides/csv-free-local-checker.html">Inspect CSV locally ↗</a>
+</article>
+</div>
+</section>
+<section id="paid" class="feature">
+<p class="eyebrow">One original live merchant · Optional real x402 purchase</p>
+<h2>0.005 Base USDC — hosted CSV structure preflight</h2>
+<div class="rows"><div>
+<p>The original same-owner VM5 merchant exposes <code>POST /v1/csv-preflight</code>. It returns a public unsigned HTTP 402 challenge and, following an <em>independent buyer-authorized</em> x402 payment, is intended to return a machine-readable CSV structural report. It is not a tax importer or transfer matching service.</p>
+<p><strong>Price quote:</strong> 5,000 atomic native Circle Base USDC units (0.005 USDC), one buyer-approved request. Buyer approval and legal service terms are separate from free tools.</p>
+</div><div>
+<p class="warning">The optional browser wallet checkout is an <strong>initial beta</strong>. A real outside funded browser purchase and independently finalized settlement have not been verified end-to-end. It never auto-signs and requires the buyer's own Base wallet, explicit review and confirmation. Never paste private keys, tax records or confidential CSV into a public service.</p>
+<p><a class="button" href="/defi-payment-proof-qa/guides/csv-browser-x402-checkout.html">Review the optional 0.005-USDC checkout ↗</a></p>
+<p><a href="/defi-payment-proof-qa/guides/csv-structural-preflight-005-base-usdc.html">Original paid API docs and buyer SDK</a></p>
+</div></div>
+</section>
+<section id="feedback" class="card">
+<p class="eyebrow">Actual demand, not invented testimonials</p><h2>Which crypto CSV discrepancy cost you time?</h2>
+<p>Share only an <em>invented or anonymized</em> example of a recurring wallet/exchange import issue, the rough hours lost, and the actual price you would consider—including $0. One-owner research uses this to prioritize reproducible checks. No wallet signature, invoice, payment or email is required to use the tools.</p>
+<p><a class="button alt" href="https://github.com/livastic-vm3-primary-tmp-260920/defi-payment-proof-qa/issues/1">See public developer feedback thread ↗</a> <a href="mailto:onecursor1@gmail.com?subject=Crypto%20CSV%20user%20problem%20(no%20private%20data)&amp;body=My%20anonymized%20problem%3A%0AHours%20lost%3A%0AI%20would%20actually%20pay%20(0%2F9%2F29%2F99%20USDC)%3A">Send optional anonymous-example feedback ↗</a></p>
+<p class="details">GitHub feedback needs your own GitHub account and is public; email exposes your sender address. Do not send transaction hashes, wallet addresses, account data, personal tax records, private keys, passwords or customer information.</p>
+</section>
+<section id="evidence" class="card">
+<p class="eyebrow">Reproducible engineering, not a third-party certification</p><h2>Inspect what we built—and what remains unresolved</h2>
+<p><a href="https://github.com/livastic-vm3-primary-tmp-260920/defi-payment-proof-qa">Original source and automated tests</a> · <a href="https://dev.to/livasticvm3primarytmp260920/when-kraken-adds-two-csv-columns-why-a-crypto-tax-importer-should-refuse-to-guess-14m6">Fully autonomous, evidence-checked Kraken CSV case study</a> · <a href="https://github.com/provinzio/CoinTaxman/pull/193">Independent upstream PR, pending maintainer review</a></p>
+<p>No independently verified paid customer has purchased a report through this new landing page. Previously received seller USDC is not evidence these new free tools have paying users. No personal credentials, legally credentialed tax practice, accounting certification, wallet custody, refund guarantee or current revenue claim is made.</p>
+</section>
+<footer>One Cursor · One human economic owner using disclosed AI-assisted engineering on VM1/VM2/VM3/VM5 · Updated 20 October 2026. All services are separate functions under that one owner, not several independent paying clients. <a href="/robots.txt">Robots</a> · <a href="/sitemap.xml">Public sitemap</a> · <a href="/llms.txt">Agent-readable service scope</a>.</footer>
+</main></body></html>
