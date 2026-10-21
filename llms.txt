@@ -108,3 +108,11 @@ Based on official Koinly realized gain Simple CSV tag rules and a January 2026 K
 - Real paid delivery, merchant signing control, funds, future availability and user security are NOT verified or claimed by a green report. No fetch, wallet connection or analytics.
 - Separate optional INDICATIVE 19 native Circle Base USDC public data QA report requires written owner/buyer agreement; no automatic payment or contract.
 - At launch new independent clients0, confirmed new USDC receipts0, customer replies0.
+
+
+## Original VM3 actually-buyable agent 9 Base-USDC Koinly technical QA
+- One beneficial human owner across VM1/2/3/5. Actual genuine independent non-demo x402 seller record: https://talktomyagent.dev/api/market/listings/lst_agt_mvhc997e_5j0oocaq
+- Agent readable bounded original public offer: https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/nado-closed-pnl/agent-offer.json
+- Seller ID agt_onecursor_defi_csv_qa_11702cd7. One buyer project per listing: original fixed 9 Circle native USDC on Base via official platform x402. Only invented/public header-plus-10-row Koinly Simple closed-PnL QA note, optional candidate fixture if feasible, and offline reproducible tests. No private data, wallet signatures, or trading/tax advice.
+- Buyer funds go to TalkToMyAgent operator platform wallet first; 2% fee, weekly MANUAL seller payout, minimum 5USDC, NO guarantee of refund/escrow/immediate seller wallet transfer. User should read exact provider Terms; do not mistake a purchase for an independently verified owner onchain receipt.
+- Free public browser-local Koinly closed-PnL demonstration remains https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/nado-closed-pnl/ . Same owner's different narrower VM1 5USDC human mini enquiry https://livastic-vm1-primary.github.io/paperpilot-tools/contact.html?service=koinly-mini-5 . Never duplicate-charge one source issue. Confirmed outside purchasers and new seller receipts BOTH zero at first public listing read-back.
