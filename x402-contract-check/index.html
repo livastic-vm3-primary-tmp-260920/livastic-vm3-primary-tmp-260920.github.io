@@ -22,6 +22,8 @@ button,.button{cursor:pointer;display:inline-block;border:1px solid var(--green)
 button.secondary{background:transparent;color:var(--green)}button:disabled{opacity:.46;cursor:not-allowed}
 button:hover:not(:disabled){filter:brightness(1.07)}
 button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+select{width:100%;max-width:390px;min-height:45px;background:#071e2a;color:var(--white);border:1px solid #658691;border-radius:8px;padding:10px 12px;font:inherit}
+#prepay-status-result{white-space:pre-line;font-weight:500}
 .result{border:1px solid var(--border);border-radius:8px;padding:14px;background:#09212b;color:#eef9f7;font-weight:700;min-height:52px}
 .result.error{border-left:4px solid #ffb8a4;background:#2e2627}.result.good{border-left:4px solid var(--green)}
 .metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:13px 0}.metric{border:1px solid var(--border);background:var(--panel2);padding:13px;border-radius:8px}
@@ -62,6 +64,32 @@ code{color:var(--green);background:#071b24;border-radius:4px;padding:1px 4px}
 <button type="button" id="download" class="secondary" disabled>Download sanitized findings JSON</button>
 <p class="small">Export includes only authored diagnostic codes, counts, a normalized first-accept USDC amount if this is native Base Circle USDC, and source links. It excludes original JSON, full payTo, signatures, input file and personal data. No cookies, localStorage, analytics, RPC or server processing.</p>
 </section>
+<section class="card" id="prepay-status" aria-labelledby="prepay-status-title">
+<div class="eyebrow">New free utility · Prepayment HTTP response triage</div>
+<h2 id="prepay-status-title">HTTP 400 or 422 before payment? Don't call it a failed x402 purchase.</h2>
+<p>A real service may reject a syntactically or semantically invalid request with <code>400</code> or <code>422</code> <em>before</em> evaluating a payment requirement. An observed <code>402</code> is a potential payment challenge, not evidence of purchase or settlement. Choose one HTTP code from your own authorized, already-completed request; the browser explains what <em>cannot</em> be concluded. No endpoint is fetched.</p>
+<label for="prepay-http-status">Observed HTTP status (one code only; no URL or response payload)</label>
+<select id="prepay-http-status">
+<option value="400">400 — Bad Request</option>
+<option value="422">422 — Unprocessable Content</option>
+<option value="402">402 — Payment Required</option>
+<option value="401">401 — Unauthorized</option>
+<option value="403">403 — Forbidden</option>
+<option value="404">404 — Not Found</option>
+<option value="408">408 — Request Timeout</option>
+<option value="409">409 — Conflict</option>
+<option value="429">429 — Too Many Requests</option>
+<option value="200">200 — OK</option>
+<option value="202">202 — Accepted</option>
+<option value="301">301 — Redirect</option>
+<option value="500">500 — Server Error</option>
+<option value="503">503 — Service Unavailable</option>
+</select>
+<div><button type="button" id="prepay-status-run">Explain this observed response</button></div>
+<div id="prepay-status-result" class="result" role="status" aria-live="polite">Waiting for a status selection.</div>
+<p class="small">All outcomes are <strong>not verified</strong>: no transfer, merchant trust, actual payload correctness or paid delivery can be inferred from a single status. This is an advisory local code-classification heuristic, not the merchant's SLA verdict, a bypass recipe or a claim that any buyer has paid. For real x402 v2 metadata, use the public unsigned 402 checker above.</p>
+<p class="small">Original deterministic offline classifier and <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/blob/main/x402-contract-check/tests/prepay-status.test.mjs">fictional regression cases</a>; based on HTTP semantics, no live customer records. A voluntary <a href="#b2b-qa">19-USDC one-endpoint synthetic QA inquiry</a> is separate and requires written customer acceptance before any work or payment.</p>
+</section>
 <div class="cols">
 <section class="card">
 <div class="eyebrow">Key 2026 implementation detail</div>
@@ -94,7 +122,8 @@ code{color:var(--green);background:#071b24;border-radius:4px;padding:1px 4px}
 <div class="eyebrow">Original human-assisted technical QA · Optional</div>
 <h2>Need a bounded real-world data contract review?</h2>
 <p>The free inspection may show an unsupported version or shallow Bazaar response example. For one explicitly authorized <strong>PUBLIC</strong> x402 endpoint, an original AI-assisted developer can separately quote a synthetic-only regression fixture, source-linked field/error compatibility report and deterministic offline tests. <strong>Indicative fixed 19 native Circle Base USDC</strong> for one separately agreed scope, only after a real buyer accepts delivery, cancellation/refund, privacy, AI involvement and correct payee/network terms in writing. No audit, penetration testing, real buyer data or token signing.</p>
-<p><a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform" target="_blank" rel="noopener noreferrer">Request no-payment technical QA scope ↗</a></p>
+<p><a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform?usp=pp_url&amp;entry.1765055758=Service%3A+VM3+x402+public+400%2F422+vs+402+prepay+and+unsigned+quote+QA+%28indicative+19+Base+Circle+USDC%3B+written+scope+first%29.+My+request+and+acceptance+criteria%3A+" target="_blank" rel="noopener noreferrer">Request no-payment technical QA scope ↗</a></p>
+<p class="small">This opens the existing VM5-managed private project form with <strong>VM3 x402 QA service preselected in the editable project-description field</strong>. Add your own non-sensitive requirements; do not submit the default text alone. VM3 and VM5 work for one beneficial owner, and a form inquiry is not a purchase or payment. No customer data is sent until you choose to submit the form.</p>
 <p class="small">If a FREE inspection shows a real public compatibility gap, you may <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/issues/new?template=x402-browser-compatibility.md" target="_blank" rel="noopener noreferrer">open a voluntary public feedback issue</a> (GitHub login required). Post ONLY authored diagnostic codes and a non-sensitive problem description; never the pasted source object, seller payTo, keys, cookies, signatures, wallet or client records. No payment is required to report a bug.</p>
 <p class="small">If the free synthetic test solves your issue, pay <strong>0 USDC</strong>. No buyer, revenue, fee collection or contract is claimed by displaying an offer.</p>
 </section>
@@ -111,4 +140,5 @@ code{color:var(--green);background:#071b24;border-radius:4px;padding:1px 4px}
 </main>
 <footer class="footer">ONE CURSOR (one human beneficial owner, openly AI-assisted) · October 2026 · Free read-only public metadata syntax check only, no customer orders or payments claimed. <a href="https://livastic-vm3-primary-tmp-260920.github.io/">Home</a> · <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/tree/main/x402-contract-check">Open source</a> · <a href="https://twelve.tools/" target="_blank" rel="noopener noreferrer">Browse developer tools at Twelve Tools ↗</a></footer>
 <script type="module" src="./app.mjs"></script>
+<script type="module" src="./prepay-status-app.mjs"></script>
 </body></html>
