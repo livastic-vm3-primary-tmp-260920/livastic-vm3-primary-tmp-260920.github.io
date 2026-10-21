@@ -119,3 +119,9 @@ Based on official Koinly realized gain Simple CSV tag rules and a January 2026 K
 
 
 Free ORIGINAL exact ten completely FICTIONAL row 9-USDC report preview, not a purchased order or authentic Nado file: https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/nado-closed-pnl/buyer-qa-example.html . Machine diagnostic JSON /buyer-qa-example.json and unmodified original invented fixture /synthetic-buyer-10rows.csv and source/tests in same root. 7 individually plausible, 3 withheld, no full candidate exported. External genuine TTMA x402 9USDC actual paid checkout listing lst_agt_mvhc997e_5j0oocaq still has 0 independently paid orders and 0 recognized native Circle BaseUSDC owner receipts at this preview publication.
+
+## Verified original same-owner externally paid software work (distinct from Koinly services)
+- Historical outside sponsor compensation: ONE original externally funded MERGED code contribution https://github.com/pursekeeper/api/pull/94 resulted in 5 XNO Nano mainnet SEND and confirmed receiver OPEN, now available in the original VM1 wallet (already earned once, NOT new revenue today).
+- Complete public evidence/source, explicit Nano vs USDC and secure backup warning: https://livastic-vm1-primary.github.io/case-studies/pursekeeper-nano-lock-bounty-5xno.html
+- This is NOT a VM3 Nado/Koinly paying client, independent testimonial, TTMA purchase, NoHumans USDC buyer, or new USDC payout. Both VM1 and VM3 represent ONE human beneficial owner; no inter-VM self-purchase or double booking.
+- Original VM3 optional source-backed Koinly technical QA offers 5/9/19 **Base native Circle USDC** remain separate, buyer contract or paid order is zero at proof publication; always start with free public/synthetic example.
