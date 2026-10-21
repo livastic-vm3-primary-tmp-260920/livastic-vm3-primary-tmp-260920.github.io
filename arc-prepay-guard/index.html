@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src https://rpc.mainnet.arc.io; img-src 'none'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="Read the canonical ERC-8004 agent identity and reputation registries on Arc (chain 5042) before an x402 payment. No wallet, no signature, no API key.">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/arc-prepay-guard/">
+<title>Arc ERC-8004 Prepay Identity Cross-Check | One Cursor</title>
+<style>
+:root{color-scheme:dark;--bg:#09151f;--card:#152836;--border:#466175;--text:#f0f6fb;--muted:#cfdae7;--accent:#abf5d8;--link:#a9dffc;--warn:#ffe2a1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.58 system-ui,-apple-system,Segoe UI,sans-serif}
+header,main,footer{max-width:960px;margin:auto;padding:20px clamp(16px,5vw,36px)}
+header{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--border)}
+a{color:var(--link);overflow-wrap:anywhere}
+h1{font-size:clamp(28px,5vw,43px);line-height:1.19;letter-spacing:-.025em}
+h2{font-size:clamp(20px,3vw,26px)}
+p,li{color:var(--muted)} strong{color:var(--accent)}
+.eyebrow{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--accent)}
+.card{border:1px solid var(--border);border-radius:12px;background:var(--card);padding:clamp(16px,4vw,27px);margin:26px 0}
+.warning{border-left:4px solid var(--warn);background:#3c3124;color:var(--warn);padding:14px 18px}
+input{font:inherit;background:#0b202e;color:var(--text);border:1px solid #698fa6;border-radius:7px;padding:12px;width:100%;margin:8px 0;max-width:540px}
+button,.button{font:inherit;font-weight:750;border:1px solid var(--accent);background:var(--accent);color:#063222;border-radius:8px;cursor:pointer;padding:12px 16px;min-height:45px;margin:9px 10px 9px 0;display:inline-block;text-decoration:none}
+button.secondary{background:transparent;color:var(--accent)}
+button:disabled{opacity:.5;cursor:not-allowed}
+a:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid white;outline-offset:3px}
+#message{margin:12px 0;padding:14px;border:1px solid #718394;border-radius:7px}
+dl{display:grid;grid-template-columns:minmax(135px,1fr) 2fr;gap:10px;margin:14px 0}
+dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere}
+.value{font-weight:650;color:var(--text)}
+.hold{color:var(--warn);font-weight:850}
+code{background:#061927;border-radius:3px;color:#c3dfff;padding:1px 4px;overflow-wrap:anywhere}
+ul{padding-left:21px}
+.small{font-size:14px}
+footer{border-top:1px solid var(--border);font-size:13px}
+@media(max-width:550px){dl{grid-template-columns:1fr;gap:3px}dt{padding-top:8px}button{width:100%}}
+</style>
+</head>
+<body>
+<header><a href="https://livastic-vm3-primary-tmp-260920.github.io/">ONE CURSOR · Developer utilities</a><span>Arc mainnet • Chain ID 5042 • No wallet</span></header>
+<main>
+<div class="eyebrow">Original experimental open-source developer tool · 2026-10-21</div>
+<h1>Inspect an agent's on-chain identity before paying it.</h1>
+<p>Most x402 quotes identify a destination and amount, but not whether the seller's claimed agent identity has any visible history. This <strong>free, read-only Arc ERC-8004 cross-check</strong> talks directly to Arc's canonical identity and reputation registries; it does not rely on a third-party score as proof and never approves a payment.</p>
+<div class="warning"><strong>Manual review always required.</strong> Ownership of an ERC-8004 NFT is not proof of legal identity, a trustworthy merchant, settled USDC, or delivery. Reputation can be manipulated. Check payment network, token contract, recipient, amount and refund/delivery terms separately before authorizing any transfer.</div>
+<section class="card" aria-labelledby="lookup-title">
+<h2 id="lookup-title">Read the Arc registry</h2>
+<p>Enter a <strong>public Arc ERC-8004 agent ID</strong> (e.g. 0). Click once to make read-only JSON-RPC requests. No secret keys, login, payment signatures, wallet approvals, analytics, cookies, tracking or server-side upload. The ID and your IP are visible to the publicly operated Arc RPC when you click.</p>
+<label for="agentId"><strong>Public Arc agent ID</strong></label>
+<input id="agentId" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="9" value="0" autocomplete="off" spellcheck="false" aria-describedby="message">
+<div><button id="inspect" type="button">Inspect registration and reputation (free)</button>
+<button id="export" class="secondary" type="button" disabled>Export public metadata JSON</button></div>
+<div id="message" role="status" aria-live="polite">Ready. No network request has been sent from this page.</div>
+<div id="results" hidden>
+<h3 class="hold">Decision: MANUAL REVIEW REQUIRED — never "safe to pay"</h3>
+<dl id="details"></dl>
+<h3>Evidence limits and next steps</h3>
+<ul id="notices"></ul>
+</div>
+</section>
+<section class="card">
+<h2>Exactly what is read</h2>
+<ul>
+<li>Live <code>eth_chainId</code> and <code>eth_blockNumber</code> from <a href="https://rpc.mainnet.arc.io" rel="noopener noreferrer">Arc mainnet RPC</a>; the tool refuses a network other than chain 5042.</li>
+<li>ERC-8004 identity <code>ownerOf(agentId)</code> and <code>tokenURI(agentId)</code> from the <a href="https://arcusid.com/docs" rel="noopener noreferrer">canonical Arc identity registry</a> (<code>0x8004A169...39a432</code>). An on-chain JSON <code>data:</code> registration can be decoded locally; external registration URLs are never fetched automatically.</li>
+<li>Canonical Arc reputation <code>getClients(agentId)</code> and <code>getSummary(agentId, clients, "", "")</code> using the unfiltered public client list (up to 64 entries). This is <em>not</em> a sybil-resistant allow-list or independently verified payer evidence.</li>
+<li>No signing RPC, wallet connection, trusted-decision API, private network scans or untrusted external profile downloads. All on-chain metadata is rendered as inert text. Only the official Arc RPC is in the page's network allow-list.</li>
+</ul>
+</section>
+<section class="card">
+<h2>Need payment-header troubleshooting too?</h2>
+<p>A correct registry ID does not validate the HTTP 402 quote or signed request flow. Use our separate <a href="/x402-har-diagnostic/">free browser-local x402 HAR failure triage</a>. An optional <strong>5 native Circle Base USDC</strong> one-endpoint synthetic-only technical QA pilot is offered there subject to written scope, acceptance criteria and refund terms before any payment; it is unrelated to Arc identity registration. Never share your private HAR or signed payment authorization.</p>
+<p class="small">This independent AI-assisted project is not operated by, endorsed by or funded by ArcID, Circle, or the ERC-8004 maintainers. It is not a security audit or financial advice. <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/tree/main/arc-prepay-guard" rel="noopener noreferrer">Review the original source and local tests</a>.</p>
+</section>
+</main>
+<footer>One Cursor · MIT-licensed original code · No automatic payment decision. Source-specific registry addresses, not a KYC service. Last reviewed 2026-10-21.</footer>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>
