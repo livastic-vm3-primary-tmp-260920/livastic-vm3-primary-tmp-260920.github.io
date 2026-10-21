@@ -18,6 +18,56 @@ All date columns are checked as an explicit UTC `YYYY-MM-DD HH:mm:ss` calendar t
 
 Unknown input exchange CSV fields are not automatically mapped. This service does not write or download corrected data, verify accepted imports inside a Koinly account, certify cost basis, calculate taxable gains, process raw wallet data on a server or supply tax/legal advice.
 
+
+## Real October 2026 Strike-to-Koinly header drift, no guessed importer
+
+A genuine independent Koinly forum user reported October 12, 2026 that
+Strike iOS CSV exports return Unknown file:
+https://discuss.koinly.io/t/strike-exchange-csv-file-appears-to-have-changed-october-2026/28630
+
+This user is NOT our customer, and provided NO source file, no independently
+verified old or new Strike column specification, budget or order. The sample
+old headers Time/Type/Amount/Currency/Fee and new
+Timestamp/Transaction Type/Quantity/Asset/Fee are ENTIRELY INVENTED.
+
+First-party Koinly documentation:
+https://support.koinly.io/en/articles/9885319-how-to-modify-csv-files-to-import-them-to-koinly
+clearly says that if a SUPPORTED exchange returns Unknown file, DO NOT reformat
+the original exchange file. Contact Koinly Support instead. This free new tool
+only helps a user compare the FIRST HEADER LINE from a known working old
+file to the first header of a rejected new file. It does not claim to
+repair the supported importer or to produce accepted tax data.
+
+The existing site section #header-drift accepts optional OLD, required NEW
+header line only, max2048 chars per line and 36 fields; handles BOM,
+RFC-style quoted fields, comma/semicolon/tab delimiters, case/spacing,
+column renames, order changes and duplicate collisions. It rejects pasting
+multirow files, obvious account secrets and transaction-like values. It never
+infers that a matching position proves a semantically equivalent field,
+reconstructs transfers, deletes imports, produces revised CSV or contacts
+Koinly. No provider/tested import results are claimed.
+
+Two new pure JavaScript modules header-drift.mjs and header-drift-app.mjs
+execute locally. The adapter uses only DOM textContent for user-entered
+header strings, never innerHTML or eval. Existing Content Security Policy
+still says connect-src none. There are no backend, payment, analytics,
+wallet, RPC, network fetch, login, storage or data upload features.
+The preexisting full template checker remains an independent user-initiated
+local file chooser; this new compare does not read more than two text fields.
+
+Repeat offline:
+
+    node --test crypto-csv-rescue/koinly-preflight/header-drift.test.mjs
+    python3 -m unittest discover -s crypto-csv-rescue/koinly-preflight/tests -p test_*.py
+    python3 -m unittest discover -s tests -q
+
+The optional preexisting VM1 5 native Base Circle USDC manually scoped
+one-source header mini (and separate more expensive pilot) requires one
+real human buyer who authorizes public/fictional inputs, written delivery,
+terms, correct recipient, privacy and refunds before any payment. If Koinly
+support or the free check resolves an issue, customers pay 0. Releasing this
+free tool is not independent verified uptake or a sale.
+
 ## Privacy & threat model
 
 Source file selected only with browser's file picker; `File.text()` reads at most 512 KiB, 200 data rows, 36 columns, max 16,384 characters/cell. Strict RFC-style quoting and row-width controls. Module references are same-origin and a strict CSP has `connect-src 'none'`, no analytics, storage, cookies, fetch/XHR, file POST, wallet library or signing. Errors list **authored static status codes, official template field names and source record numbers** only. No filename, raw amount, timestamp, transaction hash or original CSV cell is shown, logged or transmitted. Actual browser memory follows standard JS GC, so close the page after inspecting sensitive local data. Choose only files you own or are authorized to inspect.

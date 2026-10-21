@@ -78,7 +78,7 @@ class TwoStageKoinlyBuyerWorkflows(unittest.TestCase):
             self.assertNotIn("localStorage",self.pages[k])
             self.assertNotIn('type="file" name=',self.pages[k])
             self.assertIn("default-src 'none'",self.pages[k])
-        self.assertEqual(self.p["check"].scripts,["./app.mjs"])
+        self.assertEqual(self.p["check"].scripts,["./app.mjs","./header-drift-app.mjs"])
         self.assertIn("connect-src 'none'",self.pages["check"])
         self.assertIn("does not",self.pages["check"].lower())
         self.assertIn("No automatic",self.pages["check"]) if "No automatic" in self.pages["check"] else self.assertIn("No USDC charge",self.pages["check"]) if "No USDC charge" in self.pages["check"] else self.assertIn("No wallet",self.pages["check"])

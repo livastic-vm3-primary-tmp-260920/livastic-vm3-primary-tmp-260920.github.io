@@ -60,9 +60,9 @@ class KoinlyPrivateCsvPreflightTests(unittest.TestCase):
         self.assertIn("default-src 'none'",self.html)
         self.assertIn("script-src 'self'",self.html)
         self.assertIn("form-action 'none'",self.html)
-        self.assertEqual(len(self.tags.scripts),1)
+        self.assertEqual([t.get("src") for t in self.tags.scripts],["./app.mjs","./header-drift-app.mjs"])
         self.assertEqual(self.tags.scripts[0].get("src"),"./app.mjs")
-        self.assertEqual(self.tags.scripts[0].get("type"),"module")
+        self.assertTrue(all(t.get("type")=="module" for t in self.tags.scripts))
         self.assertEqual(len([x for x in self.tags.inputs if x.get("type")=="file"]),1)
         self.assertIn("f.text()",self.app)
         for denied in ["fetch(","XMLHttpRequest","WebSocket","sendBeacon","localStorage","sessionStorage",
@@ -125,7 +125,7 @@ class KoinlyPrivateCsvPreflightTests(unittest.TestCase):
         self.assertIn("Do not paste real CSV lines",self.html)
         self.assertNotIn("fetch(",self.app)
         self.assertNotIn("sendBeacon(",self.app)
-        self.assertEqual(len(self.tags.scripts),1)
+        self.assertEqual([t.get("src") for t in self.tags.scripts],["./app.mjs","./header-drift-app.mjs"])
 
     def test_no_external_owner_seed_auth_claims_or_dynamic_upload_form(self):
         self.assertIn('type="file"',self.html)
