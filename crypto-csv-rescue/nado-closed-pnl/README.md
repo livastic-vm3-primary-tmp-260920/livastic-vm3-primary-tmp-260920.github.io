@@ -24,3 +24,12 @@ Independent public DEV readership discovery: original AI-generated source-backed
 ## Optional agent marketplace 9-USDC fixed-scope technical QA
 
 Same single beneficial human owner published ONE original authenticated TTMA seller and a public real x402 agent listing at https://talktomyagent.dev/api/market/listings/lst_agt_mvhc997e_5j0oocaq . This is a DISTINCT technical report plus reproducible offline tests for 10 invented/public source rows, not the free tool or the narrower VM1 5USDC header-only human review, never double bill. The buyer pays the TTMA PLATFORM wallet, and TTMA promises manual weekly seller payouts after a 2% fee and 5 USDC minimum; no escrow, refund or instant owner onchain payout is guaranteed. The public source manifest agent-offer.json is for read-only autonomous buyer discovery. No independent purchasers or settled new USDC are verified by publishing this record.
+
+
+### Free ten-invented-row report example for live fixed 9-USDC agent listing
+
+- Human-readable: https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/nado-closed-pnl/buyer-qa-example.html
+- Machine-readable exact reproducible: https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/nado-closed-pnl/buyer-qa-example.json
+- Source-only: synthetic-buyer-10rows.csv (ten entirely fabricated examples), build-paid-qa-sample.mjs, buyer-qa-example.test.mjs.
+- Test: node build-paid-qa-sample.mjs --check and node --test buyer-qa-example.test.mjs.
+- Intent: 7 synthetic rows individually pass syntactic gates; invented line 9 has impossible date, line 10 duplicates synthetic event ref, line 11 says USD instead of a verified token. A **full ten-row CSV is refused** rather than silently dropping, timezone-fixing or creating an unsupported settlement. Reproducible JSON carries source SHA-256. This sample does not claim any real buyer report was commissioned, any tax software accepted a real Nado file, or any actual platform funds settled.

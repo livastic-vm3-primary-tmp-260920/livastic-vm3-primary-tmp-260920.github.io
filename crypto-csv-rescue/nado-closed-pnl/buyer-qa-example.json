@@ -1,0 +1,76 @@
+{
+  "format": "onecursor-public-synthetic-9usdc-QA-example-v1",
+  "documentType": "FREE ORIGINAL DEMO NOT BUYER ORDER OR COMPLETED PAID WORK",
+  "freeTool": "https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/nado-closed-pnl/",
+  "originalRealX402Listing": "https://talktomyagent.dev/api/market/listings/lst_agt_mvhc997e_5j0oocaq",
+  "firstpartyKoinlyDocumentation": [
+    "https://support.koinly.io/en/articles/9489976-how-to-create-a-custom-csv-file-with-your-data",
+    "https://support.koinly.io/en/articles/9490027-futures-and-perpetuals-pnl-other-gains"
+  ],
+  "source": {
+    "kind": "ENTIRELY_INVENTED_FAKE_10_ROW_CSV_NOT_NATIVE_NADO",
+    "file": "synthetic-buyer-10rows.csv",
+    "sha256": "558d4c3b6b770cc84aba6ce09dffd62946b6dbcc0b51863dd722255ad9aa1d10",
+    "columns": [
+      "Closed At UTC",
+      "Realized PnL",
+      "Settlement Asset",
+      "Invented Reference"
+    ],
+    "inventedDataRows": 10,
+    "actualCustomerDataUsed": false,
+    "actualNadoSourceSchemaValidated": false,
+    "actualKoinlyUploadOrImportTest": false
+  },
+  "scope": {
+    "namedProblem": "One fictional 10-row closed-PnL Koinly Simple manual mapping quality gate",
+    "verifiedAssumptions": [
+      "Only invented source declares signed already-realized closed PnL.",
+      "Invented header explicitly says UTC, no genuine exchange timezone verified.",
+      "Source has two named example settlement tokens; USD is NOT silently assumed USDC.",
+      "Trading fees, funding and collateral are outside this synthetic-only sample."
+    ],
+    "constraints": "This sample tests structural fields only, not economic truth, tax basis, native Nado compatibility or ledger completeness."
+  },
+  "analysis": {
+    "status": "REJECT_FULL_INPUT",
+    "totalInputRows": 10,
+    "individuallySyntacticallyValidRows": 7,
+    "sourceRowsNeedingHumanResolution": 3,
+    "detectedIssues": [
+      {
+        "line": 9,
+        "code": "INVALID_UTC_DATE",
+        "message": "Source line 9: Invalid UTC calendar date."
+      },
+      {
+        "line": 10,
+        "code": "DUPLICATE_SOURCE_EVENT_REFERENCE",
+        "message": "Invented source reference FAKE-PERP-006 occurs more than once; manual disposition required. No silent drop."
+      },
+      {
+        "line": 11,
+        "code": "UNKNOWN_SETTLEMENT_ASSET",
+        "message": "Source line 11: unverified settlement currency; stop instead of guessing."
+      }
+    ],
+    "fullCandidateCsvReleased": false,
+    "automaticRowDropOrRepair": false
+  },
+  "deliveryExample": {
+    "decision": "NEEDS_DOCUMENTED_SOURCE_FIX_BEFORE_KOINLY_IMPORT",
+    "recommendedAction": "Verify original UTC calendar dates, resolve duplicated closed-position reference and obtain the real settlement asset from the source. Never guess PnL or currency.",
+    "outputType": "short findings note + tests + candidate only if every input passes and source provenance is independently documented",
+    "paidDeliveryOrBuyerAcceptance": false,
+    "chargedNativeBaseCircleUSDC": 0,
+    "uniqueNewOnchainReceiptNativeBaseCircleUSDC": 0
+  },
+  "safety": {
+    "dataCollection": "NONE (firstparty static downloadable invented CSV only)",
+    "paymentAutomatic": false,
+    "walletAccess": false,
+    "realClientEvidence": false,
+    "notInvestmentOrAccountingAdvice": true,
+    "thirdPartyEndorsement": false
+  }
+}
