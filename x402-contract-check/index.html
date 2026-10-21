@@ -98,6 +98,12 @@ code{color:var(--green);background:#071b24;border-radius:4px;padding:1px 4px}
 <p><strong>v2</strong> uses the base64 <code>PAYMENT-REQUIRED</code> header, the <code>accepts[*].amount</code> atomic token amount, CAIP-2 chain identifiers such as <code>eip155:8453</code>, and a top-level <code>resource</code>. Bazaar discovery lives in <code>extensions.bazaar</code>, not the v1 outputSchema field.</p>
 <p>The <strong>Bazaar metadata schema validates its discovery info</strong>. An <code>output: {type,example}</code> declaration alone is not the JSON Schema for all actual paid response fields, required/nullability or error outcomes.</p>
 </section>
+<section class="card" id="browser-har-workflow" aria-label="Browser HAR retry troubleshooting">
+<div class="eyebrow">Free browser-focused x402 debugging · No upload</div>
+<h2>Still getting a 402, 400 or 422 in Chrome after testing a public quote?</h2>
+<p>Use our <a href="/x402-har-diagnostic/">local-only x402 HAR payment retry diagnostic</a> to inspect a browser-captured OPTIONS / HTTP 402 sequence without sending request URLs, cookies, signatures or wallet data to a server. It can detect missing CORS-exposed challenge headers and preflight mismatches, but cannot prove an on-chain payment succeeded. Use only a trace you are authorized to inspect.</p>
+<p><a class="button" href="/x402-har-diagnostic/">Check a local browser HAR (free) ↗</a></p>
+</section>
 <section class="card" id="paid-micro-qa" aria-labelledby="paid-micro-qa-heading">
 <div class="eyebrow">Optional existing seller · Machine-payable micro review · No instant browser purchase</div>
 <h2 id="paid-micro-qa-heading">Need a short AI-assisted explanation beyond these free diagnostic codes?</h2>
