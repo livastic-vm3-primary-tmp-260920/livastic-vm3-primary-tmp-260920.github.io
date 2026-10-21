@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'; img-src 'none'; font-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Diagnose x402 browser HAR payment retries, CORS preflight, HTTP 402 and 400/422 locally in your browser. No upload, no wallet, no API keys.">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/x402-har-diagnostic/">
+<title>Offline x402 HAR Payment Failure Triage — Free, Private | One Cursor</title>
+<style>
+:root{color-scheme:dark;--bg:#081923;--surface:#12303c;--border:#3c6371;--text:#f0f8fa;--muted:#c2d7df;--mint:#b5efd4;--blue:#b5dfff;--warn:#ffe0a6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}
+header,main,footer{max-width:1040px;margin:auto;padding:22px clamp(16px,4vw,40px)}
+header{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+h1{font-size:clamp(30px,5vw,48px);letter-spacing:-.03em;line-height:1.14;margin:12px 0 20px}
+h2{font-size:clamp(21px,3vw,28px)}p,li{color:var(--muted)}a{color:var(--blue);overflow-wrap:anywhere}
+strong{color:var(--mint)}.eyebrow{letter-spacing:.1em;font-weight:750;font-size:12px;color:var(--mint);text-transform:uppercase}
+.card{padding:24px;margin:24px 0;background:var(--surface);border:1px solid var(--border);border-radius:14px}
+.warning{padding:13px 17px;border-left:4px solid var(--warn);color:var(--warn);background:#3b3027}
+label{font-weight:750;display:block;margin:20px 0 10px}
+input[type=file]{display:block;width:100%;padding:14px;border:1px dashed var(--border);border-radius:9px;background:#0b222e}
+button,.button{padding:11px 16px;margin:12px 8px 8px 0;border:1px solid var(--mint);background:var(--mint);color:#062b22;font:inherit;font-weight:750;border-radius:8px;cursor:pointer;min-height:45px;display:inline-block;text-decoration:none}
+button.secondary{background:transparent;color:var(--mint)}button:disabled{opacity:.4;cursor:not-allowed}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+#message{padding:13px 16px;border:1px solid var(--border);border-radius:6px;min-height:48px}
+.high{border-left:4px solid #ffb4a7}.medium{border-left:4px solid var(--warn)}.info{border-left:4px solid var(--mint)}
+.result{margin:13px 0;padding:12px 18px;background:#091c29;border-radius:7px}
+.result p{margin:3px 0 0}code{background:#061e2a;color:var(--mint);padding:2px 5px;border-radius:3px}
+ul{padding-left:22px}footer{border-top:1px solid var(--border);font-size:13px}
+@media(max-width:550px){.card{padding:16px}button,.button{width:100%;text-align:center;margin:7px 0}}
+</style>
+</head>
+<body>
+<header>
+<a href="https://livastic-vm3-primary-tmp-260920.github.io/">ONE CURSOR · X402 DEVELOPER UTILITIES</a>
+<span>Private • Browser-only • No wallet connection</span>
+</header>
+<main>
+<div class="eyebrow">Free original diagnostic / 2026-10-21</div>
+<h1>Why did my x402 payment retry fail in the browser?</h1>
+<p>Use a locally saved HAR (HTTP Archive) to triage <strong>402 challenge visibility, 400/422 before payment, payment-header retries, and CORS preflight</strong>. Unlike a curl-only test, this examines the browser's observed sequence. It does not make requests, execute payments or assert successful USDC settlement.</p>
+<div class="warning"><strong>Privacy:</strong> HAR files can contain <code>PAYMENT-SIGNATURE</code>, cookies, authorization headers, signed requests and personal data. Analyze only files you control. This page processes the file strictly <strong>inside your browser</strong> and never sends it to us. Never email or publish the original HAR. Exported findings exclude headers, URLs and payloads.</div>
+<section class="card" aria-labelledby="how-title">
+<h2 id="how-title">Run a local diagnostic</h2>
+<p>In Chrome DevTools → Network, reproduce one <em>authorized</em> problem on your own endpoint, then export HAR (with sensitive data removed when possible). Captures can omit preflights. This page accepts at most 2 MB of HAR JSON with 400 entries; larger traces should be trimmed locally.</p>
+<label for="file">Choose local .har / .json file (never uploaded)</label>
+<input id="file" type="file" accept=".har,.json,application/json" aria-describedby="message">
+<button id="analyze" type="button">Analyze selected HAR locally</button>
+<button id="example" class="secondary" type="button">Try fictional failure example</button>
+<button id="export" type="button" class="secondary" disabled>Export sanitized findings JSON</button>
+<div id="message" role="status" aria-live="polite">No analysis has run. No file is stored or sent.</div>
+<div id="counts" aria-live="polite"></div>
+<div id="findings"></div>
+</section>
+<section class="card">
+<h2>What this tool can — and cannot — establish</h2>
+<ul>
+<li><strong>Can:</strong> highlight a missing or hidden <code>PAYMENT-REQUIRED</code> response header, an observed OPTIONS mismatch, an unsigned <code>400/422</code>, a signed retry receiving <code>402</code>, and v1/v2 metadata shapes.</li>
+<li><strong>Cannot:</strong> know whether money reached the payee, whether the quoted USDC asset is authentic, or whether a paid resource was delivered. HTTP 2xx is not a chain receipt. Some CORS requests never appear in a captured HAR.</li>
+<li><strong>Privacy model:</strong> no analytics, fetch, SDK, CDN, cookies, localStorage, wallet provider or server-side processing. The analyzer returns authored codes and integer counts only. You can inspect <a href="https://github.com/livastic-vm3-primary-tmp-260920/livastic-vm3-primary-tmp-260920.github.io/tree/main/x402-har-diagnostic">the open-source implementation</a>.</li>
+</ul>
+</section>
+<section class="card">
+<div class="eyebrow">Optional paid help · Written quote first</div>
+<h2>Have a reproducible merchant integration failure?</h2>
+<p>If the free diagnostic does not resolve your own <strong>public, authorized</strong> x402 endpoint, request a bounded, synthetic-data-only review with acceptance criteria. <strong>Indicative 19 native Base Circle USDC</strong> for one endpoint and one reproducible scenario; final price/scope and payment instructions require written confirmation. No seed phrase, private payment payload, secret API key, production invoice or wallet approvals accepted.</p>
+<a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSe_N8anCGUDmWdNZLnGwFRfhYaaCsB18BKdYd_VsFZp1xWm3g/viewform?usp=pp_url&amp;entry.1765055758=VM3%20x402%20HAR%20payment%20retry%20QA%20%2819%20Base%20Circle%20USDC%20indicative%3B%20written%20scope%20first%29" target="_blank" rel="noopener noreferrer">Request one-endpoint paid QA</a>
+<p class="small">For AI-agent buyers seeking a smaller existing service, the <a href="https://api.soul.mds.markets/v1/soul/vm3-usdc-receipt-qa" target="_blank" rel="noopener noreferrer">original Soul.Markets seller</a> lists a separate quote-preflight micro-service. Its exact current paid terms are set by that platform, not this page.</p>
+</section>
+</main>
+<footer>Original tool, no guarantees of payment compatibility or settlement. Public links only. <a href="https://livastic-vm3-primary-tmp-260920.github.io/x402-contract-check/">Inspect an unsigned public 402 challenge without HAR</a>.</footer>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>
