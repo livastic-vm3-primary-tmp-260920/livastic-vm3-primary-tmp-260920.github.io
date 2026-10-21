@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; connect-src 'none'; img-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Check Koinly Simple, Trades or Universal CSV template headers, UTC date format and amounts in your browser. No file upload, wallet or tax advice.">
+<meta name="description" content="Free local Koinly Simple, Trades and Universal CSV format check plus October 2026 Strike Unknown-file header drift comparison. No file upload, wallet, tax advice or automatic CSV rewriting.">
 <link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/koinly-preflight/">
 <title>Koinly CSV Format Preflight — Free Browser-Local Check | One Cursor</title>
 <style>
@@ -33,6 +33,11 @@ select,input[type="file"]{display:block;width:100%;background:#102537;color:var(
 code{background:#082235;border:1px solid var(--border);padding:2px 5px;border-radius:4px}
 footer{margin-top:36px;border-top:1px solid var(--border);padding-top:22px;font-size:14px}
 small{font-size:13px}
+.header-line{display:block;width:100%;background:#0c2330;color:var(--text);border:1px solid var(--border);border-radius:7px;padding:12px;font:14px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;resize:vertical;overflow-wrap:anywhere}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.two-col section{min-width:0}
+.two-col li{overflow-wrap:anywhere}
+@media(max-width:650px){.two-col{grid-template-columns:1fr}}
 </style>
 </head>
 <body><main>
@@ -54,6 +59,31 @@ small{font-size:13px}
 </ol>
 <p><a class="button alt" href="https://livastic-vm1-primary.github.io/paperpilot-tools/koinly-column-mapper.html">Step 1: Map columns locally for free ↗</a><a class="button alt" href="#check-title">Step 2: Validate your candidate below ↘</a></p>
 <p class="note">Both tools are maintained for the same human economic owner, not independent vendor certifications. The VM1 mapper works on a caller-selected input file and VM3's preflight independently works on a caller-selected output file. They do not open each other's browser data or share sessions, uploaded CSV bytes, wallet access or payment permissions.</p>
+</section>
+
+<section class="card" id="header-drift" aria-labelledby="header-drift-title">
+<p class="kicker">Real October 2026 user problem · New FREE format-drift diagnostic</p>
+<h2 id="header-drift-title">Strike export changed? Compare only the CSV header rows</h2>
+<p>A <a href="https://discuss.koinly.io/t/strike-exchange-csv-file-appears-to-have-changed-october-2026/28630" target="_blank" rel="noopener noreferrer">genuine October 12, 2026 Koinly user</a> reported the <em>iOS Strike CSV</em> now triggers an <strong>“Unknown file”</strong> warning. We do <strong>not</strong> possess an independently authenticated old-versus-new Strike CSV specification or that person's source file, and do not claim to have fixed Koinly's parser.</p>
+<p class="note"><strong>Official Koinly rule for supported exchange files:</strong> If Koinly asks you to map a file as “Unknown file”, <strong>DO NOT edit, rewrite or re-import a modified original statement to guess the fix</strong>. Keep your original untouched and <a href="https://support.koinly.io/en/articles/9885319-how-to-modify-csv-files-to-import-them-to-koinly" target="_blank" rel="noopener noreferrer">contact Koinly support in the app</a>. Our diagnostic is meant to help you describe a change to support, not bypass their importer or make tax recommendations.</p>
+<p>Optional: paste <strong>ONLY the very first header line</strong> of an old previously working CSV and of the new rejected CSV. <strong>No transaction rows, dates, balances, customer identifiers, wallet addresses, emails, account numbers or secrets.</strong> The compare runs wholly in your browser. With no old header, it can only inspect the new line, not infer what changed.</p>
+<label for="old-header-text">Prior known-working CSV header line (optional; never paste data rows)</label>
+<textarea id="old-header-text" class="header-line" rows="2" maxlength="2048" spellcheck="false" placeholder="Example only: Time,Type,Amount,Currency,Fee"></textarea>
+<label for="new-header-text">Current CSV header line (required; never paste data rows)</label>
+<textarea id="new-header-text" class="header-line" rows="2" maxlength="2048" spellcheck="false" placeholder="Example only: Timestamp,Transaction Type,Quantity,Asset,Fee"></textarea>
+<div>
+<button id="drift-check" type="button">Compare header structure locally</button>
+<button id="drift-synthetic" class="alt" type="button">Load fully fictional old/new headers</button>
+<button id="drift-clear" class="alt" type="button">Clear both</button>
+</div>
+<p id="drift-result" role="status" aria-live="polite">Nothing compared. No input is stored or sent.</p>
+<div class="two-col">
+<section><h3>Header names only in the old file</h3><ul id="drift-old-only"><li>No comparison</li></ul></section>
+<section><h3>Header names only in the current file</h3><ul id="drift-new-only"><li>No comparison</li></ul></section>
+</div>
+<p id="drift-meta" class="small"></p>
+<p><small>Supports quoted comma/semicolon/tab CSV headers, BOM, simple case/spacing normalization, changed order, delimiter changes and duplicate names. Rejects multirow input and obvious sensitive fields. <strong>We cannot know whether a renamed field is equivalent to another field, whether transactions are missing, or whether Koinly will accept the file.</strong> No auto-mapping, edits, downloads, server uploads, tracking or paid request.</small></p>
+<p><strong>Still need an authorized technical review?</strong> The original <a href="#mini5">optional 5 native Base Circle USDC one-source mini-review</a> and <a href="#feedback">voluntary feedback</a> are separate; a buyer must agree in writing on scope, source privacy, receipt, payment, delivery and refund terms. If the free check or Koinly support resolves it, pay <strong>0 USDC</strong>. No actual independent Strike user has bought a report from this tool.</p>
 </section>
 
 <h2 id="check-title">Run a private structural check</h2>
@@ -104,4 +134,5 @@ small{font-size:13px}
 </section>
 <footer>One Cursor · 21 October 2026 · Read-only local technical QA. No analytics, network fetches, data uploads, payment requests, cookies or storage from this tool. Third-party documentation links open only when you choose them. <a href="/">Original owner home</a> · <a href="/llms.txt">Agent-readable source</a> · <a href="/sitemap.xml">Sitemap</a>.</footer>
 <script type="module" src="./app.mjs"></script>
+<script type="module" src="./header-drift-app.mjs"></script>
 </main></body></html>

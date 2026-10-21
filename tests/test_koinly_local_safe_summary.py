@@ -28,14 +28,14 @@ class OriginalLocalSafeFeedbackTest(unittest.TestCase):
 
     def test_one_own_locally_reviewable_readonly_redacted_summary(self):
         self.assertEqual(len([i for i in self.parser.inputs if i.get("id")=="safe-summary"]),1)
-        self.assertIn("readonly",self.parser.inputs[0])
+        self.assertIn("readonly",next(i for i in self.parser.inputs if i.get("id")=="safe-summary"))
         self.assertEqual(len([i for i in self.parser.buttons if i.get("id")=="select-safe-summary"]),1)
         self.assertIn("disabled",[i for i in self.parser.buttons if i.get("id")=="select-safe-summary"][0])
         self.assertIn('type="button" disabled>Select safe summary',self.html)
         self.assertIn("Ctrl+C / Copy",self.html)
         self.assertIn('aria-live="polite"',self.html)
         self.assertEqual(self.parser.forms,0)
-        self.assertEqual(self.parser.scripts,[{"type":"module","src":"./app.mjs"}])
+        self.assertEqual(self.parser.scripts,[{"type":"module","src":"./app.mjs"},{"type":"module","src":"./header-drift-app.mjs"}])
         self.assertIn("connect-src 'none'",self.html)
         self.assertIn("form-action 'none'",self.html)
 
