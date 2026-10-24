@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#091726">
+<meta name="description" content="Three live, strictly opt-in Base USDC x402 v2 data APIs. Inspect free synthetic samples and unsigned HTTP 402 payment terms before a wallet-approved micro-purchase. No keys or personal data requested.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+<link rel="canonical" href="https://livastic-vm3-primary-tmp-260920.github.io/x402-live-api/">
+<title>Live x402 API Buyer Guide · BTC Funding and X Layer Evidence · One Cursor</title>
+<style>
+:root{color-scheme:dark;--bg:#091726;--card:#14283c;--ink:#edf6fb;--muted:#b9d0dc;--line:#416780;--link:#91edc5;--warn:#f7dfad}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1000px;margin:auto;padding:24px 18px 72px}a{color:var(--link);text-underline-offset:3px}a:focus-visible{outline:3px solid var(--warn);outline-offset:4px}
+nav{display:flex;gap:22px;flex-wrap:wrap;font-size:0.95rem}h1{font-size:clamp(2.05rem,5vw,3.7rem);line-height:1.17;margin:35px 0 12px}h2{font-size:1.55rem;margin:10px 0 14px}h3{margin:0 0 8px}
+p{color:var(--muted)}.eyebrow{color:var(--link);font-weight:750;letter-spacing:.11em;text-transform:uppercase;font-size:.78rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:24px 0}.card{background:var(--card);padding:22px;border:1px solid var(--line);border-radius:12px}.wide{grid-column:1/-1}
+.badge{color:#dbf8eb;font-size:.85rem;font-weight:750}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.action{display:inline-block;border-radius:8px;border:1px solid var(--link);padding:10px 13px;text-decoration:none;font-weight:700}.action:focus-visible,.action:hover{background:#1a4b49}
+code,pre{font:0.9rem/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}code{overflow-wrap:anywhere}pre{padding:15px;background:#07111b;border-radius:10px;border:1px solid var(--line);overflow-x:auto}
+.note{border-left:4px solid var(--warn);padding:12px 17px;background:#222b36;border-radius:6px}footer{border-top:1px solid var(--line);padding-top:17px;margin-top:36px;color:var(--muted);font-size:.9rem}
+@media(max-width:740px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}nav{gap:14px}}
+</style>
+</head><body><main>
+<nav aria-label="Site navigation"><a href="/">One Cursor / Home</a><a href="/defi-payment-proof-qa/">Free QA tools</a><a href="https://vm5-openapi-x402.onrender.com/openapi.json">Original seller OpenAPI</a></nav>
+<p class="eyebrow">Three real deployed machine-readable products · One beneficial human owner · No paywall to inspect terms</p>
+<h1>Query the evidence.<br>Approve the payment yourself.</h1>
+<p><strong>Original vendor:</strong> the same owner's existing VM5 merchant at <a href="https://vm5-openapi-x402.onrender.com/">vm5-openapi-x402.onrender.com</a>. Payment settlement is offered in native Circle USDC on <strong>Base mainnet (chainId 8453, CAIP-2 eip155:8453)</strong>. The recipient is the existing public VM1 EVM address <code>0x4e3106520E40af30870caFE78da1B1e7110eD98E</code>; Circle USDC contract <code>0x833589fCD6eDb6E08f4C7C32D4f71b54bdA02913</code>.</p>
+<p>Every request below has a <strong>free synthetic preview</strong> to evaluate the response schema. Paid URLs first answer <strong>HTTP 402</strong> with unsigned payment terms. Payment is not made by visiting or reading this page. No wallet connects here, no browser analytics and no confidential inputs or keys are requested.</p>
+<section class="grid" aria-label="Available products">
+<article class="card wide">
+<p class="eyebrow">Market metadata · 0.010000 USDC / successful request</p>
+<h2>Four BTC/USDT perpetual funding quotes</h2>
+<p>Get four distinct public linear-perpetual venue observations: Binance, Bybit, OKX, Bitget, with documented alternate venues where an original source is unavailable. An incomplete or stale result should fail without offering the paid report. <strong>No arbitrage promise, trading recommendation, annualization or exchange account access.</strong></p>
+<p class="badge">Payment quote independently observed: unsigned GET → HTTP 402, 10,000 atomic Base USDC units, exact recipient above (2026-10-24 05:39 UTC).</p>
+<div class="actions"><a class="action" href="https://vm5-openapi-x402.onrender.com/v1/btc-funding-sample">Free illustrative JSON — no payment</a><a class="action" href="https://vm5-openapi-x402.onrender.com/v1/btc-funding-four-venues">Inspect live HTTP 402 terms (unpaid)</a></div>
+</article>
+<article class="card">
+<p class="eyebrow">Pinned public chain state · 0.005000 USDC / successful request</p>
+<h2>X Layer TapeOut CPU0 integrity fields</h2>
+<p>Source-pinned X Layer chainId 196 factory, market, EIP-1967 implementation and public state diagnostics from fixed block evidence. This is <strong>not a security audit</strong> and does not guarantee any intervening event is represented.</p>
+<p class="badge">Unsigned GET → HTTP 402, 5,000 atomic Base USDC units (2026-10-24 05:39 UTC).</p>
+<div class="actions"><a class="action" href="https://vm5-openapi-x402.onrender.com/v1/tapeout-cpu0-sample">Free synthetic response</a><a class="action" href="https://vm5-openapi-x402.onrender.com/v1/tapeout-cpu0-report">Read unsigned payment quote</a></div>
+</article>
+<article class="card">
+<p class="eyebrow">Two pinned blocks · 0.010000 USDC / successful request</p>
+<h2>X Layer change-only state diff</h2>
+<p>Compare the documented 20 CPU0 fields between two pinned public X Layer state points. The response is <strong>not a complete change timeline</strong>, alert subscription, professional legal/financial report or proof that every historical event was seen.</p>
+<p class="badge">Unsigned GET → HTTP 402, 10,000 atomic Base USDC units (2026-10-24 05:39 UTC).</p>
+<div class="actions"><a class="action" href="https://vm5-openapi-x402.onrender.com/v1/tapeout-cpu0-diff-sample">Free fictional change JSON</a><a class="action" href="https://vm5-openapi-x402.onrender.com/v1/tapeout-cpu0-diff">Read unsigned payment quote</a></div>
+</article>
+</section>
+<section class="card" id="protocol">
+<h2>How to check without spending</h2>
+<p>These commands only read the public response and its <code>PAYMENT-REQUIRED</code> header. They do not send wallet keys, signatures or a payment. Use a properly configured x402 v2 buyer client only if you independently elect to pay after reading its fresh accepted terms.</p>
+<pre><code>curl -i --max-time 20 \
+  https://vm5-openapi-x402.onrender.com/v1/btc-funding-four-venues
+
+curl -sS --max-time 20 \
+  https://vm5-openapi-x402.onrender.com/v1/btc-funding-sample</code></pre>
+<p class="note"><strong>Payment safety:</strong> a 402 response is an invitation to evaluate terms, <em>not</em> a completed purchase or confirmed receipt. Verify network, token contract, amount, payee, expiry and your own daily spending limit with a trusted buyer wallet. Never paste seed phrases, private keys, session tokens, exchange keys, confidential business data or signed payments into this page.</p>
+</section>
+<section class="card" style="margin-top:20px">
+<h2>Exactly what is verified</h2>
+<p>The three listed production endpoints returned their described unsigned 402 quotes on 24 October 2026, and their three linked free previews returned 200. The original merchant reports two older, genuinely paid-and-delivered independent automated-scout API calls totaling 0.015 Base USDC. Those are <strong>historical technical-scout transactions from one source, not two organic buyers, not a conversion rate, not a new order generated by this page, and not guaranteed future revenue</strong>. These three new guide links have no attributable customer purchase yet.</p>
+<p>Inspect <a href="https://vm5-openapi-x402.onrender.com/llms.txt">machine-friendly service documentation</a> and <a href="https://vm5-openapi-x402.onrender.com/openapi.json">live source OpenAPI</a>. Independent, unpaid alternatives are available where appropriate. Service freshness, market source availability and buyer eligibility can change; fresh first-party live quotes always supersede this dated snapshot.</p>
+</section>
+<footer>One Cursor · AI-assisted developer research, one accountable beneficial human owner across project VMs · No custody, no deposit, no risk-free trading, no guaranteed sales · Published 2026-10-24 (UTC)</footer>
+</main></body></html>
