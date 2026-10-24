@@ -1,0 +1,283 @@
+{
+  "schema": "VM3-One-Human-TapeOut-XLayer-VerifiedPinnedState-Public-Preview-v1",
+  "firstPartyObservationUtc": "2026-10-24T11:55:56.303Z",
+  "originalOneBeneficialHumanOwnerAcrossVMs": true,
+  "method": "actual read-only X Layer mainnet JSON-RPC at two fixed, historical heights; not live, paid, signed or an audit",
+  "chainId": 196,
+  "network": "eip155:196",
+  "basePayoutNetwork": "eip155:8453",
+  "actualBlocks": {
+    "baseline": "73915245",
+    "current": "74073819"
+  },
+  "primarySourceFixedContracts": {
+    "factory": "0x1f09daefa827f02cbb40967cc91b259763760761",
+    "market": "0xd89f358c48a7B632c9845af2a02A32eB90DD75DB",
+    "processorCPU0": "0x839bdd6fa7a66416a609a735e11de5411b98574e",
+    "tokenTransistor": "0xbe0eee424c49d44592e4d498740f5b031ef8e26d"
+  },
+  "rpcHostnameSources": [
+    "rpc.xlayer.tech",
+    "xlayerrpc.okx.com"
+  ],
+  "confirmedCompleteChainReads": true,
+  "hasUnknownFields": false,
+  "readErrors": [],
+  "totalFieldsCompared": 20,
+  "changedFields": 2,
+  "unchangedFields": 18,
+  "actualNormalizedFields": [
+    {
+      "field": "factory.cpuCount",
+      "label": "Registered CPU processor count",
+      "type": "uint",
+      "before": "387",
+      "after": "392",
+      "changed": true
+    },
+    {
+      "field": "factory.deployFee",
+      "label": "Factory deploy fee (wei)",
+      "type": "uint",
+      "before": "6600000000000000",
+      "after": "6600000000000000",
+      "changed": false
+    },
+    {
+      "field": "factory.protocolFee",
+      "label": "Factory protocol fee (wei)",
+      "type": "uint",
+      "before": "660000000000000",
+      "after": "660000000000000",
+      "changed": false
+    },
+    {
+      "field": "factory.isSealed",
+      "label": "Factory immutable sealing flag",
+      "type": "bool",
+      "before": "false",
+      "after": "false",
+      "changed": false
+    },
+    {
+      "field": "factory.owner",
+      "label": "Factory owner address",
+      "type": "address",
+      "before": "0xb3d85b42a045c1a88d800cad0f55d2566a4d3138",
+      "after": "0xb3d85b42a045c1a88d800cad0f55d2566a4d3138",
+      "changed": false
+    },
+    {
+      "field": "factory.implementation",
+      "label": "Factory EIP-1967 implementation",
+      "type": "address",
+      "before": "0x74956236ab64ed143933040b4137e8a352e4d17b",
+      "after": "0xb41c1e7602eb5734be2430b72178ccb814a5293d",
+      "changed": true
+    },
+    {
+      "field": "market.feeBps",
+      "label": "Marketplace fee (basis points)",
+      "type": "uint",
+      "before": "100",
+      "after": "100",
+      "changed": false
+    },
+    {
+      "field": "market.isSealed",
+      "label": "Marketplace sealing flag",
+      "type": "bool",
+      "before": "false",
+      "after": "false",
+      "changed": false
+    },
+    {
+      "field": "market.owner",
+      "label": "Marketplace owner",
+      "type": "address",
+      "before": "0xb3d85b42a045c1a88d800cad0f55d2566a4d3138",
+      "after": "0xb3d85b42a045c1a88d800cad0f55d2566a4d3138",
+      "changed": false
+    },
+    {
+      "field": "market.implementation",
+      "label": "Marketplace EIP-1967 implementation",
+      "type": "address",
+      "before": "0x38d688f4793a9bf270c2c99492c9a1e45163db6e",
+      "after": "0x38d688f4793a9bf270c2c99492c9a1e45163db6e",
+      "changed": false
+    },
+    {
+      "field": "market.nextListingId",
+      "label": "Next market listing ID",
+      "type": "uint",
+      "before": "4",
+      "after": "4",
+      "changed": false
+    },
+    {
+      "field": "processor.circuits",
+      "label": "CPU0 circuit contract address",
+      "type": "address",
+      "before": "0x839bdd6fa7a66416a609a735e11de5411b98574e",
+      "after": "0x839bdd6fa7a66416a609a735e11de5411b98574e",
+      "changed": false
+    },
+    {
+      "field": "processor.transistors",
+      "label": "CPU0 transistor ERC20 address",
+      "type": "address",
+      "before": "0xbe0eee424c49d44592e4d498740f5b031ef8e26d",
+      "after": "0xbe0eee424c49d44592e4d498740f5b031ef8e26d",
+      "changed": false
+    },
+    {
+      "field": "processor.creator",
+      "label": "CPU0 creator",
+      "type": "address",
+      "before": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+      "after": "0x571d447f4f24688ec35ccf07f1d6993655f6af15",
+      "changed": false
+    },
+    {
+      "field": "processor.nextId",
+      "label": "CPU0 next circuit ID",
+      "type": "uint",
+      "before": "103",
+      "after": "103",
+      "changed": false
+    },
+    {
+      "field": "processor.tapeoutFee",
+      "label": "CPU0 tapeout fee (wei)",
+      "type": "uint",
+      "before": "1300000000000000",
+      "after": "1300000000000000",
+      "changed": false
+    },
+    {
+      "field": "processor.mintPrice",
+      "label": "CPU0 transistor mint price (wei)",
+      "type": "uint",
+      "before": "0",
+      "after": "0",
+      "changed": false
+    },
+    {
+      "field": "processor.minted",
+      "label": "CPU0 transistors minted",
+      "type": "uint",
+      "before": "100000",
+      "after": "100000",
+      "changed": false
+    },
+    {
+      "field": "processor.supplyCap",
+      "label": "CPU0 transistor cap",
+      "type": "uint",
+      "before": "100000",
+      "after": "100000",
+      "changed": false
+    },
+    {
+      "field": "processor.protocolFee",
+      "label": "CPU0 transistor protocol fee (wei)",
+      "type": "uint",
+      "before": "660000000000000",
+      "after": "660000000000000",
+      "changed": false
+    }
+  ],
+  "originalComparedSourceSummary": {
+    "kind": "xlayer_tapeout_cpu0_pinned_state_diff",
+    "schema": "TapeOutXLayerRiskLens/paid-diff-v1",
+    "chainId": 196,
+    "cpuIndex": 0,
+    "network": "eip155:196",
+    "baselineBlock": "73915245",
+    "liveBlock": "74073819",
+    "fieldsCompared": 20,
+    "changes": [
+      {
+        "field": "factory.cpuCount",
+        "label": "Registered CPU processor count",
+        "before": "387",
+        "after": "392"
+      },
+      {
+        "field": "factory.implementation",
+        "label": "Factory EIP-1967 implementation",
+        "before": "0x74956236ab64ed143933040b4137e8a352e4d17b",
+        "after": "0xb41c1e7602eb5734be2430b72178ccb814a5293d"
+      }
+    ],
+    "changeCount": 2,
+    "unchangedCount": 18,
+    "cpuIdentityChanged": false,
+    "warning": "Public X Layer RPC snapshots at two pinned blocks. Not a formal audit, trade recommendation, consensus proof, guarantee of unchanged intermediate states, or proof that a third-party customer paid.",
+    "source": {
+      "factory": "0x1f09daefa827f02cbb40967cc91b259763760761",
+      "market": "0xd89f358c48a7B632c9845af2a02A32eB90DD75DB",
+      "method": "public JSON-RPC eth_call and eth_getStorageAt at each exact block",
+      "readOnly": true
+    },
+    "noWalletKeysRequired": true,
+    "noTransactionSent": true,
+    "olderFullSnapshotDiagnostics": [
+      {
+        "level": "warning",
+        "note": "Factory is not sealed: owner may change deployment or protocol configuration."
+      },
+      {
+        "level": "warning",
+        "note": "Market is not sealed: do not assume current fee/settings remain fixed."
+      },
+      {
+        "level": "caution",
+        "note": "Factory runs through an EIP-1967 implementation slot; verify upgrades independently."
+      },
+      {
+        "level": "caution",
+        "note": "Market is a proxy; listing terms could change after an upgrade."
+      },
+      {
+        "level": "info",
+        "note": "This read-only view does not verify contract audits, wallet ownership, escrow, or a sale."
+      }
+    ],
+    "latestFullSnapshotDiagnostics": [
+      {
+        "level": "warning",
+        "note": "Factory is not sealed: owner may change deployment or protocol configuration."
+      },
+      {
+        "level": "warning",
+        "note": "Market is not sealed: do not assume current fee/settings remain fixed."
+      },
+      {
+        "level": "caution",
+        "note": "Factory runs through an EIP-1967 implementation slot; verify upgrades independently."
+      },
+      {
+        "level": "caution",
+        "note": "Market is a proxy; listing terms could change after an upgrade."
+      },
+      {
+        "level": "info",
+        "note": "This read-only view does not verify contract audits, wallet ownership, escrow, or a sale."
+      }
+    ]
+  },
+  "noTransactionSigningOrWalletReads": true,
+  "noOriginalOwnerGasOrDeposits": 0,
+  "receiptOrSaleForThisPublicPreview": false,
+  "limitations": "This is a reproducible historical snapshot only. Public RPC fields do not provide a consensus certificate or security audit. No claim of current business profit, project certification, guaranteed revenue, future price or new human buyer.",
+  "separatelyLivePaidMerchant": {
+    "freePreview": "https://vm5-openapi-x402.onrender.com/v1/tapeout-cpu0-sample",
+    "paidCurrentState": "https://vm5-openapi-x402.onrender.com/v1/tapeout-cpu0-report",
+    "paidActualDiff": "https://vm5-openapi-x402.onrender.com/v1/tapeout-cpu0-diff",
+    "baseNativeUSDCPriceCurrent": "0.005000",
+    "baseNativeUSDCPriceDiff": "0.010000",
+    "originalVm1PublicUSDCReceivingAddress": "0x4e3106520E40af30870caFE78da1B1e7110eD98E"
+  }
+}

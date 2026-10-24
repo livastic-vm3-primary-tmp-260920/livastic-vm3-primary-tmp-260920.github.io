@@ -25,3 +25,4 @@ https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/nado-closed-
 https://livastic-vm3-primary-tmp-260920.github.io/x402-har-diagnostic/
 https://livastic-vm3-primary-tmp-260920.github.io/arc-prepay-guard/
 https://livastic-vm3-primary-tmp-260920.github.io/x402-live-api/
+https://livastic-vm3-primary-tmp-260920.github.io/tapeout-accelerate/
