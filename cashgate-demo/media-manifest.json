@@ -1,0 +1,17 @@
+{
+  "schema": "CashGateOneOwnerActualAgentNativeBrowserDemoPublicProvenance-v1",
+  "recording_date": "2026-10-24",
+  "video_original_sha256": "fef9076f3980488567fcdd4b0410a305cc727edc213f15967c833a35b75a7be1",
+  "video_size_bytes": 870863,
+  "video_duration_seconds": 66.32,
+  "recorded_application": "real CashGate Agent-Native local React UI on VM3 loopback",
+  "public_application_deployment": false,
+  "actual_historic_blockchain_transfer_not_new_revenue": true,
+  "new_revenue_during_demo_USDC": "0.000000",
+  "wallet_transactions_signed": 0,
+  "source_repo": "https://github.com/livastic-vm3-primary-tmp-260920/cashgate-x402-defi-evidence",
+  "app_uses_real_two_defineAction_tools": true,
+  "browsing_user_logged_in_tabs_modified": false,
+  "recording_synthetic_output": false,
+  "notes": "Real UI/browser actions only; English captions are editorial descriptions; onchain 0.010000 USDC is a PREVIOUS external payer transfer, not generated revenue."
+}

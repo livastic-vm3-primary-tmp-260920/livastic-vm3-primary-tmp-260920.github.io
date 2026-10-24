@@ -1,0 +1,52 @@
+{
+  "schema": "CashGateActualRealChromeNativePublicReadOnlyDemo20261024",
+  "createdUTC": "2026-10-24T13:13:59.692Z",
+  "durationSec": 66.62,
+  "rawBytes": 2921214,
+  "scenes": [
+    {
+      "seconds": 13.3,
+      "scene": "Public-facing local demo application, actual interactive UI only",
+      "status": 200
+    },
+    {
+      "seconds": 22.3,
+      "scene": "Live original Aave x402 payment-quote verification",
+      "unpaid": true,
+      "result": "PASS"
+    },
+    {
+      "seconds": 36,
+      "scene": "Second live onchain X Layer HTTP 402 quote checked",
+      "unpaid": true,
+      "result": "PASS"
+    },
+    {
+      "seconds": 45.8,
+      "scene": "Choose one PRE-EXISTING public chain transfer hash, never a new sale"
+    },
+    {
+      "seconds": 48.9,
+      "scene": "Historic original BaseUSDC transfer verified by real RPC",
+      "originalGrossUSDC": "0.010000",
+      "logIndex": 90,
+      "newSale": false
+    },
+    {
+      "seconds": 58.8,
+      "scene": "Original Agent Native tool actions demonstrated read-only"
+    },
+    {
+      "seconds": 65.3,
+      "scene": "Complete",
+      "walletConnect": false,
+      "transactionSent": 0,
+      "newRevenueUSDC": "0"
+    }
+  ],
+  "errors": [],
+  "noWalletTransaction": true,
+  "noNewSale": true,
+  "usingHistoricalPublicReceiptOnly": true,
+  "publicVideoFile": "demo.mp4"
+}
