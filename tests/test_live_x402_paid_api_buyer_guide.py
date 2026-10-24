@@ -38,9 +38,10 @@ def test_guide_is_explicitly_no_custody_and_one_owner():
     assert "are not verified new organic retail buyers" in s.lower()
     assert "not evidence of attributable new purchases" in s.lower()
 
-def test_exact_five_live_paid_routes_and_five_free_samples():
+def test_exact_six_live_paid_routes_and_six_free_samples():
     parser=LinkReader();parser.feed(PAGE.read_text())
     for paid,free in (
+        ("/v1/nft-operator-calldata-preflight","/v1/nft-operator-calldata-sample"),
         ("/v1/base-usdc-allowance","/v1/base-usdc-allowance-sample"),
         ("/v1/aave-base-proxy-facts","/v1/aave-base-proxy-sample"),
         ("/v1/btc-funding-four-venues","/v1/btc-funding-sample"),
@@ -49,7 +50,7 @@ def test_exact_five_live_paid_routes_and_five_free_samples():
     ):
         assert ORIGIN+paid in parser.links
         assert ORIGIN+free in parser.links
-    assert all(parser.links.count(ORIGIN+route)==1 for route in ("/v1/base-usdc-allowance","/v1/base-usdc-allowance-sample","/v1/aave-base-proxy-facts","/v1/aave-base-proxy-sample","/v1/btc-funding-four-venues","/v1/btc-funding-sample","/v1/tapeout-cpu0-report","/v1/tapeout-cpu0-sample","/v1/tapeout-cpu0-diff","/v1/tapeout-cpu0-diff-sample"))
+    assert all(parser.links.count(ORIGIN+route)==1 for route in ("/v1/nft-operator-calldata-preflight","/v1/nft-operator-calldata-sample","/v1/base-usdc-allowance","/v1/base-usdc-allowance-sample","/v1/aave-base-proxy-facts","/v1/aave-base-proxy-sample","/v1/btc-funding-four-venues","/v1/btc-funding-sample","/v1/tapeout-cpu0-report","/v1/tapeout-cpu0-sample","/v1/tapeout-cpu0-diff","/v1/tapeout-cpu0-diff-sample"))
 
 def test_guide_does_not_collect_secrets_or_trigger_payment():
     parser=LinkReader();parser.feed(PAGE.read_text())
@@ -89,7 +90,7 @@ class LiveX402BuyerGuideTests(unittest.TestCase):
         test_guide_is_explicitly_no_custody_and_one_owner()
 
     def test_real_route_and_free_sample_links(self):
-        test_exact_five_live_paid_routes_and_five_free_samples()
+        test_exact_six_live_paid_routes_and_six_free_samples()
 
     def test_no_private_inputs_or_signatures(self):
         test_guide_does_not_collect_secrets_or_trigger_payment()
