@@ -110,6 +110,39 @@ class TapeOutRealEvidenceTests(unittest.TestCase):
         self.assertEqual(values.count(BASE),1)
         self.assertEqual(len(values),len(set(values)))
 
+    def test_actual_57_84_second_public_demonstration_captions_and_sha256(self):
+        import hashlib, shutil, subprocess
+        video = ROOT / "tapeout-accelerate" / "demo.mp4"
+        manifest = json.loads((ROOT / "tapeout-accelerate" / "demo-manifest.json").read_text())
+        captions = (ROOT / "tapeout-accelerate" / "demo.en.vtt").read_text()
+        self.assertTrue(video.exists())
+        self.assertGreater(video.stat().st_size, 500_000)
+        self.assertLess(video.stat().st_size, 30_000_000)
+        self.assertEqual(hashlib.sha256(video.read_bytes()).hexdigest(), manifest["videoSha256"])
+        self.assertEqual(video.stat().st_size, manifest["videoSizeBytes"])
+        self.assertTrue(video.read_bytes()[:80].find(b"ftyp") >= 0)
+        self.assertEqual(manifest["sourcePublicMainnetChainId"],196)
+        self.assertTrue(manifest["recordingOfActualPublicUI"])
+        self.assertTrue(manifest["noOwnerWalletSignatures"])
+        self.assertTrue(manifest["noOwnerTokensGasOrDepositsSpent"])
+        self.assertTrue(manifest["noNewExternallyPaidCustomerSaleFromThisRecording"])
+        self.assertTrue(manifest["contestApplicantIdentityAndAgeNotVerified"])
+        self.assertEqual(manifest["contestSubmissionStatus"],"NOT_SUBMITTED")
+        self.assertLess(manifest["recordedDurationSeconds"],180)
+        self.assertEqual(manifest["recordedDurationSeconds"],57.84)
+        self.assertIn("HTTP 402",captions)
+        self.assertIn("WEBVTT",captions)
+        self.assertIn("<video controls",self.page)
+        self.assertIn('src="./demo.mp4"',self.page)
+        self.assertIn('href="#demo"',self.page)
+        self.assertIn("silent video with burned-in english scene captions",self.page.lower())
+        self.assertIn("source JSON",self.page)
+        if shutil.which("ffprobe"):
+            p = subprocess.run(["ffprobe","-v","error","-show_entries","format=duration","-of","default=noprint_wrappers=1:nokey=1",str(video)],text=True,capture_output=True,timeout=12)
+            self.assertEqual(p.returncode,0,p.stderr)
+            self.assertGreater(float(p.stdout),55)
+            self.assertLess(float(p.stdout),65)
+
     def test_no_fake_cash_product_or_cash_award_attestation(self):
         d=self.data
         self.assertEqual(d["noOriginalOwnerGasOrDeposits"],0)

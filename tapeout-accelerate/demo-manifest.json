@@ -1,0 +1,36 @@
+{
+  "schema": "OriginalOneHumanTapeOutPublicRealUIReadOnlyDemo-v1",
+  "publishedAtUTC": "2026-10-24T12:16:20.006283+00:00",
+  "originalUserWorkRoot": "/srv/multi-vm-agent/workspace/make_money2",
+  "recordingOfActualPublicUI": true,
+  "firstPartyURL": "https://livastic-vm3-primary-tmp-260920.github.io/tapeout-accelerate/",
+  "originalPublicVideoURL": "https://livastic-vm3-primary-tmp-260920.github.io/tapeout-accelerate/demo.mp4",
+  "originalCaptionURL": "https://livastic-vm3-primary-tmp-260920.github.io/tapeout-accelerate/demo.en.vtt",
+  "recordedDurationSeconds": 57.84,
+  "container": "MP4",
+  "videoCodec": "H.264",
+  "resolution": [
+    1280,
+    792
+  ],
+  "videoSha256": "47f539250b636060113772b5419b1215ba8b42a10550cefee3da87d57fc924c3",
+  "videoSizeBytes": 1082007,
+  "actualInteractionCount": 11,
+  "actualReadOnlyPublicChainFields": 20,
+  "actualChangedFields": 2,
+  "actualBlockPair": [
+    "73915245",
+    "74073819"
+  ],
+  "sourcePublicMainnetChainId": 196,
+  "firstPartyPublicEvmMerchantUnsignedQuoteHTTP": 402,
+  "noOwnerWalletSignatures": true,
+  "noPaymentRequestsWithCredentials": true,
+  "noOwnerTokensGasOrDepositsSpent": true,
+  "noNewExternallyPaidCustomerSaleFromThisRecording": true,
+  "contestApplicantIdentityAndAgeNotVerified": true,
+  "contestSubmissionStatus": "NOT_SUBMITTED",
+  "noContestAwardOrRevenueClaim": true,
+  "rawAuthoringEvidenceLocalOnly": "/srv/multi-vm-agent/workspace/make_money2/reports/xlayer_tapeout_public_demo/tapeout_actual_demo_scene_events_20261024.json",
+  "method": "Actual Playwright Chrome isolated headless single page recorded at real external first-party Github Pages URL, controlled clicks/search/scroll and real unsigned HTTP402 display. Burned English scene captions added after recording to describe genuine actions."
+}
