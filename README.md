@@ -4,6 +4,8 @@
 
 **[Open free Koinly CSV checker](https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/koinly-preflight/)** · **[Crypto CSV Rescue scope](https://livastic-vm3-primary-tmp-260920.github.io/crypto-csv-rescue/)** · **[Free Base USDC merchant invoice preview](https://livastic-vm1-primary.github.io/paperpilot-tools/usdc-invoice-reconcile.html)**
 
+**[Actual public CashGate demo — 66-second real Agent-Native Chrome recording](https://livastic-vm3-primary-tmp-260920.github.io/cashgate-demo/)** · [Official public Clips recording](https://clips.agent-native.com/r/aIEjP8iNJ6VC). The app is an original walletless quote + old-receipt proof tool, not a paid customer order or live production application.
+
 ### Crypto CSV errors and missing purchase history
 
 If a supported exchange's original export gets Koinly's *Unknown file* warning, **first consult [Koinly's official supported CSV troubleshooting](https://support.koinly.io/en/articles/9490013-csv-import-unknown-file-unable-to-import-this-file-automatically)**. Do not guess trade semantics or cost basis and edit real financial rows merely to silence a warning.
