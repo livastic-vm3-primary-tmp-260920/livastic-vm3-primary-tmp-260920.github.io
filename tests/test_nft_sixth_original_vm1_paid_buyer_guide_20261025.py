@@ -12,6 +12,7 @@ SAMPLE="https://vm5-openapi-x402.onrender.com/v1/nft-operator-calldata-sample"
 OWNER="0x4e3106520E40af30870caFE78da1B1e7110eD98E"
 CIRCLE="0x833589fCD6eDb6E08f4C7C32D4f71b54bdA02913"
 SOURCE_PR="https://github.com/livastic-vm5-primary-20260911/x402-openapi-lint/pull/14"
+DIRECTORY="https://bazaar.saylorinnovations.com/resources/69450"
 
 class Collect(HTMLParser):
     def __init__(self):
@@ -29,6 +30,7 @@ class OriginalNftBuyerGuide(unittest.TestCase):
         self.assertEqual(links.links.count(PAID),1)
         self.assertEqual(links.links.count(SAMPLE),1)
         self.assertEqual(links.links.count(SOURCE_PR),1)
+        self.assertEqual(links.links.count(DIRECTORY),1)
         self.assertIn(OWNER,page)
         self.assertIn(CIRCLE,page)
         self.assertIn("Six real deployed machine-readable products",page)
@@ -57,6 +59,9 @@ class OriginalNftBuyerGuide(unittest.TestCase):
         self.assertEqual(llms.count(SAMPLE),1)
         self.assertIn("306/306 original local mocked middleware tests PASS",llms)
         self.assertIn("PENDING_REVIEW",llms)
+        self.assertIn("FREE THIRD-PARTY AGENT-BAZAAR DISCOVERY",llms)
+        self.assertIn("resourceCount21",llms)
+        self.assertIn("NO authenticated end-buyer order",llms)
         self.assertIn("No wallet connects here",SITE.read_text())
 
 if __name__=="__main__":unittest.main()
